@@ -1,0 +1,63 @@
+{
+  "name": "chat-rtc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.tsx",
+  "scripts": {
+    "lint": "eslint src/ --ext .tsx",
+    "build": "webpack --config=configs/webpack/prod",
+    "start": "webpack-dev-server --config=configs/webpack/dev --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lordniken/chat-rtc.git"
+  },
+  "keywords": [
+    "chat",
+    "websocket",
+    "rtc"
+  ],
+  "author": "Alexey Malyshev <lordniken@mail.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lordniken/chat-rtc/issues"
+  },
+  "homepage": "https://github.com/lordniken/chat-rtc#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/polyfill": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.2.1",
+    "css-loader": "^4.3.0",
+    "eslint": "^7.11.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-html": "^6.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.0.0",
+    "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "prettier": "^2.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.13.0",
+    "sass-loader": "^10.0.3",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^4.2.3",
+    "typescript": "^4.0.3",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^5.2.0"
+  }
+}
