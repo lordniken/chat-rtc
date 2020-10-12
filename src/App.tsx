@@ -1,4 +1,5 @@
 import React from 'react'
-import Test from './components/Test'
+import LoginPage from './pages/Login'
+import 'antd/dist/antd.css';
 
-export default ():React.FC => <Test />
+export default ():React.FC => <LoginPage />
