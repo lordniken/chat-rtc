@@ -64,6 +64,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "antd": "^4.7.0",
+    "moment": "^2.29.1",
     "styled-components": "^5.2.0"
   }
 }
