@@ -10,12 +10,11 @@ const ChatPage: React.FC = () => {
         <>
             <Header />
             <Row>
-                <Col span={3}>
+                <Col xxl={3} xl={4} lg={5} md={6} sm={6} xs={7}>
                     <Online />
                 </Col>
-                <Col span={21}>
+                <Col xxl={21} xl={20} lg={19} md={18} sm={18} xs={17}>
                     <Messages />
-
                     <MessageControls />
                 </Col>
             </Row>
