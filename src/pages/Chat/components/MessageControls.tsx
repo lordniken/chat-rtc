@@ -12,7 +12,7 @@ export const MessageControls: React.FC = () => {
                 layout={"inline"}
             >
                 <Row justify="space-between" style={{width: "100%"}}>
-                    <Col xxl={21} xl={20} lg={19} md={18}>
+                    <Col style={{width: 'calc(100% - 150px)'}}>
                         <Form.Item name="message">
                             <Input placeholder="Message" autoFocus size="large" />
                         </Form.Item>
