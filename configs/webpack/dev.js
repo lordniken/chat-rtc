@@ -1,5 +1,6 @@
 const {merge} = require('webpack-merge');
 const commonConfig = require('./common');
+const path = require('path')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
@@ -24,20 +25,33 @@ module.exports = merge(commonConfig, {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js)$/,
         exclude: /node_modules/,
         use: 
-          ['eslint-loader',
+          [
             {
               loader: 'babel-loader',
               options: {
                 presets: ['@babel/preset-env'],
-                    plugins: [
-                      '@babel/plugin-proposal-class-properties'
-                    ]
-                  }
-                }
+                plugins: [
+                  '@babel/plugin-proposal-class-properties'
+                ],
+              }
+            }
           ]
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              eslintPath: 'eslint',
+            },
+          },
+        ],
       },
     ]
   }

@@ -3,6 +3,7 @@ const path = require('path')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 const cssLoaders = extra => {
   const loaders = [
@@ -51,9 +52,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.jpg', '.png', '.svg', '.ts', '.tsx'],
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-    }
+    plugins: [new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })]
   },
   devServer: {
     port: 3000,
