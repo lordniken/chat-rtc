@@ -1,8 +1,12 @@
 import React from 'react';
 import { Button } from 'components/Button/Button';
+import Icon from 'assets/icons/path.svg';
 
-// const Login:React.FC = () => <ChatPage />
-
-const App: React.FC = () => <Button />;
+const App: React.FC = () => (
+  <>
+    <Button icon={Icon}>Кнопка с иконкой</Button>    
+    <Button icon={Icon} />
+  </>
+);
 
 export default App;

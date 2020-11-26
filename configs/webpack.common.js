@@ -89,15 +89,15 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         use: ['file-loader']
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        test: /\.(eot|ttf|woff|woff2)$/,
         use: [
           {
             loader: 'file-loader?name=./assets/fonts/[name].[ext]'
-          }
+          }       
         ]
       },
       {
