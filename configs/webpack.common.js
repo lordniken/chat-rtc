@@ -82,28 +82,60 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/,
-        use: cssLoaders('sass-loader')
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
-        test: /\.(png|jpg|svg|gif)$/,
+        test: /\.(png|jpg|gif)$/,
         use: ['file-loader']
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader?name=./assets/fonts/[name].[ext]'
+          }
+        ]
       },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        loader: {
-          loader: 'babel-loader',
-          options: babelOptions('@babel/preset-typescript')
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: babelOptions('@babel/preset-typescript')
+          }
+        ]
       },
       {
-        test: /\.jsx$/,
+        test: /\.(js)$/,
         exclude: /node_modules/,
-        loader: {
-          loader: 'babel-loader',
-          options: babelOptions('@babel/preset-react')
-        }
-      }
+        use: 
+          [
+            {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env'],
+                plugins: [
+                  '@babel/plugin-proposal-class-properties'
+                ],
+              }
+            }
+          ]
+      },
     ]
   }
 }
+
+/*
+
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+        ],
+
+        */

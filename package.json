@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint src/ --ext .tsx",
     "build": "webpack --config=configs/webpack.prod",
-    "start": "webpack-dev-server --config=configs/webpack.dev"
+    "start": "webpack-dev-server --config=configs/webpack.dev --open"
   },
   "repository": {
     "type": "git",
@@ -49,30 +49,31 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^1.0.0",
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "prettier": "^2.1.2",
     "react-hot-loader": "^4.13.0",
-    "sass-loader": "^10.0.3",
+    "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^4.2.3",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
     "typescript": "^4.0.3",
-    "webpack": "^4.20.2",
+    "webpack": "^5.8.0",
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^5.2.0"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.2.2",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
-    "antd": "^4.7.0",
+    "@types/styled-components": "^5.1.4",
     "moment": "^2.29.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "sass": "^1.29.0",
     "styled-components": "^5.2.0"
   }
 }
