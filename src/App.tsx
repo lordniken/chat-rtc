@@ -1,9 +1,10 @@
 import React from 'react';
-import TextField from 'components/TextField';
+import Switch from 'components/Switch';
 
 const App: React.FC = () => (
   <>   
-    <TextField type="password" disabled />
+    <Switch />
+    <Switch disabled />
   </>
 );
 
