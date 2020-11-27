@@ -9,6 +9,9 @@ const lightTheme: DefaultTheme = {
     accentBlue50: '#bfc6f7',
 
     accentBlueText: '#ffffff',
+
+    inputBackground: '#ffffff',
+    inputBorder: '#ECEBED'
   },
 };
 

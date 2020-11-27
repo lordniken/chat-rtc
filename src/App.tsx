@@ -1,11 +1,10 @@
 import React from 'react';
-import { Button } from 'components/Button/Button';
-import Icon from 'assets/icons/path.svg';
+import CheckBox from 'components/CheckBox';
 
 const App: React.FC = () => (
   <>
-    <Button icon={Icon}>Кнопка с иконкой</Button>    
-    <Button icon={Icon} />
+    <CheckBox disabled>Чекбокс</CheckBox>
+    <CheckBox>Чекбокс 2</CheckBox>
   </>
 );
 
