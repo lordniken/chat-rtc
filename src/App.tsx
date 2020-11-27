@@ -1,10 +1,9 @@
 import React from 'react';
-import CheckBox from 'components/CheckBox';
+import TextField from 'components/TextField';
 
 const App: React.FC = () => (
-  <>
-    <CheckBox disabled>Чекбокс</CheckBox>
-    <CheckBox>Чекбокс 2</CheckBox>
+  <>   
+    <TextField type="password" disabled />
   </>
 );
 

@@ -10,7 +10,7 @@ export const StyledButton = styled.button`
   outline: 0;
   cursor: pointer;
   position: relative;
-  transition: background 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
 
   &:hover {
     background: ${({ theme }) => theme.colors.accentBlue90};
