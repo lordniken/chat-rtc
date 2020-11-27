@@ -67,6 +67,10 @@ export const StyledCheckBox = styled.input.attrs({ type: 'checkbox' })`
   }
 
   &:disabled {
+    ~ ${StyledCheckBoxText}, ~ ${StyledFakeCheckBox} {
+      cursor: default;
+    }
+    
     ~ ${StyledFakeCheckBox} {     
       background-color: ${({ theme }) => theme.colors.inputBorder};
     }    
