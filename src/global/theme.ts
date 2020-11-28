@@ -17,7 +17,7 @@ const lightTheme: DefaultTheme = {
     accentBlueText: '#ffffff',
 
     inputBackground: '#ffffff',
-    inputBorder: '#ECEBED'
+    inputBorder: '#cccccc'
   },
 };
 

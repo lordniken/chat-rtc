@@ -3,22 +3,23 @@ import styled from 'styled-components';
 export const StyledFakeSwitch = styled.div`
   display: inline-block;
   position: relative;
-  width: 48px;
-  height: 28px;
+  width: 42px;
+  height: 22px;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.inputBackground};
   border: 1px solid transparent;
+  transition: border-color 0.3s ease-out;
   cursor: pointer;
 
   &:before {
     content: '';
     position: absolute;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     top: 1px;
     left: 1px;
     background-color: ${({ theme }) => theme.colors.inputBorder};
-    border-radius: 12px;
+    border-radius: 10px;
     transition: all 0.2s ease-in;
   }
 `;

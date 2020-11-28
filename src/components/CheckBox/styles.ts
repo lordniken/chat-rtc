@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const StyledFakeCheckBox = styled.span`
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   top: 50%;
   transform: translateY(-50%);
   background: ${({ theme }) => theme.colors.inputBackground};
@@ -14,7 +14,7 @@ export const StyledFakeCheckBox = styled.span`
 
 export const StyledCheckBoxWrapper = styled.label`
   display: inline-block;
-  height: 24px;
+  height: 20px;
   position: relative;
   user-select: none;
   cursor: pointer;
@@ -53,15 +53,15 @@ export const StyledCheckBox = styled.input.attrs({ type: 'checkbox' })`
       &:before {
         width: 8px;
         height: 3px;
-        left: 4px;
-        bottom: 8px;
+        left: 2px;
+        bottom: 6px;
       }
     
       &:after {
         width: 3px;
-        height: 12px;
-        left: 12px;
-        bottom: 5px;
+        height: 11px;
+        left: 10px;
+        bottom: 4px;
       }
     }
   }

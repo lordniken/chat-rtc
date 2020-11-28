@@ -28,7 +28,7 @@ export const StyledButton = styled.button`
   span {
     display: flex;
     align-items: center;
-    padding: 11px 48px;
+    padding: 8px 48px;
   }
 `;
 
