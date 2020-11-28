@@ -1,5 +1,5 @@
-const {merge} = require('webpack-merge');
-const commonConfig = require('./common');
+const { merge } = require('webpack-merge');
+const commonConfig = require('./webpack.common');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin')
@@ -19,7 +19,7 @@ module.exports = merge(commonConfig, {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: '../../../public/index.html',
+      template: '../public/index.html',
       minify: {
         collapseWhitespace: true
       }

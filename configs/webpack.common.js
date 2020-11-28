@@ -1,6 +1,6 @@
 const path = require('path')
 
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
@@ -10,7 +10,7 @@ const cssLoaders = extra => {
     {
       loader: MiniCssExtractPlugin.loader,
       options: {
-        hmr: true, // dev
+        hmr: true,
         reloadAll: true
       },
     },
@@ -42,13 +42,13 @@ const babelOptions = preset => {
 }
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
+  context: path.resolve(__dirname, '../src'),
   mode: 'development',
   entry: {
-    main: ['@babel/polyfill', '../../../src/index.tsx'],
+    main: ['@babel/polyfill', '../src/index.tsx'],
   },
   output: {
-    path: path.resolve(__dirname, '../../build')
+    path: path.resolve(__dirname, '../build')
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.jpg', '.png', '.svg', '.ts', '.tsx'],
@@ -68,8 +68,8 @@ module.exports = {
       {
         patterns: [
           {
-            from: path.resolve(__dirname, '../../public/favicon.ico'),
-            to: path.resolve(__dirname, '../../build')
+            from: path.resolve(__dirname, '../public/favicon.ico'),
+            to: path.resolve(__dirname, '../build')
           }
         ]
       }),
@@ -82,28 +82,60 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/,
-        use: cssLoaders('sass-loader')
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
-        test: /\.(png|jpg|svg|gif)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         use: ['file-loader']
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader?name=./assets/fonts/[name].[ext]'
+          }       
+        ]
       },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        loader: {
-          loader: 'babel-loader',
-          options: babelOptions('@babel/preset-typescript')
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: babelOptions('@babel/preset-typescript')
+          }
+        ]
       },
       {
-        test: /\.jsx$/,
+        test: /\.(js)$/,
         exclude: /node_modules/,
-        loader: {
-          loader: 'babel-loader',
-          options: babelOptions('@babel/preset-react')
-        }
-      }
+        use: 
+          [
+            {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env'],
+                plugins: [
+                  '@babel/plugin-proposal-class-properties'
+                ],
+              }
+            }
+          ]
+      },
     ]
   }
 }
+
+/*
+
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+        ],
+
+        */
