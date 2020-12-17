@@ -1,10 +1,10 @@
 import { useField } from 'formik';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { StyledCheckBoxWrapper, StyledFakeCheckBox, StyledCheckBox, StyledCheckBoxText } from './styles';
 
 interface ICheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  children?: string;
+  children?: string | ReactElement;
 }
 
 export const CheckBox: React.FC<ICheckBoxProps> = ({ name, children, ...rest }) => {

@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from 'global/theme';
-import App from 'App';
-import './index.scss';
+import App from 'containers/App';
+import 'assets/styles/main.scss';
 
 ReactDOM.render(
   <ThemeProvider theme={lightTheme}>

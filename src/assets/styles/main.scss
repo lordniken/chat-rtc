@@ -29,11 +29,11 @@ code {
     font-style: $style;
     font-display: swap;
     @content;
-    src: url('./assets/fonts/#{$name}-#{$weight}-#{$style}.eot');
-    src: url('./assets/fonts/#{$name}-#{$weight}-#{$style}.eot?#iefix') format('embedded-opentype'),
-        url('./assets/fonts/#{$name}-#{$weight}-#{$style}.woff2') format('woff2'),
-        url('./assets/fonts/#{$name}-#{$weight}-#{$style}.woff') format('woff'),
-        url('./assets/fonts/#{$name}-#{$weight}-#{$style}.ttf') format('truetype');
+    src: url('../fonts/#{$name}-#{$weight}-#{$style}.eot');
+    src: url('../fonts/#{$name}-#{$weight}-#{$style}.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/#{$name}-#{$weight}-#{$style}.woff2') format('woff2'),
+        url('../fonts/#{$name}-#{$weight}-#{$style}.woff') format('woff'),
+        url('../fonts/#{$name}-#{$weight}-#{$style}.ttf') format('truetype');
   }
 }
 

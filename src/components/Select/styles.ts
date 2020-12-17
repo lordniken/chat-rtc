@@ -17,4 +17,9 @@ export const StyledSelect = styled(Select)`
       border-color: ${({ theme }) => theme.colors.inputBorder};
     }
   }
+
+  .css-1pahdxg-control, .css-1pahdxg-control:hover {
+    border-color: ${({ theme }) => theme.colors.inputBorder};
+    box-shadow: none;
+  }
 `;
