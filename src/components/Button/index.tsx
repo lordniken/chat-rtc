@@ -35,5 +35,4 @@ export const Button: React.FC<IButtonProps> = ({ children, icon, ...rest } ) => 
       </span>
     </StyledButton>
   );
-
 };
