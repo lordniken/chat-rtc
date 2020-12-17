@@ -1,7 +1,10 @@
 import React from 'react';
+import { Container } from 'components/Grid';
 
 export const LoginPage:React.FC = () => {
   return (
-    <h1>Login</h1>
+    <Container>
+      Login
+    </Container>
   );
 };
