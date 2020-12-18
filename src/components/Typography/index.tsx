@@ -48,20 +48,14 @@ const Typography = styled(TypographyComponent)<ITypograhyProps>`
   }) => {
     switch (component) {
       case 'h1': return css`
-        font-family: CeraCY, SFUIText, sans-serif;
-        font-weight: bold;
         font-size: 48px;
         line-height: 1.3em;
       `;
       case 'h2': return css`
-        font-family: CeraCY, SFUIText, sans-serif;
-        font-weight: bold;
         font-size: 40px;
         line-height: 1.3em;
       `;
       case 'h3': return css`
-        font-family: CeraCY, SFUIText, sans-serif;
-        font-weight: bold;
         font-size: 22px;
         line-height: 1.3em;
       `;
@@ -82,6 +76,5 @@ const Typography = styled(TypographyComponent)<ITypograhyProps>`
     }
   }}
 `;
-
 
 export default Typography;
