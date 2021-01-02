@@ -7,6 +7,7 @@ interface IProps {
 export const StyledButton = styled.button<IProps>`
   display: flex;
   justify-content: center;
+  align-items: center;
   background: ${({ theme }) => theme.colors.accentBlue};
   color: ${({ theme }) => theme.colors.accentBlueText};
   border-radius: ${({ theme }) => theme.borderRadius};
@@ -14,6 +15,7 @@ export const StyledButton = styled.button<IProps>`
   text-transform: uppercase;
   padding: 0;
   outline: 0;
+  min-height: 34px;
   cursor: pointer;
   position: relative;
   transition: background-color 0.2s ease-out;

@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-const Spinner = styled.div`
+interface IProps {
+  size: number;
+}
+
+const Spinner = styled.div<IProps>`
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
@@ -12,8 +16,8 @@ const Spinner = styled.div`
   -webkit-animation: load8 1.1s infinite linear;
   animation: load8 1.1s infinite linear;
   border-radius: 50%;
-  width: 3em;
-  height: 3em;
+  width: ${({ size = 3 }) => `${size}em;`};
+  height: ${({ size = 3 }) => `${size}em;`};
 
   &:after {
     border-radius: 50%;

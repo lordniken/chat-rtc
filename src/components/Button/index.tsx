@@ -1,13 +1,15 @@
+import Spinner from 'components/Spinner';
 import React from 'react';
 import { StyledButton, StyledButtonWithIcon, StyledButtonWithoutText } from './styles';
 
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   children?: string;
   fullWidth?: boolean;
+  isLoading?: boolean;
   icon?: string;
 }
 
-export const Button: React.FC<IButtonProps> = ({ children, fullWidth = false, icon, ...rest } ) => {
+export const Button: React.FC<IButtonProps> = ({ children, isLoading = false, fullWidth = false, icon, ...rest } ) => {
   if (icon && children){
     return (
       <StyledButtonWithIcon fullWidth={fullWidth} {...rest}>
@@ -31,9 +33,7 @@ export const Button: React.FC<IButtonProps> = ({ children, fullWidth = false, ic
 
   return (
     <StyledButton fullWidth={fullWidth} {...rest}>
-      <span>
-        {children}
-      </span>
+      {isLoading ? <Spinner size={2} /> : <span>{children}</span>}
     </StyledButton>
   );
 };
