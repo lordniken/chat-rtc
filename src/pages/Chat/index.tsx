@@ -1,8 +1,13 @@
 import React from 'react';
+import ChatHeader from './components/Header';
 
 const ChatPage: React.FC = () => {
   return (
-    <h1>chat</h1>
+    <>
+      <ChatHeader />
+      <h1>chat</h1>
+    </>
+    
   );
 };
 
