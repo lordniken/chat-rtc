@@ -21,7 +21,7 @@ const lightTheme: DefaultTheme = {
 
     status: {
       online: 'green',
-      offline: '#ccc',
+      offline: '#cccccc',
       away: 'orange',
     }
   },

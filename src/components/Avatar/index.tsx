@@ -6,10 +6,25 @@ import Girl from './svg/girl.svg';
 import Girl2 from './svg/girl2.svg';
 import Girl3 from './svg/girl3.svg';
 
+export enum AvatarIcons {
+  m1 = 'm1',
+  m2 = 'm2',
+  m3 = 'm3',
+  g1 = 'g1',
+  g2 = 'g2',
+  g3 = 'g3'
+}
+
+export enum UserStatus {
+  online = 'online',
+  offline = 'offline',
+  away = 'away'
+}
+
 interface IProps {
   size?: 'small' | 'medium' | 'large';
-  icon?: 'm1' | 'm2' | 'm3' | 'g1' | 'g2' | 'g3';
-  status: 'online' | 'away' | 'offline';
+  icon?: keyof typeof AvatarIcons | null;
+  status: keyof typeof UserStatus;
   title: string; 
 }
 
@@ -55,14 +70,29 @@ const Avatar = styled.div<IProps>`
     border: 2px solid ${({ theme }) => theme.colors.accentBlueText};
     z-index: 10;
     right: -5px;
+    bottom: 0;
     border-radius: 50%;
   }
 
   ${({ size = 'medium' }) => {
     switch (size) {
-      case 'small': return css `width: 30px; height: 30px;`;
-      case 'medium': return css `width: 40px; height: 40px;`;
-      case 'large': return css `width: 50px; height: 50px;`;
+      case 'small': return css`
+        min-width: 30px; 
+        min-height: 30px;
+
+        &:before {
+          font-size: 16px;
+        }
+
+        &:after {
+          width: 6px;
+          height: 6px;
+          border-width: 2px;
+          right: -4px;
+        }
+      `;
+      case 'medium': return css`min-width: 40px; min-height: 40px;`;
+      case 'large': return css `min-width: 50px; min-height: 50px;`;
       default: return css``;
     }
   }}

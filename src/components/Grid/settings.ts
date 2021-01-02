@@ -29,7 +29,7 @@ const settings: TSettings = {
   },
   gap: 12,
   breakpoints,
-  columns: 12,
+  columns: 24,
 };
 
 export default settings;
