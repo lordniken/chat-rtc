@@ -9,7 +9,8 @@ import Girl3 from './svg/girl3.svg';
 interface IProps {
   size?: 'small' | 'medium' | 'large';
   icon?: 'm1' | 'm2' | 'm3' | 'g1' | 'g2' | 'g3';
-  title: string;
+  status: 'online' | 'away' | 'offline';
+  title: string; 
 }
 
 const Avatar = styled.div<IProps>`
@@ -44,6 +45,18 @@ const Avatar = styled.div<IProps>`
       text-transform: uppercase;
     }
   `}
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: ${({ theme, status }) => theme.colors.status[status]};
+    border: 2px solid ${({ theme }) => theme.colors.accentBlueText};
+    z-index: 10;
+    right: -5px;
+    border-radius: 50%;
+  }
 
   ${({ size = 'medium' }) => {
     switch (size) {

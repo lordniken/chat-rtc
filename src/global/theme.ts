@@ -17,7 +17,13 @@ const lightTheme: DefaultTheme = {
     accentBlueText: '#ffffff',
 
     inputBackground: '#ffffff',
-    inputBorder: '#cccccc'
+    inputBorder: '#cccccc',
+
+    status: {
+      online: 'green',
+      offline: '#ccc',
+      away: 'orange',
+    }
   },
 };
 
