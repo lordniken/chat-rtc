@@ -5,13 +5,14 @@ import settings, { TBreakpoints } from './settings';
 
 interface ICol extends TBreakpoints {
   gap?: typeof settings.gap;
+  gutter?: boolean;
   align?: 'flex-start' | 'center' | 'baseline' | 'flex-end' | 'stretch';
   offset?: number | TBreakpoints;
   auto?: boolean;
   grow?: number | 'initial';
 }
 
-const Col = styled.div<ICol>(({ gap, align = 'flex-start', offset = 0, grow = 'initial', auto = false ,...props }: ICol) => {
+const Col = styled.div<ICol>(({ gap, gutter = false, align = 'flex-start', offset = 0, grow = 'initial', auto = false ,...props }: ICol) => {
   const g = gap ?? settings.gap;
 
   let result = `
@@ -20,6 +21,8 @@ const Col = styled.div<ICol>(({ gap, align = 'flex-start', offset = 0, grow = 'i
         align-self: ${align};
         flex-grow: ${grow};
     `;
+
+  if (gutter) result += 'margin-bottom: 0.5em;';
 
   if (typeof g === 'number') {
     result += `

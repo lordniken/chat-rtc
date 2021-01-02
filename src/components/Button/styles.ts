@@ -1,6 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledButton = styled.button`
+interface IProps {
+  fullWidth: boolean;
+}
+
+export const StyledButton = styled.button<IProps>`
+  display: flex;
+  justify-content: center;
   background: ${({ theme }) => theme.colors.accentBlue};
   color: ${({ theme }) => theme.colors.accentBlueText};
   border-radius: ${({ theme }) => theme.borderRadius};
@@ -11,6 +17,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
   position: relative;
   transition: background-color 0.2s ease-out;
+  ${({ fullWidth = false }) => fullWidth && css`width: 100%;`}
 
   &:hover {
     background: ${({ theme }) => theme.colors.accentBlue90};

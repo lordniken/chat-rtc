@@ -40,3 +40,7 @@ export const StyledWrapper = styled.div<IStyledTextFieldProps>`
     }
   `}
 `;
+
+export const StyledLabelWrapper = styled.span`
+  padding-right: 10px;
+`;

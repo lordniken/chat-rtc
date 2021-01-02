@@ -1,28 +1,44 @@
-import React, { useCallback, useEffect } from 'react';
-import { Container, Row } from 'components/Grid';
+import React from 'react';
+import { Col, Container, Row } from 'components/Grid';
 import Typography from 'components/Typography';
 import { useTranslation } from 'react-i18next';
+import { TextField } from 'components/TextField';
+import { Formik } from 'formik';
+import { Button } from 'components/Button';
+import { StyledRow } from './styles';
 
 export const LoginPage:React.FC = () => {
   const translation = useTranslation(['pages/login']);
-  const { t, i18n } = useTranslation(['common']);
-  
-  const switchLocale = useCallback(() => {
-    if (i18n.language === 'ru') {
-      i18n.changeLanguage('en');
-    } else { 
-      i18n.changeLanguage('ru');
-    }
-  }, [i18n]);
 
   return (
     <Container>
-      <Row justify="center">
-        <Typography component="h1">
-          {translation.t('title')}
-        </Typography>
-        <a href="#test" onClick={switchLocale}>{t('changeLocale')}</a>
-      </Row>
+      <StyledRow justify="center" align="center" wrap={false}>
+        <Col gutter>
+          <Typography component="h1" gutter align="center">
+            {translation.t('title')}
+          </Typography>
+        </Col>
+        <Formik
+          initialValues={{ nickname: '' }}
+          onSubmit={(values, { setSubmitting }) => {
+            console.log(values);
+            setSubmitting(false);
+          }}
+        >
+          {({
+            handleSubmit,
+          }) => (
+            <form onSubmit={handleSubmit}>
+              <Col gutter>
+                <TextField name="nickname" label="Ваше имя" required />
+              </Col>
+              <Col>
+                <Button type="submit" fullWidth>{translation.t('sign_in')}</Button>
+              </Col>
+            </form>
+          )}
+        </Formik>
+      </StyledRow>
     </Container>
   );
 };

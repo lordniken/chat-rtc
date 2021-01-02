@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled, { css } from 'styled-components';
 
 enum ComponentTypes {
@@ -28,31 +28,35 @@ interface ITypography {
 
 interface ITypograhyProps {
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
+  gutter?: boolean;
 }
 
 interface IProps {
   component?: keyof ITypography;
+  className?: string;
 }
 
-const TypographyComponent: React.FC<IProps> = ({ component = 'span', children }) => {
-  const Component = ComponentTypes[component];
+const TypographyComponent: React.FC<IProps> = ({ component = 'span', children, className, ...rest }) => {
+  const Component = useMemo(() => ComponentTypes[component], [component]);
 
-  return <Component>{children}</Component>;
+  return <Component className={className}>{children}</Component>;
 };
 
 const Typography = styled(TypographyComponent)<ITypograhyProps>`
   margin: 0;
+  text-align: ${({ align = 'left' }) => align};
+  ${({ gutter }) => gutter && css`margin-bottom: 0.5em;`};
 
   ${({
     component
   }) => {
     switch (component) {
       case 'h1': return css`
-        font-size: 48px;
+        font-size: 30px;
         line-height: 1.3em;
       `;
       case 'h2': return css`
-        font-size: 40px;
+        font-size: 26px;
         line-height: 1.3em;
       `;
       case 'h3': return css`
@@ -66,7 +70,6 @@ const Typography = styled(TypographyComponent)<ITypograhyProps>`
       `;
       case 'p': return css`
         font-size: 18px;
-        text-align: ${({ align = 'center' }: Partial<ITypograhyProps>) => align};
       `;
       case 'small': return css`
         font-size: 13px;

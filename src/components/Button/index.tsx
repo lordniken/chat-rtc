@@ -3,10 +3,11 @@ import { StyledButton, StyledButtonWithIcon, StyledButtonWithoutText } from './s
 
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   children?: string;
+  fullWidth?: boolean;
   icon?: string;
 }
 
-export const Button: React.FC<IButtonProps> = ({ children, icon, ...rest } ) => {
+export const Button: React.FC<IButtonProps> = ({ children, fullWidth = false, icon, ...rest } ) => {
   if (icon && children){
     return (
       <StyledButtonWithIcon {...rest}>
@@ -29,7 +30,7 @@ export const Button: React.FC<IButtonProps> = ({ children, icon, ...rest } ) => 
   }
 
   return (
-    <StyledButton {...rest}>
+    <StyledButton {...rest} fullWidth={fullWidth}>
       <span>
         {children}
       </span>
