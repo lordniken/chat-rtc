@@ -22,7 +22,7 @@ const Col = styled.div<ICol>(({ gap, gutter = false, align = 'flex-start', offse
         flex-grow: ${grow};
     `;
 
-  if (gutter) result += 'margin-bottom: 0.5em;';
+  if (gutter) result += 'margin-bottom: 0.8em;';
 
   if (typeof g === 'number') {
     result += `

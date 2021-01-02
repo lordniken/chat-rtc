@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import LoginPage from 'pages/Login';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from 'global/theme';
 import i18n from 'utils/i18n';
 import { I18nextProvider } from 'react-i18next';
+import SuspenseComponent from 'pages/Suspense';
 
 const App: React.FC = () => (
-  <I18nextProvider i18n={i18n}>
-    <ThemeProvider theme={lightTheme}>
-      <LoginPage />
-    </ThemeProvider>
-  </I18nextProvider>
+  <ThemeProvider theme={lightTheme}>
+    <Suspense fallback={<SuspenseComponent />}>
+      <I18nextProvider i18n={i18n}>
+        <LoginPage />
+      </I18nextProvider>
+    </Suspense>
+  </ThemeProvider>
 );
 
 export default App;

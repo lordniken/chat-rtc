@@ -12,7 +12,7 @@ i18n
   .use(initReactI18next)
   .init({
     react: {
-      useSuspense: false
+      useSuspense: true
     },
     fallbackLng: 'ru',
     debug: true,

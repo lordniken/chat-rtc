@@ -8,6 +8,10 @@ import { Button } from 'components/Button';
 import { StyledRow } from './styles';
 import { loginValidation } from './validation';
 
+const INITIAL_FORM = { 
+  nickname: '' 
+};
+
 export const LoginPage:React.FC = () => {
   const translation = useTranslation(['pages/login']);
 
@@ -20,7 +24,7 @@ export const LoginPage:React.FC = () => {
           </Typography>
         </Col>
         <Formik
-          initialValues={{ nickname: '' }}
+          initialValues={INITIAL_FORM}
           validationSchema={loginValidation}
           validateOnMount
           onSubmit={(values, { setSubmitting }) => {
