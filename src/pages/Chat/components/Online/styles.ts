@@ -19,7 +19,7 @@ export const StyledUserWrapper = styled.div`
   } 
 `;
 
-export const StyledUsername = styled.span`
+export const StyledUsername = styled.div`
   text-overflow: clip;
   white-space: nowrap;
   overflow: hidden;

@@ -15,6 +15,7 @@ const lightTheme: DefaultTheme = {
     accentPurple: '#BE52F2',
 
     accentBlueText: '#ffffff',
+    menu: '#3F3356',
 
     inputBackground: '#ffffff',
     inputBorder: '#cccccc',
