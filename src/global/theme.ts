@@ -18,10 +18,11 @@ const lightTheme: DefaultTheme = {
 
     inputBackground: '#ffffff',
     inputBorder: '#cccccc',
+    splitter: '#efefef',
 
     status: {
-      online: 'green',
-      offline: '#cccccc',
+      online: '#009800',
+      busy: 'red',
       away: 'orange',
     }
   },

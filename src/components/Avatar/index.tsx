@@ -17,7 +17,7 @@ export enum AvatarIcons {
 
 export enum UserStatus {
   online = 'online',
-  offline = 'offline',
+  busy = 'busy',
   away = 'away'
 }
 
@@ -33,7 +33,8 @@ const Avatar = styled.div<IProps>`
   border-radius: 50%;
   background: ${({ theme }) => theme.colors.accentBlue};
   border: 1px solid transparent;  
-  transition: border-color ease-in 0.3s;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease-in;
 
   ${({ icon }) => {
     switch (icon) {
@@ -91,8 +92,16 @@ const Avatar = styled.div<IProps>`
           right: -4px;
         }
       `;
-      case 'medium': return css`min-width: 40px; min-height: 40px;`;
-      case 'large': return css `min-width: 50px; min-height: 50px;`;
+      case 'medium': return css`
+        min-width: 40px; 
+        max-width: 40px; 
+        min-height: 40px;
+      `;
+      case 'large': return css `
+        min-width: 50px; 
+        max-width: 40px; 
+        min-height: 50px;
+      `;
       default: return css``;
     }
   }}

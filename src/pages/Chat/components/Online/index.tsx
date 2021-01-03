@@ -1,6 +1,7 @@
 import React from 'react';
 import Avatar, { AvatarIcons, UserStatus } from 'components/Avatar';
-import { StyledUserWrapper, StyledWrapper } from './styles';
+import { Col } from 'components/Grid';
+import { StyledUserWrapper, StyledWrapper, StyledUsername, StyledStatus } from './styles';
 
 const MOCK = [
   {
@@ -14,7 +15,7 @@ const MOCK = [
     nickname: 'Петр',
     avatar: 'm1',
     status: 'away',
-  }  
+  },
 ];
 
 const Online: React.FC = () => {
@@ -29,7 +30,14 @@ const Online: React.FC = () => {
               size="small"
               status={user.status as keyof typeof UserStatus} 
             />
-            <span>{user.nickname}</span>
+            <StyledUsername>
+              <Col>
+                <span>{user.nickname}</span>
+              </Col>         
+              <Col>
+                <StyledStatus component="small">{user.status}</StyledStatus>
+              </Col>
+            </StyledUsername>
           </StyledUserWrapper>
         ))
       }

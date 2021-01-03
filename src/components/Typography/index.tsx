@@ -72,7 +72,7 @@ const Typography = styled(TypographyComponent)<ITypograhyProps>`
         font-size: 18px;
       `;
       case 'small': return css`
-        font-size: 13px;
+        font-size: 12px;
         font-style: normal;
       `;
       default: return css``;
