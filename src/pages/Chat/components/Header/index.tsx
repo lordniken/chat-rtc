@@ -10,12 +10,12 @@ const ChatHeader: React.FC = () => {
   return (
     <StyledWrapper>
       <Row gap={0} wrap={false}>
-        <Col xs={3} align="center">
+        <Col xs={4} align="center">
           <StyledLogo component="h3">
             WebRTC Chat
           </StyledLogo>
         </Col>
-        <Col xs={21}>
+        <Col xs={20}>
           <Popup 
             trigger={<Avatar title="lnk" status="online" />}
             closeOnDocumentClick

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 export const StyledCol = styled(Col)`
   height: calc(100vh - 60px);
-  background: #fff;
-  box-shadow: 3px 0 4px -2px rgba(0,0,0,0.6);
+  background: ${({ theme }) => theme.colors.inputBackground};
+  border: 1px solid ${({ theme }) => theme.colors.inputBorder};
   overflow-y: auto;
 `;
 

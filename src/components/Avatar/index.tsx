@@ -24,7 +24,7 @@ export enum UserStatus {
 interface IProps {
   size?: 'small' | 'medium' | 'large';
   icon?: keyof typeof AvatarIcons | null;
-  status: keyof typeof UserStatus;
+  status?: keyof typeof UserStatus;
   title: string; 
 }
 
@@ -55,31 +55,35 @@ const Avatar = styled.div<IProps>`
       position: absolute;
       font-size: 26px;
       left: 50%;
-      top: 50%;
+      top: 48%;
       transform: translateX(-50%) translateY(-50%);
       color: ${theme.colors.accentBlueText};
       text-transform: uppercase;
     }
   `}
 
-  &:after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: ${({ theme, status }) => theme.colors.status[status]};
-    border: 2px solid ${({ theme }) => theme.colors.accentBlueText};
-    z-index: 10;
-    right: -5px;
-    bottom: 0;
-    border-radius: 50%;
-  }
+  ${({ status, theme }) => status && css`
+    &:after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: ${theme.colors.status[status]};
+      border: 2px solid ${theme.colors.accentBlueText};
+      z-index: 10;
+      right: -5px;
+      bottom: 0;
+      border-radius: 50%;
+    }
+  `}
 
   ${({ size = 'medium' }) => {
     switch (size) {
       case 'small': return css`
         min-width: 30px; 
         min-height: 30px;
+        max-width: 30px; 
+        max-height: 30px;        
 
         &:before {
           font-size: 16px;
@@ -106,10 +110,12 @@ const Avatar = styled.div<IProps>`
     }
   }}
 
+  /*
   &:hover {
     border-color: ${({ theme }) => theme.colors.inputBorder};
     cursor: pointer;
   }
+  */
 `;
 
 export default Avatar;

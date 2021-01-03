@@ -6,7 +6,7 @@ export const StyledUserWrapper = styled.div`
   align-items: center;
   border-top: 1px solid ${({ theme }) => theme.colors.splitter};
   padding: 5px 10px;
-  height: 50px;
+  height: 57px;
   transition: background-color 0.3s ease-in;
 
   &:hover {
@@ -30,6 +30,10 @@ export const StyledWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.accentBlueText};
 `;
 
-export const StyledStatus = styled(Typography)`
-  color: ${({ theme }) => theme.colors.inputBorder};
+interface IStatusProps {
+  dark?: boolean;
+}
+
+export const StyledStatus = styled(Typography)<IStatusProps>`
+  color: ${({ theme, dark }) => dark ? theme.colors.accentBlue : theme.colors.accentBlue50};
 `;

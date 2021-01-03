@@ -6,15 +6,23 @@ interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   children?: string;
   fullWidth?: boolean;
   isLoading?: boolean;
+  transparent?: boolean;
   icon?: string;
 }
 
-export const Button: React.FC<IButtonProps> = ({ children, isLoading = false, fullWidth = false, icon, ...rest } ) => {
+export const Button: React.FC<IButtonProps> = ({ 
+  children, 
+  transparent = false, 
+  isLoading = false, 
+  fullWidth = false, 
+  icon, 
+  ...rest 
+} ) => {
   if (icon && children){
     return (
       <StyledButtonWithIcon fullWidth={fullWidth} {...rest}>
         <span>
-          <img src={icon} alt="" />
+          <img src={icon} width="24" height="24" alt="" />
           {children}
         </span>
       </StyledButtonWithIcon>
@@ -23,9 +31,9 @@ export const Button: React.FC<IButtonProps> = ({ children, isLoading = false, fu
 
   if (icon) {
     return (
-      <StyledButtonWithoutText fullWidth={fullWidth} {...rest}>
+      <StyledButtonWithoutText fullWidth={fullWidth} transparent={transparent} {...rest}>
         <span>
-          <img src={icon} alt="" />
+          <img src={icon} width="24" height="24" alt="" />
         </span>
       </StyledButtonWithoutText>
     );
