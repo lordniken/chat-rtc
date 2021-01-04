@@ -28,6 +28,7 @@ export const StyledUsername = styled.div`
 
 export const StyledWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.accentBlueText};
+  overflow-y: auto;
 `;
 
 interface IStatusProps {
@@ -35,5 +36,5 @@ interface IStatusProps {
 }
 
 export const StyledStatus = styled(Typography)<IStatusProps>`
-  color: ${({ theme, dark }) => dark ? theme.colors.accentBlue : theme.colors.accentBlue50};
+  color: ${({ theme, dark }) => dark ? theme.colors.accentBlue : theme.colors.accentBlue90};
 `;

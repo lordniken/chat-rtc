@@ -5,9 +5,9 @@ export const StyledWrapper = styled.header`
   display: flex;
   align-items: center;
   padding: 0 10px;
-  background: ${({ theme }) => theme.colors.accentBlueText};
+  background: ${({ theme }) => theme.gradients.header};
   height: 60px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid ${({ theme }) => theme.colors.splitter};
 `;
 
 export const StyledLogo = styled(Typography)`

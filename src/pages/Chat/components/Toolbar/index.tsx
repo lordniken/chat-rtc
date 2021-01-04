@@ -15,7 +15,7 @@ const Toolbar: React.FC = () => {
         <Avatar 
           title="Василий" 
         />
-        <Typography component="p">
+        <Typography>
           <StyledUsername>
             <Col>
               <span>Василий</span>

@@ -5,9 +5,7 @@ export const StyledWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  background: ${({ theme }) => theme.colors.splitter};
-  border: 1px solid ${({ theme }) => theme.colors.inputBorder};
-  border-left: none;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.splitter};
   height: 60px;
 `;
 
