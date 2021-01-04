@@ -10,6 +10,7 @@ export const StyledTextField = styled.input`
   border: 1px solid transparent;
   outline: 0;
   transition: border-color 0.3s ease-out;
+  width: 100%;
 
   &:focus, &:hover {
     border-color: ${({ theme }) => theme.colors.inputBorder};
@@ -23,6 +24,7 @@ export const StyledTextField = styled.input`
 export const StyledWrapper = styled.div<IStyledTextFieldProps>`
   display: inline-block;
   position: relative;
+  width: 100%;
 
   ${({ icon }) => icon && `
     &:after {

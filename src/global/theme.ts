@@ -5,7 +5,8 @@ const lightTheme: DefaultTheme = {
 
   gradients: {
     purple: 'linear-gradient(225deg, #BD7AE3 0%, #8461C9 100%)',
-    header: 'linear-gradient(#e8e8e8, #fff);'
+    header: 'linear-gradient(#efefef, #fff);',
+    footer: 'linear-gradient(#fff, #efefef);'
   },
 
   colors: {
