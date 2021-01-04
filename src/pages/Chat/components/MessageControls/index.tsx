@@ -20,7 +20,7 @@ const MessageControls: React.FC = () => {
         }) => (
           <form onSubmit={handleSubmit}>
             <ControlWrapper>
-              <TextField name="message" />
+              <TextField name="message" placeholder="Текст сообщения" />
               <Button type="submit" icon={SendIcon} transparent title="Отправить сообщение" />
             </ControlWrapper>
           </form>

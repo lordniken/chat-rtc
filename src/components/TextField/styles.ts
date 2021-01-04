@@ -19,6 +19,12 @@ export const StyledTextField = styled.input`
   &:disabled {
     background-color: ${({ theme }) => theme.colors.inputBorder};
   }
+
+  &::placeholder {
+    font-style: italic;
+    font-size: 14px;
+    color: ${({ theme }) => theme.colors.inputBorder};
+  }
 `;
 
 export const StyledWrapper = styled.div<IStyledTextFieldProps>`
