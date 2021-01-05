@@ -11,7 +11,8 @@ enum ComponentTypes {
   subtitle = 'h6',
   span = 'span',
   small = 'small',
-  strong = 'strong'
+  strong = 'strong',
+  message = 'span'
 }
 
 interface ITypography {
@@ -24,6 +25,7 @@ interface ITypography {
   span: ComponentTypes.span;
   small: ComponentTypes.small;
   strong: ComponentTypes.small;
+  message: ComponentTypes.span;
 }
 
 interface ITypograhyProps {
@@ -64,13 +66,16 @@ const Typography = styled(TypographyComponent)<ITypograhyProps>`
         line-height: 1.3em;
       `;
       case 'strong': return css`
-        font-weight: 500;
-        font-size: 17px;
+        font-weight: 600;
+        font-size: 13px;
         line-height: 22px;
       `;
       case 'p': return css`
         font-size: 18px;
       `;
+      case 'message': return css`
+        font-size: 14px;
+      `;      
       case 'small': return css`
         font-size: 12px;
         font-style: normal;

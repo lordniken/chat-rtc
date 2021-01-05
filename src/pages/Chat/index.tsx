@@ -2,7 +2,7 @@ import { Col, Row } from 'components/Grid';
 import React from 'react';
 import ChatHeader from './components/Header';
 import MessageControls from './components/MessageControls';
-import { Messages } from './components/Messages';
+import Messages from './components/Messages';
 import Online from './components/Online';
 import Toolbar from './components/Toolbar';
 import { StyledSplitPane } from './styles';
