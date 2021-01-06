@@ -1,43 +1,66 @@
-import styled from 'styled-components';
+import Typography from 'components/Typography';
+import styled, { css } from 'styled-components';
+
+interface IProps {
+  self?: boolean;
+}
 
 export const StyledWrapper = styled.div`
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  max-width: 50%;
+  flex: 1;
 `;
 
-export const StyledMessage = styled.div`
-  background: ${({ theme }) => theme.colors.accentBlueText};
-  display: inline-flex;
+export const StyledMessage = styled.div<IProps>`
+  display: flex;
   position: relative;
-  border-radius: 0 8px 8px 8px;
-  padding: 10px;
-  border: 1px solid ${({ theme }) => theme.colors.splitter};
 
   &:before {
     content: '';
     position: absolute;
-    width: 7px;
-    height: 5px;
-    left: -4px;
-    top: -1px;
-    border-left: 1px solid ${({ theme }) => theme.colors.splitter};
+    width: 5px;
+    height: 2px;
+    ${({ self }) => self ? css`
+      border-right: 1px solid ${({ theme }) => theme.colors.splitter};
+      right: -2px;
+      -moz-transform: skew(-45deg, 0deg);
+      -webkit-transform: skew(-45deg, 0deg);
+      -o-transform: skew(-45deg, 0deg);
+      -ms-transform: skew(-45deg, 0deg);
+      transform: skew(-45deg, 0deg);
+    `: css`
+      left: -2px;
+      border-left: 1px solid ${({ theme }) => theme.colors.splitter};
+      -moz-transform: skew(45deg, 0deg);
+      -webkit-transform: skew(45deg, 0deg);
+      -o-transform: skew(45deg, 0deg);
+      -ms-transform: skew(45deg, 0deg);
+      transform: skew(45deg, 0deg);
+    `}
+    top: 0;
     border-top: 1px solid ${({ theme }) => theme.colors.splitter};
     background: ${({ theme }) => theme.colors.accentBlueText};
-    -moz-transform: skew(45deg, 0deg);
-    -webkit-transform: skew(45deg, 0deg);
-    -o-transform: skew(45deg, 0deg);
-    -ms-transform: skew(45deg, 0deg);
-    transform: skew(45deg, 0deg);
+    z-index: 999;
   }
 
+  ${({ self }) => self && css`
+    justify-content: flex-end;
+  `}  
+
   &:not(:first-child) {
-    margin-top: 5px;
+    margin-top: 10px;
   }
 `;
 
-export const StyledMessageWrapper = styled.div`
-  display: flex;
+export const StyledMessageWrapper = styled.div<IProps>`
+  background: ${({ theme }) => theme.colors.accentBlueText};
+  display: inline-flex;
+  position: relative;
+  padding: 10px;
+  border-radius: ${({ self }) => self ? '8px 0 8px 8px' : '0 8px 8px 8px'};
+  border: 1px solid ${({ theme }) => theme.colors.splitter};
+  width: 40%;
+  max-width: 40%;
 `;
 
 export const StyledText = styled.div`
@@ -45,6 +68,7 @@ export const StyledText = styled.div`
   flex-direction: column;
   flex: 1;
   padding: 0 10px;
+  max-width: calc(100% - 30px);
 `;
 
 export const StyledBackground = styled.div`
@@ -62,4 +86,8 @@ export const StyledMessageHeader = styled.div`
   & small {
     color: ${({ theme }) => theme.colors.inputBorder};
   }
+`;
+
+export const StyledMessageText = styled(Typography)`
+  overflow-wrap: break-word;
 `;
