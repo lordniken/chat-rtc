@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledFakeSwitch = styled.div`
   display: inline-block;
@@ -21,6 +21,7 @@ export const StyledFakeSwitch = styled.div`
     background-color: ${({ theme }) => theme.colors.inputBorder};
     border-radius: 10px;
     transition: all 0.2s ease-in;
+    z-index: 999;
   }
 `;
 
@@ -44,7 +45,35 @@ export const StyledSwitch = styled.input.attrs({ type: 'checkbox' })`
   }
 `;
 
-export const StyledWrapper = styled.label`
+interface IProps {
+  icons?: string[];
+}
+
+export const StyledWrapper = styled.label<IProps>`
+  position: relative;
+
+  ${({ icons }) => icons && css`
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 3px;
+      z-index: 100;
+      cursor: pointer;
+    }
+
+    &:before {
+      background: url(${icons[0]});
+      right: 3px;
+    }
+
+    &:after {
+      background: url(${icons[1]});
+      left: 3px;
+    }  
+  `};
+
   &:hover {
     ${StyledSwitch}:enabled {
       ~ ${StyledFakeSwitch} {

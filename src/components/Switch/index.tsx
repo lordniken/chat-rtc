@@ -3,21 +3,26 @@ import React from 'react';
 import { StyledWrapper, StyledSwitch, StyledFakeSwitch } from './styles';
 
 interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement>{
-  name: string;
+  name?: string;
+  icons?: string[];
 }
 
-export const Switch: React.FC<SwitchProps> = ({ name, ...rest }) => {
-  const [field, meta] = useField({ name, type: 'checkbox' });
+export const Switch: React.FC<SwitchProps> = ({ name, icons, ...rest }) => {
+  let formikProps = {};
 
+  if (name) {
+    [formikProps] = useField({ name, type: 'checkbox' });
+  }
+  
   return (
-    <StyledWrapper>
+    <StyledWrapper icons={icons}>
       <StyledSwitch 
-        {...rest} 
-        {...field} 
+        {...rest}
+        {...formikProps}
         type="checkbox" 
-        data-error={meta.error}
       />
       <StyledFakeSwitch />
     </StyledWrapper>
   );
+
 };
