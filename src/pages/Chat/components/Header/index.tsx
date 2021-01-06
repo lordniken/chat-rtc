@@ -1,16 +1,10 @@
 import React from 'react';
-import Avatar from 'components/Avatar';
 import { Col, Row } from 'components/Grid';
 import Popup from 'reactjs-popup';
 import { PopupMenu, PopupItem } from 'components/Popup';
-import { Switch } from 'components/Switch';
-import Typography from 'components/Typography';
 import ExitIcon from './icons/exit.svg';
-import RusIcon from './icons/rus.svg';
-import EnIcon from './icons/us.svg';
-import SunIcon from './icons/sun.svg';
-import MoonIcon from './icons/moon.svg';
-import { StyledWrapper, StyledLogo, StyledSwitchWrapper, StyledHeaderWrapper } from './styles';
+import Switches from './Switches';
+import { StyledWrapper, StyledLogo, StyledHeaderWrapper, StyledAvatar } from './styles';
 
 const ChatHeader: React.FC = () => {
   return (
@@ -23,16 +17,9 @@ const ChatHeader: React.FC = () => {
         </Col>
         <Col xs={20}>
           <StyledHeaderWrapper>
-            <StyledSwitchWrapper>
-              <Typography component="message">Тема</Typography>
-              <Switch icons={[SunIcon, MoonIcon]} />
-            </StyledSwitchWrapper>
-            <StyledSwitchWrapper>
-              <Typography component="message">Язык</Typography>
-              <Switch icons={[RusIcon, EnIcon]} />
-            </StyledSwitchWrapper>            
+            <Switches />          
             <Popup 
-              trigger={<Avatar title="lnk" status="online" />}
+              trigger={<StyledAvatar title="lnk" status="online" />}
               closeOnDocumentClick
               mouseLeaveDelay={300}
               mouseEnterDelay={0}

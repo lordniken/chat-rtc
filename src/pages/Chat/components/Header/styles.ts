@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Typography from 'components/Typography';
+import Avatar from 'components/Avatar';
 
 export const StyledWrapper = styled.header`
   display: flex;
@@ -30,4 +31,9 @@ export const StyledHeaderWrapper = styled.div`
   align-items: center;
   justify-content: flex-end;
   padding-right: 12px;
+`;
+
+export const StyledAvatar = styled(Avatar)`
+  cursor: pointer;
+  margin-left: 10px;
 `;

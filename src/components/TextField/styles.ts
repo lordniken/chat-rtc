@@ -7,7 +7,7 @@ interface IStyledTextFieldProps {
 export const StyledTextField = styled.input`
   padding: 9px 10px;
   border-radius: ${({ theme }) => theme.borderRadius};
-  border: 1px solid transparent;
+  border: 1px solid ${({ theme }) => theme.colors.splitter};
   outline: 0;
   transition: border-color 0.3s ease-out;
   width: 100%;

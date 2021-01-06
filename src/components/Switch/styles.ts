@@ -7,7 +7,7 @@ export const StyledFakeSwitch = styled.div`
   height: 22px;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.inputBackground};
-  border: 1px solid transparent;
+  border: 1px solid ${({ theme }) => theme.colors.splitter};
   transition: border-color 0.3s ease-out;
   cursor: pointer;
 

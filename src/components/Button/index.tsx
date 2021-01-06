@@ -3,7 +3,6 @@ import React from 'react';
 import { StyledButton, StyledButtonWithIcon, StyledButtonWithoutText } from './styles';
 
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
-  children?: string;
   fullWidth?: boolean;
   isLoading?: boolean;
   transparent?: boolean;
