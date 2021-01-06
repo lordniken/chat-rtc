@@ -4,12 +4,13 @@ import { Col, Row } from 'components/Grid';
 import Popup from 'reactjs-popup';
 import { PopupMenu, PopupItem } from 'components/Popup';
 import { Switch } from 'components/Switch';
+import Typography from 'components/Typography';
 import ExitIcon from './icons/exit.svg';
 import RusIcon from './icons/rus.svg';
 import EnIcon from './icons/us.svg';
 import SunIcon from './icons/sun.svg';
 import MoonIcon from './icons/moon.svg';
-import { StyledWrapper, StyledLogo } from './styles';
+import { StyledWrapper, StyledLogo, StyledSwitchWrapper, StyledHeaderWrapper } from './styles';
 
 const ChatHeader: React.FC = () => {
   return (
@@ -21,13 +22,15 @@ const ChatHeader: React.FC = () => {
           </StyledLogo>
         </Col>
         <Col xs={20}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Switch 
-              icons={[SunIcon, MoonIcon]}
-            />
-            <Switch 
-              icons={[RusIcon, EnIcon]}
-            />
+          <StyledHeaderWrapper>
+            <StyledSwitchWrapper>
+              <Typography component="message">Тема</Typography>
+              <Switch icons={[SunIcon, MoonIcon]} />
+            </StyledSwitchWrapper>
+            <StyledSwitchWrapper>
+              <Typography component="message">Язык</Typography>
+              <Switch icons={[RusIcon, EnIcon]} />
+            </StyledSwitchWrapper>            
             <Popup 
               trigger={<Avatar title="lnk" status="online" />}
               closeOnDocumentClick
@@ -41,7 +44,7 @@ const ChatHeader: React.FC = () => {
                   mouseLeaveDelay={300}
                   on="hover"
                   mouseEnterDelay={0}
-                  position="right top"
+                  position="left top"
                   arrow={false}
                 >
                   <PopupMenu>
@@ -50,11 +53,10 @@ const ChatHeader: React.FC = () => {
                     <PopupItem>Недоступен</PopupItem>
                   </PopupMenu>
                 </Popup>
-                
                 <PopupItem onClick={() => console.log('leave')} icon={ExitIcon}>Выйти</PopupItem>
               </PopupMenu>
             </Popup>
-          </div>
+          </StyledHeaderWrapper>
         </Col>
       </Row>
     </StyledWrapper>
