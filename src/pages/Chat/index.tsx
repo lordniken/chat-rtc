@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'components/Grid';
 import Splitter from 'components/Splitter';
-import { getSplitterCollapseState, getSplitterPosition } from 'utils/selectors';
+import { getSplitterCollapseState } from 'utils/selectors';
 import ChatHeader from './components/Header';
 import MessageControls from './components/MessageControls';
 import Messages from './components/Messages';
@@ -16,7 +16,7 @@ const ChatPage: React.FC = () => {
       <Splitter 
         min={300} 
         max={500} 
-        defaultWidth={getSplitterPosition() || 400} 
+        defaultWidth={400} 
         isCollapsed={getSplitterCollapseState()}
       >
         <StyledSplitPane>

@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useRef, useState } from 'react';
-import { saveSplitterCollapseState, saveSplitterPosition } from 'utils/selectors';
+import React, { createContext, useEffect, useMemo, useRef, useState } from 'react';
+import { getSplitterPosition, saveSplitterCollapseState, saveSplitterPosition } from 'utils/selectors';
 import { StyledWrapper, StyledSeparator, StyledFragment } from './styles';
 
 const SEPARATOR_WIDTH = 6;
@@ -25,25 +25,21 @@ export const SplitterContext = createContext<ISplitterContext>({
   position: 0,
 });
 
-const Splitter: React.FC<IProps> = ({ min, max, defaultWidth = 300, isCollapsed, children }) => {
+const Splitter: React.FC<IProps> = ({ min, max, defaultWidth = 400, isCollapsed, children }) => {
   const items: React.ReactElement[] = React.Children.toArray(children) as React.ReactElement[];
   const separatorPosition = useRef<number | null>(null);
   const rootRef = useRef<HTMLElement | null>(null);
   const [collapsed, setCollapsed] = useState(isCollapsed);
-  const [position, setPosition] = React.useState<number | null>(defaultWidth || null);
+  const [position, setPosition] = React.useState<number>(defaultWidth);
+  const collapseBreakpoint = useMemo(() => min - min / 10, [min]);
 
   const onMouseMove = (e: MouseEvent) => {
     if (!separatorPosition.current) {
       return;
     }
-
     separatorPosition.current = e.clientX + SEPARATOR_WIDTH / 2;
-
-    if (separatorPosition.current <= min - (min / 10)) {
-      setCollapsed(true);
-    } else {
-      setCollapsed(false);
-    }
+    
+    setCollapsed(separatorPosition.current <= collapseBreakpoint);
 
     if ((min && separatorPosition.current >= min) && (max && separatorPosition.current <= max)) {
       setPosition(separatorPosition.current);
@@ -56,8 +52,10 @@ const Splitter: React.FC<IProps> = ({ min, max, defaultWidth = 300, isCollapsed,
   };
 
   const onMouseUp = () => {
-    rootRef!.current!.style.userSelect = 'auto';
-    if (position! > 50) saveSplitterPosition(position!);
+    if (separatorPosition.current){
+      rootRef!.current!.style.userSelect = 'auto';
+      if (position! > COLLAPSED_WIDTH) saveSplitterPosition(position!);
+    }
     separatorPosition.current = null;
   };
 
@@ -76,7 +74,7 @@ const Splitter: React.FC<IProps> = ({ min, max, defaultWidth = 300, isCollapsed,
     if (collapsed) {
       setPosition(COLLAPSED_WIDTH);
     } else {
-      setPosition(defaultWidth);
+      setPosition(separatorPosition!.current! ? min : getSplitterPosition() || defaultWidth);
     }
     saveSplitterCollapseState(collapsed);
   }, [collapsed]);
@@ -86,7 +84,7 @@ const Splitter: React.FC<IProps> = ({ min, max, defaultWidth = 300, isCollapsed,
       value={{
         collapsed,
         setCollapsed,
-        position: position || defaultWidth,
+        position,
       }}
     >
       <StyledWrapper>
