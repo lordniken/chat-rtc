@@ -3,6 +3,7 @@ import Avatar, { AvatarIcons, UserStatus } from 'components/Avatar';
 import { Col } from 'components/Grid';
 import useSplitter from 'hooks/useSplitter';
 import { StyledUserWrapper, StyledWrapper, StyledUsername, StyledStatus } from './styles';
+import UnreadedMessages from './components/UnreadedMessages';
 
 const MOCK = [
   {
@@ -10,12 +11,14 @@ const MOCK = [
     nickname: 'Василий',
     avatar: null,
     status: 'online',
+    unreaded: 10,
   },
   {
     id: 2,
     nickname: 'Петр',
     avatar: 'm1',
     status: 'away',
+    unreaded: 0,
   },
 ];
 
@@ -42,6 +45,7 @@ const Online: React.FC = () => {
                   <StyledStatus component="small">{user.status}</StyledStatus>
                 </Col>
               </StyledUsername>}
+            {!!user.unreaded && <UnreadedMessages>{collapsed ? user.unreaded : `${user.unreaded } новых сообщений`}</UnreadedMessages>}
           </StyledUserWrapper>
         ))
       }

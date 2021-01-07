@@ -7,6 +7,7 @@ export const StyledUserWrapper = styled.div`
   border-top: 1px solid ${({ theme }) => theme.colors.splitter};
   padding: 5px 10px;
   height: 58px;
+  position: relative;
   transition: background-color 0.3s ease-in;
 
   &:hover {
