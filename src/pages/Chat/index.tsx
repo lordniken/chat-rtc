@@ -12,11 +12,11 @@ const ChatPage: React.FC = () => {
   return (
     <>
       <ChatHeader />
-      <Splitter min={300} max={500}>
+      <Splitter min={300} max={500} isCollapsed={false}>
         <StyledSplitPane>
           <Online />
         </StyledSplitPane>
-        <Row gap={0}>
+        <Row gap={0} wrap>
           <Col gap={0}>
             <Toolbar />
           </Col>

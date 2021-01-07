@@ -2,29 +2,33 @@ import React, { createContext, useEffect, useRef, useState } from 'react';
 import { StyledWrapper, StyledSeparator, StyledFragment } from './styles';
 
 const SEPARATOR_WIDTH = 6;
+const COLLAPSED_WIDTH = 50;
 
 interface IProps {
   children: React.ReactElement[];
   max: number;
   min: number;
   defaultWidth?: number;
+  isCollapsed: boolean;
 }
 
 interface ISplitterContext {
   collapsed: boolean;
   setCollapsed: (key: boolean) => void;
+  position: number;
 }
 
 export const SplitterContext = createContext<ISplitterContext>({
   collapsed: false,
-  setCollapsed: () => {}
+  setCollapsed: () => {},
+  position: 0,
 });
 
-const Splitter: React.FC<IProps> = ({ min, max, defaultWidth = 300, children }) => {
+const Splitter: React.FC<IProps> = ({ min, max, defaultWidth = 300, isCollapsed, children }) => {
   const items: React.ReactElement[] = React.Children.toArray(children) as React.ReactElement[];
   const separatorPosition = useRef<number | null>(null);
   const rootRef = useRef<HTMLElement | null>(null);
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(isCollapsed);
   const [position, setPosition] = React.useState<number | null>(defaultWidth || null);
 
   const onMouseMove = (e: MouseEvent) => {
@@ -68,7 +72,7 @@ const Splitter: React.FC<IProps> = ({ min, max, defaultWidth = 300, children }) 
 
   useEffect(() => {
     if (collapsed) {
-      setPosition(50);
+      setPosition(COLLAPSED_WIDTH);
     } else {
       setPosition(defaultWidth);
     }
@@ -78,7 +82,8 @@ const Splitter: React.FC<IProps> = ({ min, max, defaultWidth = 300, children }) 
     <SplitterContext.Provider
       value={{
         collapsed,
-        setCollapsed
+        setCollapsed,
+        position: position || defaultWidth,
       }}
     >
       <StyledWrapper>
@@ -86,9 +91,10 @@ const Splitter: React.FC<IProps> = ({ min, max, defaultWidth = 300, children }) 
           items.map((item, index) => ( 
             <StyledFragment key={item.key} position={position} index={index}>
               {item}
-              {index !== items.length - 1 && 
+              {!index && 
                 <StyledSeparator
                   onMouseDown={separatorClicked}
+                  onDoubleClick={() => setCollapsed(prev => !prev)}
                   width={SEPARATOR_WIDTH}
                 />}
             </StyledFragment>

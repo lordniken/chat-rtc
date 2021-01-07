@@ -9,4 +9,5 @@ export const StyledWrapper = styled.div`
 
 export const ControlWrapper = styled.div`
   display: flex;
+  align-items: center;
 `;

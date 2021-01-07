@@ -16,4 +16,5 @@ export const StyledUserBlock = styled.div`
 
 export const StyledUserFuncs = styled.div`
   display: flex;
+  margin-right: 10px;
 `;
