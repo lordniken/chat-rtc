@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useRef, useState } from 'react';
+import { saveSplitterCollapseState, saveSplitterPosition } from 'utils/selectors';
 import { StyledWrapper, StyledSeparator, StyledFragment } from './styles';
 
 const SEPARATOR_WIDTH = 6;
@@ -56,6 +57,7 @@ const Splitter: React.FC<IProps> = ({ min, max, defaultWidth = 300, isCollapsed,
 
   const onMouseUp = () => {
     rootRef!.current!.style.userSelect = 'auto';
+    if (position! > 50) saveSplitterPosition(position!);
     separatorPosition.current = null;
   };
 
@@ -76,6 +78,7 @@ const Splitter: React.FC<IProps> = ({ min, max, defaultWidth = 300, isCollapsed,
     } else {
       setPosition(defaultWidth);
     }
+    saveSplitterCollapseState(collapsed);
   }, [collapsed]);
 
   return (
