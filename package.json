@@ -6,7 +6,9 @@
   "scripts": {
     "lint": "eslint src/ --ext .tsx",
     "build": "webpack --config=configs/webpack.prod",
-    "start": "webpack-dev-server --config=configs/webpack.dev --open"
+    "start": "webpack-dev-server --config=configs/webpack.dev --open",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,10 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
+    "@storybook/addon-actions": "^6.1.11",
+    "@storybook/addon-essentials": "^6.1.11",
+    "@storybook/addon-links": "^6.1.11",
+    "@storybook/react": "^6.1.11",
     "@typescript-eslint/eslint-plugin": "^4.8.2",
     "@typescript-eslint/parser": "^4.8.2",
     "babel-loader": "^8.1.0",
@@ -58,6 +64,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "prettier": "^2.1.2",
     "react-hot-loader": "^4.13.0",
+    "react-is": "^17.0.1",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^4.2.3",
@@ -69,6 +76,7 @@
     "webpack-merge": "^5.2.0"
   },
   "dependencies": {
+    "@storybook/addon-knobs": "^6.1.11",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "@types/react-select": "^3.0.26",

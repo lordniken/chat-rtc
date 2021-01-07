@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import styled, { css } from 'styled-components';
 
-enum ComponentTypes {
+export enum ComponentTypes {
   p = 'p',
   h1 = 'h1',
   h2 = 'h2',
@@ -48,6 +48,7 @@ const Typography = styled(TypographyComponent)<ITypograhyProps>`
   margin: 0;
   text-align: ${({ align = 'left' }) => align};
   ${({ gutter }) => gutter && css`margin-bottom: 0.5em;`};
+  color: ${({ theme }) => theme.colors.accentBlue};
 
   ${({
     component
