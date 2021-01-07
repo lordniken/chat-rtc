@@ -13,7 +13,7 @@ export default {
   component: Button,
 };
 
-export const WithText = () => (
+export const Component = () => (
   <div>
     <StyledButton>{text('test', 'test')}</StyledButton>
     <StyledButton icon={Icon}>{text('test', 'test')}</StyledButton>
