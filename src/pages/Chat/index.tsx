@@ -27,24 +27,7 @@ const ChatPage: React.FC = () => {
             <MessageControls />
           </Col>
         </Row>
-      </Splitter>
-      {/*
-        <StyledSplitPane split="vertical" minSize={250} maxSize={500} defaultSize={340}>
-        <Online />
-        <Row gap={0}>
-          <Col gap={0}>
-            <Toolbar />
-          </Col>
-          <Col gap={0}>
-            <Messages />
-          </Col>
-          <Col gap={0}>
-            <MessageControls />
-          </Col>
-        </Row>
-      </StyledSplitPane>
-    */}
-     
+      </Splitter>     
     </>
   );
 };

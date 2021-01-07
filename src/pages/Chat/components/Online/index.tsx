@@ -1,6 +1,7 @@
 import React from 'react';
 import Avatar, { AvatarIcons, UserStatus } from 'components/Avatar';
 import { Col } from 'components/Grid';
+import useSplitter from 'hooks/useSplitter';
 import { StyledUserWrapper, StyledWrapper, StyledUsername, StyledStatus } from './styles';
 
 const MOCK = [
@@ -19,6 +20,8 @@ const MOCK = [
 ];
 
 const Online: React.FC = () => {
+  const { collapsed } = useSplitter();
+
   return (
     <StyledWrapper>
       {
@@ -30,14 +33,15 @@ const Online: React.FC = () => {
               size="small"
               status={user.status as keyof typeof UserStatus} 
             />
-            <StyledUsername>
-              <Col>
-                <span>{user.nickname}</span>
-              </Col>         
-              <Col>
-                <StyledStatus component="small">{user.status}</StyledStatus>
-              </Col>
-            </StyledUsername>
+            {!collapsed &&
+              <StyledUsername>
+                <Col>
+                  <span>{user.nickname}</span>
+                </Col>         
+                <Col>
+                  <StyledStatus component="small">{user.status}</StyledStatus>
+                </Col>
+              </StyledUsername>}
           </StyledUserWrapper>
         ))
       }
