@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface IProps {
-  size: number;
+  size?: number;
 }
 
 const Spinner = styled.div<IProps>`

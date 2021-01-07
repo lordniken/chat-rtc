@@ -7,6 +7,7 @@ export const StyledWrapper = styled.div`
   padding: 0 10px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.splitter};
   height: 60px;
+  background: ${({ theme }) => theme.colors.inputBackground};
 `;
 
 export const StyledUserBlock = styled.div`
