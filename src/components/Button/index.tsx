@@ -1,5 +1,5 @@
-import Spinner from 'components/Spinner';
 import React from 'react';
+import Spinner from 'components/Spinner';
 import { StyledButton, StyledButtonWithIcon, StyledButtonWithoutText } from './styles';
 
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{

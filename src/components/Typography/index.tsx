@@ -48,7 +48,6 @@ const Typography = styled(TypographyComponent)<ITypograhyProps>`
   margin: 0;
   text-align: ${({ align = 'left' }) => align};
   ${({ gutter }) => gutter && css`margin-bottom: 0.5em;`};
-  color: ${({ theme }) => theme.colors.accentBlue};
 
   ${({
     component
