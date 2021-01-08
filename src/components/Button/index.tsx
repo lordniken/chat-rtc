@@ -1,6 +1,6 @@
 import React from 'react';
 import Spinner from 'components/Spinner';
-import { StyledButton, StyledButtonWithIcon, StyledButtonWithoutText } from './styles';
+import { StyledButton, StyledButtonWithoutText } from './styles';
 
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   fullWidth?: boolean;
@@ -17,30 +17,15 @@ export const Button: React.FC<IButtonProps> = ({
   icon, 
   ...rest 
 } ) => {
-  if (icon && children){
+  if (icon && !children) {
     return (
-      <StyledButtonWithIcon fullWidth={fullWidth} {...rest}>
-        <span>
-          <img src={icon} width="24" height="24" alt="" />
-          {children}
-        </span>
-      </StyledButtonWithIcon>
-    );
-  }
-
-  if (icon) {
-    return (
-      <StyledButtonWithoutText fullWidth={fullWidth} transparent={transparent} {...rest}>
-        <span>
-          <img src={icon} width="24" height="24" alt="" />
-        </span>
-      </StyledButtonWithoutText>
+      <StyledButtonWithoutText fullWidth={fullWidth} transparent={transparent} icon={icon} {...rest} />
     );
   }
 
   return (
-    <StyledButton fullWidth={fullWidth} {...rest}>
-      {isLoading ? <Spinner size={2} /> : <span>{children}</span>}
+    <StyledButton fullWidth={fullWidth} isLoading={isLoading} icon={icon} {...rest}>
+      {isLoading ? <span><Spinner size={2} />{children}</span> : <span>{children}</span>}
     </StyledButton>
   );
 };

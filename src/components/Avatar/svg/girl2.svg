@@ -7,7 +7,6 @@
 	<defs>
 		<circle id="SVGID_1_" cx="94.074" cy="94.074" r="94.074"/>
 	</defs>
-	<use xlink:href="#SVGID_1_"  style="overflow:visible;fill:#E1854F;"/>
 	<clipPath id="SVGID_2_">
 		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
 	</clipPath>

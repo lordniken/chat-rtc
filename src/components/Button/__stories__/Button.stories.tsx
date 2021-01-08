@@ -1,6 +1,6 @@
 import React from 'react';
 import { text } from '@storybook/addon-knobs/dist';
-import Icon from 'assets/icons/path.svg';
+import Icon from 'pages/Chat/components/MessageControls/icons/send.svg';
 import styled from 'styled-components';
 import { Button } from '..';
 
@@ -11,12 +11,13 @@ const StyledButton = styled(Button)`
 export default {
   title: 'components/Button',
   component: Button,
+  argTypes: {},
 };
 
-export const Component = () => (
+export const Component = ({ ...props }) => (
   <div>
-    <StyledButton>{text('test', 'test')}</StyledButton>
-    <StyledButton icon={Icon}>{text('test', 'test')}</StyledButton>
-    <StyledButton icon={Icon} />
+    <StyledButton {...props}>{text('test', 'test')}</StyledButton>
+    <StyledButton {...props} icon={Icon}>{text('test', 'test')}</StyledButton>
+    <StyledButton {...props} icon={Icon} />
   </div>
 );
