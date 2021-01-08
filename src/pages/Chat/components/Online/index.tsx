@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Avatar, { AvatarIcons, UserStatus } from 'components/Avatar';
 import { Col } from 'components/Grid';
 import useSplitter from 'hooks/useSplitter';
+import { saveSplitterCollapseState, saveSplitterPosition } from 'utils/selectors';
 import { StyledUserWrapper, StyledWrapper, StyledUsername, StyledStatus } from './styles';
 import UnreadedMessages from './components/UnreadedMessages';
 
@@ -23,7 +24,15 @@ const MOCK = [
 ];
 
 const Online: React.FC = () => {
-  const { collapsed } = useSplitter();
+  const { collapsed, separatorPosition } = useSplitter();
+
+  useEffect(() => {
+    saveSplitterCollapseState(collapsed);
+  }, [collapsed]);
+
+  useEffect(() => {
+    saveSplitterPosition(separatorPosition);
+  }, [separatorPosition]);
 
   return (
     <StyledWrapper>

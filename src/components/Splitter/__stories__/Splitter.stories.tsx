@@ -1,5 +1,5 @@
 import React from 'react';
-import { text } from '@storybook/addon-knobs/dist';
+import styled from 'styled-components';
 import Splitter from '..';
 
 export default {
@@ -8,10 +8,14 @@ export default {
   argTypes: {},
 };
 
+const Block = styled.div`
+  padding: 10px;
+  height: 200px;
+`;
+
 export const Component = ({ ...props }) => (
   <Splitter min={100} max={800} isCollapsed={false} {...props}>
-    <div>1</div>
-    <div>2</div>
+    <Block>Block 1</Block>
+    <Block>Block 2</Block>
   </Splitter>
-
 );
