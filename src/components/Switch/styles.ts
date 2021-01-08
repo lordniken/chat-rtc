@@ -51,6 +51,7 @@ interface IProps {
 
 export const StyledWrapper = styled.label<IProps>`
   position: relative;
+  display: inline-block;
 
   ${({ icons }) => icons && css`
     &:before, &:after {

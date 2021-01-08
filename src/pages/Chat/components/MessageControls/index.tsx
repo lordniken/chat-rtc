@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'components/Button';
-import { TextField } from 'components/TextField';
+import TextField from 'components/TextField';
 import { Formik } from 'formik';
 import SendIcon from './icons/send.svg';
 import { StyledWrapper, ControlWrapper } from './styles';
@@ -20,7 +20,7 @@ const MessageControls: React.FC = () => {
         }) => (
           <form onSubmit={handleSubmit}>
             <ControlWrapper>
-              <TextField name="message" placeholder="Текст сообщения" />
+              <TextField name="message" placeholder="Текст сообщения" fullWidth />
               <Button type="submit" icon={SendIcon} transparent title="Отправить сообщение" />
             </ControlWrapper>
           </form>

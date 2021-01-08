@@ -1,8 +1,4 @@
-import styled from 'styled-components';
-
-interface IStyledTextFieldProps {
-  icon?: string;
-}
+import styled, { css } from 'styled-components';
 
 export const StyledTextField = styled.input`
   padding: 9px 10px;
@@ -10,8 +6,9 @@ export const StyledTextField = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.splitter};
   outline: 0;
   transition: border-color 0.3s ease-out;
+  position: relative;
   width: 100%;
-
+  
   &:focus, &:hover {
     border-color: ${({ theme }) => theme.colors.inputBorder};
   }
@@ -27,10 +24,24 @@ export const StyledTextField = styled.input`
   }
 `;
 
-export const StyledWrapper = styled.div<IStyledTextFieldProps>`
+export const StyledWrapper = styled.div`
   display: inline-block;
   position: relative;
   width: 100%;
+`;
+
+export const StyledLabelWrapper = styled.span`
+  padding-right: 10px;
+`;
+
+interface IIconWrapper {
+  icon?: string;
+  fullWidth?: boolean;
+}
+
+export const StyledInputWrapper = styled.div<IIconWrapper>`
+  position: relative;
+  display: ${({ fullWidth }) => fullWidth ? 'block' : 'inline-block'};
 
   ${({ icon }) => icon && `
     &:after {
@@ -39,6 +50,7 @@ export const StyledWrapper = styled.div<IStyledTextFieldProps>`
       width: 20px;
       height: 20px;
       background: url(${icon}) no-repeat center;
+      background-size: contain;
       left: 10px;
       top: calc(50% - 10px);
     }
@@ -47,8 +59,4 @@ export const StyledWrapper = styled.div<IStyledTextFieldProps>`
       padding-left: 35px;
     }
   `}
-`;
-
-export const StyledLabelWrapper = styled.span`
-  padding-right: 10px;
 `;

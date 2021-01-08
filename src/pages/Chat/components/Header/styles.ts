@@ -37,3 +37,7 @@ export const StyledAvatar = styled(Avatar)`
   cursor: pointer;
   margin-left: 10px;
 `;
+
+export const StyledForm = styled.form`
+  display: flex;
+`;
