@@ -14,7 +14,7 @@ interface ISelectProps {
   placeholder: string;
 }
 
-export const Select: React.FC<ISelectProps> = ({
+const Select: React.FC<ISelectProps> = ({
   name,
   options,
   placeholder
@@ -41,3 +41,5 @@ export const Select: React.FC<ISelectProps> = ({
     </StyledWrapper>
   );
 };
+
+export default Select;
