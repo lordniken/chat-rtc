@@ -10,4 +10,8 @@ export const StyledWrapper = styled.div`
 export const ControlWrapper = styled.div`
   display: flex;
   align-items: center;
+
+  & :not(:first-child):not(:last-child) {
+    padding: 0 5px;
+  }
 `;

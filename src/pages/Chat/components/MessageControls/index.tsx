@@ -3,6 +3,7 @@ import { Button } from 'components/Button';
 import TextField from 'components/TextField';
 import { Formik } from 'formik';
 import SendIcon from './icons/send.svg';
+import AttachImgIcon from './icons/attach_img.svg';
 import { StyledWrapper, ControlWrapper } from './styles';
 
 const MessageControls: React.FC = () => {
@@ -20,6 +21,7 @@ const MessageControls: React.FC = () => {
         }) => (
           <form onSubmit={handleSubmit}>
             <ControlWrapper>
+              <Button type="button" icon={AttachImgIcon} transparent title="Прикрепить картинку" />
               <TextField name="message" placeholder="Текст сообщения" fullWidth />
               <Button type="submit" icon={SendIcon} transparent title="Отправить сообщение" />
             </ControlWrapper>
