@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Row } from 'components/Grid';
 import Splitter from 'components/Splitter';
 import { getSplitterCollapseState, getSplitterPosition } from 'utils/selectors';
-import AdaptiveProvider from 'providers/AdaptiveProvider';
 import ChatHeader from './components/Header';
 import MessageControls from './components/MessageControls';
 import Messages from './components/Messages';
@@ -11,14 +10,13 @@ import Toolbar from './components/Toolbar';
 import { StyledSplitPane } from './styles';
 
 const ChatPage: React.FC = () => {
-
   return (
-    <AdaptiveProvider>
+    <>
       <ChatHeader />
       <Splitter 
         min={300} 
         max={800} 
-        defaultWidth={getSplitterPosition() || 400} 
+        defaultWidth={getSplitterPosition() || 300} 
         isCollapsed={getSplitterCollapseState()}
       >
         <StyledSplitPane>
@@ -36,7 +34,7 @@ const ChatPage: React.FC = () => {
           </Col>
         </Row>
       </Splitter>     
-    </AdaptiveProvider>
+    </>
   );
 };
 

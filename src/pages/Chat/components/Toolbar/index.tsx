@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Avatar from 'components/Avatar';
 import { Button } from 'components/Button';
 import { Col } from 'components/Grid';
@@ -9,6 +9,7 @@ import { StyledStatus, StyledUsername } from '../Online/styles';
 import { StyledWrapper, StyledUserBlock, StyledUserFuncs } from './styles';
 
 const Toolbar: React.FC = () => {
+
   return (
     <StyledWrapper>
       <StyledUserBlock>

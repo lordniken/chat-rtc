@@ -27,11 +27,11 @@ const MOCK = [
 
 const Online: React.FC = () => {
   const { setCollapsed, collapsed, separatorPosition } = useSplitter();
-  const { breakpoint, below } = useBreakpoints();
-
+  const { isMobile, isTablet } = useBreakpoints();
+   
   useEffect(() => {
-    setCollapsed(below(EDevices.md));
-  }, [breakpoint]);
+    setCollapsed(isMobile || isTablet);
+  }, [isMobile, isTablet]);
   
   useEffect(() => {
     saveSplitterCollapseState(collapsed);

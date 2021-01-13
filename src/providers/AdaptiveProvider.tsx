@@ -1,6 +1,6 @@
 /* eslint-disable  */
 
-import React, { FC, createContext, useState, useEffect, useCallback } from 'react';
+import React, { FC, createContext, useState, useEffect, useCallback, useMemo } from 'react';
 
 export enum EBreakpoints {
   xxs = 0,
@@ -30,6 +30,8 @@ export interface IAdaptiveContext {
   above: (breakpoint: EDevices) => boolean;
   between: (fromBreakpoint: EDevices, toBreakpoint: EDevices) => boolean;
   only: (breakpoint: EDevices) => boolean;
+  isMobile: boolean;
+  isTablet: boolean;
 }
 
 const getCurrentBreakpoint = (): EDevices => {
@@ -63,15 +65,15 @@ export const AdaptiveContext = createContext<IAdaptiveContext>({
   above,
   between,
   only: () => false,
+  isMobile: false,
+  isTablet: false,
 });
 
 export const AdaptiveConsumer = AdaptiveContext.Consumer;
 
 const AdaptiveProvider: FC = ({ children }) => {
   const [breakpoint, setBreakpoint] = useState<EDevices>(getCurrentBreakpoint());
-
   const only = useCallback((point: EDevices): boolean => breakpoint === point, [breakpoint]);
-
   const resizeListener = useCallback(() => setBreakpoint(getCurrentBreakpoint()), []);
 
   useEffect(() => {
@@ -79,6 +81,9 @@ const AdaptiveProvider: FC = ({ children }) => {
     return () => window.removeEventListener('resize', resizeListener);
   }, [resizeListener]);
 
+  const isTablet = useMemo(() => only(EDevices.sm), [breakpoint]);
+  const isMobile = useMemo(() => below(EDevices.sm), [breakpoint]);
+ 
   return (
     <AdaptiveContext.Provider
       value={{
@@ -87,6 +92,8 @@ const AdaptiveProvider: FC = ({ children }) => {
         above,
         between,
         only,
+        isMobile,
+        isTablet
       }}
     >
       {children}
