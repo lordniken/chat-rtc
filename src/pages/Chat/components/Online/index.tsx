@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import Avatar, { AvatarIcons, UserStatus } from 'components/Avatar';
 import { Col } from 'components/Grid';
 import useSplitter from 'hooks/useSplitter';
-import { saveSplitterCollapseState, saveSplitterPosition } from 'utils/selectors';
+import useBreakpoints from 'hooks/useBreakpoints';
+import { getSplitterCollapseState, saveSplitterCollapseState, saveSplitterPosition } from 'utils/selectors';
+import { EDevices } from 'providers/AdaptiveProvider';
 import { StyledUserWrapper, StyledWrapper, StyledUsername, StyledStatus } from './styles';
 import UnreadedMessages from './components/UnreadedMessages';
 
@@ -24,8 +26,13 @@ const MOCK = [
 ];
 
 const Online: React.FC = () => {
-  const { collapsed, separatorPosition } = useSplitter();
+  const { setCollapsed, collapsed, separatorPosition } = useSplitter();
+  const { breakpoint, below } = useBreakpoints();
 
+  useEffect(() => {
+    setCollapsed(below(EDevices.md));
+  }, [breakpoint]);
+  
   useEffect(() => {
     saveSplitterCollapseState(collapsed);
   }, [collapsed]);

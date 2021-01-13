@@ -59,8 +59,8 @@ export const StyledMessageWrapper = styled.div<IProps>`
   padding: 10px;
   border-radius: ${({ self }) => self ? '8px 0 8px 8px' : '0 8px 8px 8px'};
   border: 1px solid ${({ theme }) => theme.colors.splitter};
-  width: 40%;
-  max-width: 40%;
+  width: 50%;
+  max-width: 50%;
 `;
 
 export const StyledText = styled.div`

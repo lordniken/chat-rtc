@@ -5,7 +5,7 @@ import Avatar from 'components/Avatar';
 export const StyledWrapper = styled.header`
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 0;
   background: ${({ theme }) => theme.gradients.header};
   height: 60px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.splitter};

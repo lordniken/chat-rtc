@@ -10,12 +10,12 @@ const ChatHeader: React.FC = () => {
   return (
     <StyledWrapper>
       <Row gap={0} wrap={false}>
-        <Col xs={4} align="center">
+        <Col xs={18} align="center">
           <StyledLogo component="h3">
             WebRTC Chat
           </StyledLogo>
         </Col>
-        <Col xs={20}>
+        <Col xs={6}>
           <StyledHeaderWrapper>
             <Switches />          
             <Popup 

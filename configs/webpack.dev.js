@@ -11,6 +11,8 @@ module.exports = merge(commonConfig, {
   },
   devServer: {
     hot: true,
+    host: '0.0.0.0',
+    public: '127.0.0.1:4000',
     port: 4000,
     onListening: function(server) {
       const host = server.hostname;
