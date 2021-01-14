@@ -20,6 +20,8 @@
     "@typescript-eslint/semi": ["error", "always"],
     "@typescript-eslint/comma-dangle": ["off"],
     "object-curly-spacing": ["warn", "always"],
+    "no-param-reassign": 0,
+    "import/no-cycle": ["off"],
     "no-unused-vars": [
       "warn",
       {
