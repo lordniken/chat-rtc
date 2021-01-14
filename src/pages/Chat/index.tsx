@@ -7,7 +7,7 @@ import MessageControls from './components/MessageControls';
 import Messages from './components/Messages';
 import Online from './components/Online';
 import Toolbar from './components/Toolbar';
-import { StyledSplitPane } from './styles';
+import { StyledSplitPane, StyledMessageCol } from './styles';
 
 const ChatPage: React.FC = () => {
   return (
@@ -26,9 +26,9 @@ const ChatPage: React.FC = () => {
           <Col gap={0}>
             <Toolbar />
           </Col>
-          <Col gap={0}>
+          <StyledMessageCol gap={0}>
             <Messages />
-          </Col>
+          </StyledMessageCol>
           <Col gap={0}>
             <MessageControls />
           </Col>

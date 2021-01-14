@@ -19,6 +19,7 @@ export const StyledFragment = styled.div.attrs<IProps>(
   ))<IProps>`
   display: flex;
   justify-content: space-between;  
+  width: 100%;
 `;
 
 interface ISeparatorProps {

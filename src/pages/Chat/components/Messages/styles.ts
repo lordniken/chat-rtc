@@ -41,7 +41,7 @@ export const StyledMessage = styled.div<IProps>`
     top: 0;
     border-top: 1px solid ${({ theme }) => theme.colors.splitter};
     background: ${({ theme }) => theme.colors.accentBlueText};
-    z-index: 999;
+    z-index: 500;
   }
 
   ${({ self }) => self && css`
