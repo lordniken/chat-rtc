@@ -15,3 +15,9 @@ export const ControlWrapper = styled.div`
     padding: 0 5px;
   }
 `;
+
+export const StyledFile = styled.input.attrs(({
+  type: 'file',
+}))`
+  display: none;
+`;
