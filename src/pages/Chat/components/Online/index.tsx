@@ -3,8 +3,7 @@ import Avatar, { AvatarIcons, UserStatus } from 'components/Avatar';
 import { Col } from 'components/Grid';
 import useSplitter from 'hooks/useSplitter';
 import useBreakpoints from 'hooks/useBreakpoints';
-import { getSplitterCollapseState, saveSplitterCollapseState, saveSplitterPosition } from 'utils/selectors';
-import { EDevices } from 'providers/AdaptiveProvider';
+import { saveSplitterCollapseState, saveSplitterPosition } from 'utils/selectors';
 import { StyledUserWrapper, StyledWrapper, StyledUsername, StyledStatus } from './styles';
 import UnreadedMessages from './components/UnreadedMessages';
 

@@ -1,15 +1,16 @@
 import Typography from 'components/Typography';
 import styled, { css } from 'styled-components';
 
-interface IProps {
-  self?: boolean;
-}
-
 export const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
 `;
+
+interface IProps {
+  self: boolean;
+  isMobile?: boolean;
+}
 
 export const StyledMessage = styled.div<IProps>`
   display: flex;
@@ -59,8 +60,8 @@ export const StyledMessageWrapper = styled.div<IProps>`
   padding: 10px;
   border-radius: ${({ self }) => self ? '8px 0 8px 8px' : '0 8px 8px 8px'};
   border: 1px solid ${({ theme }) => theme.colors.splitter};
-  width: 50%;
-  max-width: 50%;
+  width: ${({ isMobile }) => isMobile ? '95%' : '50%'};
+  max-width: ${({ isMobile }) => isMobile ? '95%' : '50%'};
 `;
 
 export const StyledText = styled.div`
