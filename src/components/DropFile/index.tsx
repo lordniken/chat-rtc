@@ -54,7 +54,7 @@ const DragNDrop: React.FC = () => {
         <>
           <StyledShadow />
           <img src={DropIcon} alt="" />
-          <StyledText component="h1">Перетащите файл сюда</StyledText>
+          <StyledText component="h1">Отправить файл</StyledText>
         </>}      
     </StyledWrapper>);
 
