@@ -12,6 +12,7 @@ export const StyledWrapper = styled.div`
   & img {
     width: 80px;
     height: 80px;
+    z-index: 1000;
   }
 `;
 
