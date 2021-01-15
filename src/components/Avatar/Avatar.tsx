@@ -1,25 +1,11 @@
 import styled, { css } from 'styled-components';
+import { AvatarIcons, UserStatus } from '.';
 import Man from './svg/man.svg';
 import Man2 from './svg/man2.svg';
 import Man3 from './svg/man3.svg';
 import Girl from './svg/girl.svg';
 import Girl2 from './svg/girl2.svg';
 import Girl3 from './svg/girl3.svg';
-
-export enum AvatarIcons {
-  m1 = 'm1',
-  m2 = 'm2',
-  m3 = 'm3',
-  g1 = 'g1',
-  g2 = 'g2',
-  g3 = 'g3'
-}
-
-export enum UserStatus {
-  online = 'online',
-  busy = 'busy',
-  away = 'away'
-}
 
 interface IProps {
   size?: 'small' | 'medium' | 'large';

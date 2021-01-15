@@ -1,6 +1,6 @@
 import React from 'react';
 import { text } from '@storybook/addon-knobs/dist';
-import Avatar from '..';
+import { Avatar } from '..';
 
 export default {
   title: 'components/Avatar',
@@ -9,7 +9,5 @@ export default {
 };
 
 export const Component = ({ ...props }) => (
-  <div>
-    <Avatar title={text('name', 'name')} {...props} />
-  </div>
+  <Avatar title={text('name', 'name')} {...props} />
 );

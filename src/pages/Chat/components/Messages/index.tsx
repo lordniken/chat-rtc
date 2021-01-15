@@ -1,6 +1,6 @@
 import React from 'react';
 import useBreakpoints from 'hooks/useBreakpoints';
-import Avatar from 'components/Avatar';
+import { Avatar } from 'components/Avatar';
 import Typography from 'components/Typography';
 import DragNDrop from 'components/DropFile';
 import { 

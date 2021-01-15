@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Typography from 'components/Typography';
-import Avatar from 'components/Avatar';
+import { Avatar } from 'components/Avatar';
 
 export const StyledWrapper = styled.header`
   display: flex;

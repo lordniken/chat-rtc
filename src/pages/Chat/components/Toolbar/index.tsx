@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import Avatar from 'components/Avatar';
+import React from 'react';
+import { Avatar } from 'components/Avatar';
 import { Button } from 'components/Button';
 import { Col } from 'components/Grid';
 import Typography from 'components/Typography';

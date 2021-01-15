@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Avatar, { AvatarIcons, UserStatus } from 'components/Avatar';
+import { Avatar, AvatarIcons, UserStatus } from 'components/Avatar';
 import { Col } from 'components/Grid';
 import useSplitter from 'hooks/useSplitter';
 import useBreakpoints from 'hooks/useBreakpoints';

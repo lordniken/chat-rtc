@@ -5,8 +5,8 @@
   "main": "index.tsx",
   "scripts": {
     "lint": "eslint src/ --ext .tsx",
-    "build": "webpack --config=configs/webpack.prod",
-    "start": "webpack-dev-server --config=configs/webpack.dev --open",
+    "build": "cross-env NODE_ENV=production webpack --config=configs/webpack.prod",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config=configs/webpack.dev --open",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -44,6 +44,7 @@
     "clean-terminal-webpack-plugin": "^3.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.2.1",
+    "cross-env": "^7.0.3",
     "css-loader": "^4.3.0",
     "eslint": "^7.14.0",
     "eslint-config-airbnb-typescript": "^12.0.0",
