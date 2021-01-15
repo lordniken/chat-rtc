@@ -21,15 +21,15 @@ const store = configureStore(history, initialState);
 const App: React.FC = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <AdaptiveProvider>
-        <ThemeProvider theme={lightTheme}>
-          <Suspense fallback={<SuspenseComponent />}>
-            <I18nextProvider i18n={i18n}>
+      <ThemeProvider theme={lightTheme}>
+        <Suspense fallback={<SuspenseComponent />}>
+          <I18nextProvider i18n={i18n}>
+            <AdaptiveProvider>
               {renderedRoutes}
-            </I18nextProvider>
-          </Suspense>
-        </ThemeProvider>
-      </AdaptiveProvider>
+            </AdaptiveProvider>
+          </I18nextProvider>
+        </Suspense>
+      </ThemeProvider>
     </ConnectedRouter>
   </Provider>
 );

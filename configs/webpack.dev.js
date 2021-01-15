@@ -1,66 +1,43 @@
-const { merge } = require('webpack-merge');
-const commonConfig = require('./webpack.common');
+const webpack = require('webpack')
+const { merge } = require('webpack-merge')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
+const common = require('./webpack.common.js')
 
-module.exports = merge(commonConfig, {
+module.exports = merge(common, {
   mode: 'development',
-  output: {
-    filename: '[name].js'
-  },
-  devServer: {
-    hot: true,
-    host: '0.0.0.0',
-    public: '127.0.0.1:4000',
-    port: 4000,
-    onListening: function(server) {
-      const host = server.hostname;
-      const port = server.listeningApp.address().port;
-      console.clear();
-      console.log(`Listening http://${host}:${port}`);
-    }
-  },
-  devtool: 'source-map',
-  plugins: [
-    new HTMLWebpackPlugin({
-      template: '../public/index.html',
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css'
-    })
-  ],
+  devtool: 'eval-source-map',
   module: {
     rules: [
+      // Styles
       {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        use: 
-          [
-            {
-              loader: 'babel-loader',
-              options: {
-                presets: ['@babel/preset-env'],
-                plugins: [
-                  '@babel/plugin-proposal-class-properties'
-                ],
-              }
-            }
-          ]
-      },
-      {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        enforce: 'pre',
+        test: /\.(scss|css)$/,
         use: [
+          'style-loader',
           {
-            loader: 'eslint-loader',
-            options: {
-              eslintPath: 'eslint'
-            }
-          }
-        ]
-      }
-    ]
-  }
-});
+            loader: 'css-loader',
+            options: { sourceMap: true, importLoaders: 1 },
+          },
+          { loader: 'sass-loader', options: { sourceMap: true } },
+        ],
+      },
+    ],
+  },
+  devServer: {
+    historyApiFallback: true,
+    proxy: {
+      '/api': 'http://localhost:5000',
+    },
+    open: true,
+    compress: true,
+    hot: true,
+    port: 3000,
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: '../public/template.html',
+      favicon: '../public/favicon.ico',
+    }),
+  ],
+})

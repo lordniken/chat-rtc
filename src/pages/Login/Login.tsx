@@ -1,8 +1,8 @@
 import React from 'react';
-import { Col, Container, Row } from 'components/Grid';
+import { Col, Container } from 'components/Grid';
 import Typography from 'components/Typography';
 import { useTranslation } from 'react-i18next';
-import { TextField } from 'components/TextField';
+import TextField from 'components/TextField';
 import { Formik } from 'formik';
 import { Button } from 'components/Button';
 import { StyledRow } from './styles';
