@@ -1,6 +1,5 @@
 import React from 'react';
 import { text } from '@storybook/addon-knobs/dist';
-import { Formik } from 'formik';
 import styled from 'styled-components';
 import Select from '..';
 
@@ -27,15 +26,6 @@ const Wrapper = styled.div`
 
 export const Component = ({ ...props }) => (
   <Wrapper>
-    <Formik
-      initialValues={{}}
-      onSubmit={() => {}}
-    >
-      {() => (
-        <form>
-          <Select options={MENU} placeholder={text('test', 'test')} name="test" {...props}>{text('test', 'test')}</Select>
-        </form>
-      )}
-    </Formik>
+    <Select options={MENU} placeholder={text('test', 'test')} name="test" {...props}>{text('test', 'test')}</Select>
   </Wrapper>
 );

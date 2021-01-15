@@ -1,5 +1,4 @@
 import React from 'react';
-import { Formik } from 'formik';
 import Icon from 'pages/Chat/components/MessageControls/icons/send.svg';
 import styled from 'styled-components';
 import TextField from '..';
@@ -15,15 +14,8 @@ const StyledTextField = styled(TextField)`
 `;
 
 export const Component = ({ ...props }) => (
-  <Formik
-    initialValues={{}}
-    onSubmit={() => {}}
-  >
-    {() => (
-      <form>
-        <StyledTextField name="test" {...props} />
-        <StyledTextField name="test2" {...props} icon={Icon} />
-      </form>
-    )}
-  </Formik>
+  <div>
+    <StyledTextField name="test" {...props} />
+    <StyledTextField name="test2" {...props} icon={Icon} />
+  </div>
 );

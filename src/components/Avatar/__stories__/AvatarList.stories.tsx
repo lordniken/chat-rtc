@@ -1,6 +1,5 @@
 import React from 'react';
 import { text } from '@storybook/addon-knobs/dist';
-import { Form, Formik } from 'formik';
 import { AvatarList } from '..';
 
 export default {
@@ -10,15 +9,5 @@ export default {
 };
 
 export const Component = ({ ...props }) => (
-  <Formik
-    initialValues={{}}
-    onSubmit={() => {}}
-  >
-    {() => (
-      <Form>
-        <AvatarList name="test" userName={text('username', 'username')} {...props} />
-      </Form>
-    )}
-  </Formik>
-  
+  <AvatarList name="test" userName={text('username', 'username')} {...props} />
 );

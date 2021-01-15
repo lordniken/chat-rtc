@@ -44,7 +44,7 @@ const LoginPage:React.FC = () => {
                 <TextField name="username" label="Ваше имя" />
               </Col>
               <Col gutter>
-                Выберите авватар
+                Выберите аватар
                 <AvatarList name="avatar" userName={values.username} />
               </Col>
               <Col>

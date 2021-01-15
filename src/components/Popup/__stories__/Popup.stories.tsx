@@ -5,7 +5,6 @@ import { PopupMenu, PopupItem } from '..';
 export default {
   title: 'components/Menu',
   component: PopupMenu,
-  argTypes: {},
 };
 
 export const Component = () => (
