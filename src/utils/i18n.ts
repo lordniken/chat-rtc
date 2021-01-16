@@ -5,6 +5,7 @@ import HttpApi from 'i18next-http-backend'; // fallback http load
 
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
+import { getDefaultLang } from './selectors';
 
 i18n
   .use(Backend)
@@ -14,7 +15,7 @@ i18n
     react: {
       useSuspense: true
     },
-    fallbackLng: 'ru',
+    fallbackLng: getDefaultLang(),
     debug: true,
     detection: {
       order: ['queryString', 'cookie'],
@@ -30,15 +31,10 @@ i18n
       ],
       backendOptions: [
         {
-          // prefix for stored languages
           prefix: 'i18next_res_',
-          // expiration
           expirationTime: 7 * 24 * 60 * 60 * 1000,
-          // Version applied to all languages, can be overriden using the option `versions`
           defaultVersion: '',
-          // language versions
           versions: {},
-          // can be either window.localStorage or window.sessionStorage. Default: window.localStorage
           store: window.localStorage,
         },
         {

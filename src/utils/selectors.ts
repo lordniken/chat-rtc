@@ -7,3 +7,5 @@ export const saveSplitterPosition = (position: number) => localStorage.setItem(S
 export const getSplitterPosition = () => parseInt(localStorage.getItem(SPLITTER.position) || '', 10);
 export const saveSplitterCollapseState = (state: boolean) => localStorage.setItem(SPLITTER.collapsed, state.toString());
 export const getSplitterCollapseState = () => localStorage.getItem(SPLITTER.collapsed) === 'true';
+
+export const getDefaultLang = () => localStorage.getItem('i18nextLng') || 'ru';

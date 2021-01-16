@@ -7,6 +7,7 @@ import TextField from 'components/TextField';
 import { Form, Formik } from 'formik';
 import { Button } from 'components/Button';
 import Select from 'components/Select';
+import { getDefaultLang } from 'utils/selectors';
 import { StyledRow } from './styles';
 import { loginValidation } from './validation';
 
@@ -14,24 +15,29 @@ const INITIAL_FORM = {
   username: '',
   avatar: '',
   theme: 'dark',
-  lang: 'ru'
+  lang: getDefaultLang()
 };
 
-const THEMES = [
-  { label: 'Светлая', value: 'light' }, 
-  { label: 'Темная', value: 'dark' }
-];
-
-const LANGS = [
+const LANG_LIST = [
   { label: 'Русская', value: 'ru' }, 
-  { label: 'Английская', value: 'en' }
+  { label: 'English', value: 'en' }
 ];
 
 const LoginPage:React.FC = () => {
   const translation = useTranslation(['pages/login']);
+  const { i18n } = useTranslation(['common']);
+
+  const onLangChange = (value: string) => {
+    i18n.changeLanguage(value);
+  };
+
+  const THEME_LIST = [
+    { label: translation.t('theme_light'), value: 'light' }, 
+    { label: translation.t('theme_dark'), value: 'dark' }
+  ];
 
   return (
-    <Container>
+    <Container mt={50}>
       <StyledRow justify="center" align="center" wrap={false}>
         <Col gutter>
           <Typography component="h1" gutter align="center">
@@ -48,24 +54,23 @@ const LoginPage:React.FC = () => {
           }}
         >
           {({
-            handleSubmit,
             isValid,
             values
           }) => (
             <Form>
               <Col gutter>
-                <TextField name="username" label="Ваше имя" />
+                <TextField name="username" label={translation.t('name')} />
               </Col>
               <Col gutter>
                 <AvatarList name="avatar" userName={values.username} />
               </Col>
               <Col gutter flex justify="space-between" align="center">
-                <Typography align="center" paddingRight>Цветовая схема</Typography>
-                <Select name="theme" options={THEMES} width={200} />
+                <Typography align="center" paddingRight>{translation.t('theme')}</Typography>
+                <Select name="theme" options={THEME_LIST} width={200} />
               </Col>   
               <Col gutter flex justify="space-between" align="center">
-                <Typography align="center" paddingRight>Локализация</Typography>
-                <Select name="lang" options={LANGS} width={200} />
+                <Typography align="center" paddingRight>{translation.t('lang')}</Typography>
+                <Select name="lang" options={LANG_LIST} width={200} onChange={onLangChange} />
               </Col>                            
               <Col>
                 <Button type="submit" fullWidth disabled={!isValid}>{translation.t('sign_in')}</Button>

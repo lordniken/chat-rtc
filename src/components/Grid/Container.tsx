@@ -4,9 +4,10 @@ import settings, { TBreakpoints } from './settings';
 
 interface IContainer {
   gap?: typeof settings.gap;
+  mt?: number;
 }
 
-const Container = styled.div<IContainer>(({ gap }: IContainer) => {
+const Container = styled.div<IContainer>(({ gap, mt }) => {
   const g = gap ?? settings.gap;
 
   let result = `
@@ -15,6 +16,8 @@ const Container = styled.div<IContainer>(({ gap }: IContainer) => {
     margin-right: auto;
     box-sizing: border-box;
   `;
+
+  if (mt) result += `margin-top: ${mt}px;`;
 
   if (typeof g === 'number') {
     result += `

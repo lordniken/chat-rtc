@@ -13,7 +13,7 @@ interface ISelectProps {
   options: ISelectItem[];
   placeholder?: string;
   width?: number;
-  onChange?: (option: Option | undefined) => void;
+  onChange?: (option: string) => void;
 }
 
 const Select: React.FC<ISelectProps> = ({
@@ -34,8 +34,9 @@ const Select: React.FC<ISelectProps> = ({
         value={options ? options.find((option) => option.value === field.value) : ''}
         onChange={(option: Option): void => {
           helpers.setValue(option.value);
-          if (onChange) onChange(option);
+          if (onChange) onChange(option.value);
         }}
+        isSearchable={false}
         placeholder={placeholder}
         width={width}
         onBlur={field.onBlur}
