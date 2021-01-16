@@ -7,14 +7,16 @@ import TextField from 'components/TextField';
 import { Form, Formik } from 'formik';
 import { Button } from 'components/Button';
 import Select from 'components/Select';
-import { getDefaultLang } from 'utils/selectors';
+import { getDefaultLang, getDefaultTheme, saveDefaultTheme } from 'utils/selectors';
+import { useDispatch } from 'react-redux';
+import { setTheme } from 'store/app';
 import { StyledRow } from './styles';
 import { loginValidation } from './validation';
 
 const INITIAL_FORM = { 
   username: '',
   avatar: '',
-  theme: 'dark',
+  theme: getDefaultTheme(),
   lang: getDefaultLang()
 };
 
@@ -23,12 +25,18 @@ const LANG_LIST = [
   { label: 'English', value: 'en' }
 ];
 
-const LoginPage:React.FC = () => {
+const LoginPage: React.FC = () => {
   const translation = useTranslation(['pages/login']);
   const { i18n } = useTranslation(['common']);
+  const dispatch = useDispatch();
 
   const onLangChange = (value: string) => {
     i18n.changeLanguage(value);
+  };
+
+  const onThemeChange = (value: string) => {
+    saveDefaultTheme(value);
+    dispatch(setTheme(value as TAppTheme));
   };
 
   const THEME_LIST = [
@@ -66,7 +74,7 @@ const LoginPage:React.FC = () => {
               </Col>
               <Col gutter flex justify="space-between" align="center">
                 <Typography align="center" paddingRight>{translation.t('theme')}</Typography>
-                <Select name="theme" options={THEME_LIST} width={200} />
+                <Select name="theme" options={THEME_LIST} width={200} onChange={onThemeChange} />
               </Col>   
               <Col gutter flex justify="space-between" align="center">
                 <Typography align="center" paddingRight>{translation.t('lang')}</Typography>

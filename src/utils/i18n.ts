@@ -16,7 +16,7 @@ i18n
       useSuspense: true
     },
     fallbackLng: getDefaultLang(),
-    debug: true,
+    debug: false,
     detection: {
       order: ['queryString', 'cookie'],
       cache: ['cookie'],

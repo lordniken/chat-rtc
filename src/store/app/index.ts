@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getDefaultTheme } from 'utils/selectors';
 
 export interface IAppState {
   isFetching: boolean;
   isError: null | string;
   isSuccessed: boolean;
   isLoaded: boolean;
+  theme: TAppTheme;
 }
 
 const initialState: IAppState = { 
@@ -12,6 +14,7 @@ const initialState: IAppState = {
   isError: null,
   isSuccessed: false,
   isLoaded: false,
+  theme: getDefaultTheme()
 };
 
 const name = '@app';
@@ -31,9 +34,12 @@ const app = createSlice({
     }, 
     setAppLoaded(state, action: PayloadAction<boolean>) {
       state.isLoaded = action.payload;
-    },      
+    },
+    setTheme(state, action: PayloadAction<TAppTheme>)   {
+      state.theme = action.payload;
+    }
   },
 });
 
-export const { setAppFetching, setAppError, setAppSuccess, setAppLoaded } = app.actions;
+export const { setAppFetching, setAppError, setAppSuccess, setAppLoaded, setTheme } = app.actions;
 export default app.reducer;

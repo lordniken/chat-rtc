@@ -23,3 +23,8 @@ export const getIsAppLoaded = createSelector<ApplicationState, IAppState, boolea
   getUserState,
   (app) => app.isLoaded,
 );
+
+export const getAppTheme = createSelector<ApplicationState, IAppState, TAppTheme>(
+  getUserState,
+  (app) => app.theme,
+);

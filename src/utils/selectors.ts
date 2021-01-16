@@ -9,3 +9,6 @@ export const saveSplitterCollapseState = (state: boolean) => localStorage.setIte
 export const getSplitterCollapseState = () => localStorage.getItem(SPLITTER.collapsed) === 'true';
 
 export const getDefaultLang = () => localStorage.getItem('i18nextLng') || 'ru';
+
+export const saveDefaultTheme = (theme: string) => localStorage.setItem('theme', theme);
+export const getDefaultTheme = (): TAppTheme => localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';

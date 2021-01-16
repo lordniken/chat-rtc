@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 
-const lightTheme: DefaultTheme = {
+const light: DefaultTheme = {
   borderRadius: '6px',
 
   gradients: {
@@ -28,7 +28,41 @@ const lightTheme: DefaultTheme = {
       busy: 'red',
       away: 'orange',
     }
-  },
+  }
 };
 
-export { lightTheme };
+const dark: DefaultTheme = {
+  borderRadius: '6px',
+
+  gradients: {
+    purple: 'linear-gradient(225deg, #BD7AE3 0%, #8461C9 100%)',
+    header: 'linear-gradient(#efefef, #fff);',
+    footer: 'linear-gradient(#fff, #efefef);'
+  },
+
+  colors: {
+    accentBlue: '#BE52F2',
+    accentBlue90: '#8794f8',
+    accentBlue50: '#bfc6f7',
+
+    accentPurple: '#BE52F2',
+
+    accentBlueText: '#ffffff',
+    menu: '#3F3356',
+
+    inputBackground: '#ffffff',
+    inputBorder: '#cccccc',
+    splitter: '#efefef',
+
+    status: {
+      online: '#009800',
+      busy: 'red',
+      away: 'orange',
+    }
+  }
+};
+
+export const themes = {
+  light,
+  dark
+};
