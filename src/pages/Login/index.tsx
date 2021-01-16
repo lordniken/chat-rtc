@@ -4,15 +4,28 @@ import Typography from 'components/Typography';
 import { AvatarList } from 'components/Avatar';
 import { useTranslation } from 'react-i18next';
 import TextField from 'components/TextField';
-import { Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import { Button } from 'components/Button';
+import Select from 'components/Select';
 import { StyledRow } from './styles';
 import { loginValidation } from './validation';
 
 const INITIAL_FORM = { 
   username: '',
   avatar: '',
+  theme: 'dark',
+  lang: 'ru'
 };
+
+const THEMES = [
+  { label: 'Светлая', value: 'light' }, 
+  { label: 'Темная', value: 'dark' }
+];
+
+const LANGS = [
+  { label: 'Русская', value: 'ru' }, 
+  { label: 'Английская', value: 'en' }
+];
 
 const LoginPage:React.FC = () => {
   const translation = useTranslation(['pages/login']);
@@ -39,18 +52,25 @@ const LoginPage:React.FC = () => {
             isValid,
             values
           }) => (
-            <form onSubmit={handleSubmit}>
+            <Form>
               <Col gutter>
                 <TextField name="username" label="Ваше имя" />
               </Col>
               <Col gutter>
-                Выберите аватар
                 <AvatarList name="avatar" userName={values.username} />
               </Col>
+              <Col gutter flex justify="space-between" align="center">
+                <Typography align="center" paddingRight>Цветовая схема</Typography>
+                <Select name="theme" options={THEMES} width={200} />
+              </Col>   
+              <Col gutter flex justify="space-between" align="center">
+                <Typography align="center" paddingRight>Локализация</Typography>
+                <Select name="lang" options={LANGS} width={200} />
+              </Col>                            
               <Col>
                 <Button type="submit" fullWidth disabled={!isValid}>{translation.t('sign_in')}</Button>
               </Col>
-            </form>
+            </Form>
           )}
         </Formik>
       </StyledRow>

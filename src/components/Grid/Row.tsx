@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import settings, { TBreakpoints } from './settings';
 
-type TFlexVariants = 'flex-start' | 'center' | 'baseline' | 'flex-end' | 'stretch';
+export type TFlexVariants = 'flex-start' | 'center' | 'baseline' | 'flex-end' | 'stretch' | 'space-between';
 
 interface IRow {
   gap?: typeof settings.gap;

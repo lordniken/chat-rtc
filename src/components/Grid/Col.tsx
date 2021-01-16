@@ -1,6 +1,6 @@
 /* eslint-disable  */
 import styled, { css } from 'styled-components';
-
+import { TFlexVariants } from './Row';
 import settings, { TBreakpoints } from './settings';
 
 interface ICol extends TBreakpoints {
@@ -10,9 +10,22 @@ interface ICol extends TBreakpoints {
   offset?: number | TBreakpoints;
   auto?: boolean;
   grow?: number | 'initial';
+  flex?: boolean;
+  justify?: TFlexVariants;
 }
 
-const Col = styled.div<ICol>(({ gap, gutter = false, align = 'flex-start', offset = 0, grow = 'initial', auto = false ,...props }: ICol) => {
+const Col = styled.div<ICol>((
+  { 
+    gap, 
+    gutter = false, 
+    align = 'flex-start', 
+    offset = 0, 
+    grow = 'initial', 
+    auto = false,
+    flex = false,
+    justify = 'center',
+    ...props 
+  }) => {
   const g = gap ?? settings.gap;
 
   let result = `
@@ -22,6 +35,11 @@ const Col = styled.div<ICol>(({ gap, gutter = false, align = 'flex-start', offse
         flex-grow: ${grow};
     `;
 
+  if (flex) result += `
+      display: flex;
+      align-items: ${align};
+      justify-content: ${justify};
+    `;
   if (gutter) result += 'margin-bottom: 0.8em;';
 
   if (typeof g === 'number') {

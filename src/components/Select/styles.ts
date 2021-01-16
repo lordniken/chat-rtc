@@ -6,8 +6,12 @@ export const StyledWrapper = styled.div`
   outline: 0;
 `;
 
-export const StyledSelect = styled(Select)`
-  width: 240px;
+interface IProps {
+  width: number;
+}
+
+export const StyledSelect = styled(Select)<IProps>`
+  width: ${({ width }) => width}px;
   
   .css-yk16xz-control {
     border-color: transparent;

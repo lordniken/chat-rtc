@@ -11,13 +11,17 @@ interface ISelectItem {
 interface ISelectProps {
   name: string;
   options: ISelectItem[];
-  placeholder: string;
+  placeholder?: string;
+  width?: number;
+  onChange?: (option: Option | undefined) => void;
 }
 
 const Select: React.FC<ISelectProps> = ({
   name,
   options,
-  placeholder
+  placeholder = '',
+  width = 240,
+  onChange
 }) => {
   const [field, meta, helpers] = useField({ name });
 
@@ -28,8 +32,12 @@ const Select: React.FC<ISelectProps> = ({
         options={options}
         name={field.name}
         value={options ? options.find((option) => option.value === field.value) : ''}
-        onChange={(option: Option): void => helpers.setValue(option.value)}
+        onChange={(option: Option): void => {
+          helpers.setValue(option.value);
+          if (onChange) onChange(option);
+        }}
         placeholder={placeholder}
+        width={width}
         onBlur={field.onBlur}
         components={{
           IndicatorSeparator: () => null

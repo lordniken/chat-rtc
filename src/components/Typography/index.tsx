@@ -30,6 +30,7 @@ interface ITypography {
 
 interface ITypograhyProps {
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
+  paddingRight?: boolean;
   gutter?: boolean;
 }
 
@@ -48,6 +49,7 @@ const Typography = styled(TypographyComponent)<ITypograhyProps>`
   margin: 0;
   text-align: ${({ align = 'left' }) => align};
   ${({ gutter }) => gutter && css`margin-bottom: 0.5em;`};
+  ${({ paddingRight }) => paddingRight && css`padding-right: 0.25em;`};
 
   ${({
     component
