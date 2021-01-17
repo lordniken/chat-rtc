@@ -9,6 +9,7 @@ import { renderRoutes } from 'utils/router';
 import routes from 'global/routes';
 import { useSelector } from 'react-redux';
 import { getAppTheme } from 'store/app/selectors';
+import GlobalStyles from './GlobalStyles';
 
 const renderedRoutes = renderRoutes(routes);
 
@@ -20,6 +21,7 @@ const App: React.FC = () => {
       <Suspense fallback={<SuspenseComponent />}>
         <I18nextProvider i18n={i18n}>
           <AdaptiveProvider>
+            <GlobalStyles />
             {renderedRoutes}
           </AdaptiveProvider>
         </I18nextProvider>

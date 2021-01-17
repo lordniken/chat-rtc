@@ -3,24 +3,27 @@ import styled from 'styled-components';
 export const StyledTextField = styled.input`
   padding: 9px 10px;
   border-radius: ${({ theme }) => theme.borderRadius};
-  border: 1px solid ${({ theme }) => theme.colors.splitter};
+  border: 1px solid ${({ theme }) => theme.colors.input.border};
   outline: 0;
   transition: border-color 0.3s ease-out;
   position: relative;
   width: 100%;
+  background-color: ${({ theme }) => theme.colors.input.background};
+  color: ${({ theme }) => theme.colors.input.color};
+  font-size: 16px;
   
   &:focus, &:hover {
-    border-color: ${({ theme }) => theme.colors.inputBorder};
+    border-color: ${({ theme }) => theme.colors.input.borderHover};
   }
 
   &:disabled {
-    background-color: ${({ theme }) => theme.colors.inputBorder};
+    background-color: ${({ theme }) => theme.colors.input.border};
   }
 
   &::placeholder {
     font-style: italic;
     font-size: 14px;
-    color: ${({ theme }) => theme.colors.inputBorder};
+    color: ${({ theme }) => theme.colors.input.borderHover};
   }
 `;
 
@@ -32,6 +35,7 @@ export const StyledWrapper = styled.div`
 
 export const StyledLabelWrapper = styled.span`
   padding-right: 10px;
+  color: ${({ theme }) => theme.colors.textColor};
 `;
 
 interface IIconWrapper {

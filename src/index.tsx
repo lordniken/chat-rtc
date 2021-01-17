@@ -5,7 +5,6 @@ import { createBrowserHistory, History } from 'history';
 import { configureStore } from 'store/configureStore';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
-import 'assets/styles/main.scss';
 
 const history: History = createBrowserHistory();
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

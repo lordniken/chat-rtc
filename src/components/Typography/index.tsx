@@ -32,6 +32,7 @@ interface ITypograhyProps {
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
   paddingRight?: boolean;
   gutter?: boolean;
+  color?: string;
 }
 
 interface IProps {
@@ -50,6 +51,7 @@ const Typography = styled(TypographyComponent)<ITypograhyProps>`
   text-align: ${({ align = 'left' }) => align};
   ${({ gutter }) => gutter && css`margin-bottom: 0.5em;`};
   ${({ paddingRight }) => paddingRight && css`padding-right: 0.25em;`};
+  color: ${({ theme, color }) => color || theme.colors.textColor};
 
   ${({
     component
@@ -58,6 +60,7 @@ const Typography = styled(TypographyComponent)<ITypograhyProps>`
       case 'h1': return css`
         font-size: 30px;
         line-height: 1.3em;
+        color: ${({ theme }) => theme.colors.headerColor};
       `;
       case 'h2': return css`
         font-size: 26px;

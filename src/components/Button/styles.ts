@@ -12,8 +12,8 @@ export const StyledButton = styled.button<IProps>`
   justify-content: center;
   align-items: center;
   padding: ${({ isLoading }) => isLoading ? '8px 34px' : '8px 48px'} !important;
-  background: ${({ theme, transparent }) => transparent ? 'transparent' : theme.colors.accentBlue};
-  color: ${({ theme }) => theme.colors.accentBlueText};
+  background: ${({ theme, transparent }) => transparent ? 'transparent' : theme.colors.button.background};
+  color: ${({ theme }) => theme.colors.button.color};
   border-radius: ${({ theme }) => theme.borderRadius};
   border: none;
   text-transform: uppercase;
@@ -33,15 +33,15 @@ export const StyledButton = styled.button<IProps>`
   `}
 
   &:hover {
-    background: ${({ theme, transparent }) => transparent ? theme.colors.splitter : theme.colors.accentBlue90};
+    background: ${({ theme, transparent }) => transparent ? theme.colors.splitter : theme.colors.button.hover};
   }
 
   &:active {
-    background: ${({ theme, transparent }) => transparent ? 'transparent' : theme.colors.accentBlue};
+    background: ${({ theme, transparent }) => transparent ? 'transparent' : theme.colors.button.background};
   }
 
   &:disabled {
-    background: ${({ theme }) => theme.colors.accentBlue50};
+    background: ${({ theme }) => theme.colors.button.disabled};
     cursor: default;
   }
 
