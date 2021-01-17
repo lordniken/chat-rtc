@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { themes } from 'global/theme';
+import themes from 'global/themes';
 import i18n from 'utils/i18n';
 import { I18nextProvider } from 'react-i18next';
 import SuspenseComponent from 'pages/Suspense';

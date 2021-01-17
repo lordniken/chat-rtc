@@ -3,6 +3,7 @@ import { Avatar, AvatarIcons, UserStatus } from 'components/Avatar';
 import { Col } from 'components/Grid';
 import useSplitter from 'hooks/useSplitter';
 import useBreakpoints from 'hooks/useBreakpoints';
+import Typography from 'components/Typography';
 import { saveSplitterCollapseState, saveSplitterPosition } from 'utils/selectors';
 import { StyledUserWrapper, StyledWrapper, StyledUsername, StyledStatus } from './styles';
 import UnreadedMessages from './components/UnreadedMessages';
@@ -54,7 +55,7 @@ const Online: React.FC = () => {
             {!collapsed &&
               <StyledUsername>
                 <Col>
-                  <span>{user.nickname}</span>
+                  <Typography>{user.nickname}</Typography>
                 </Col>         
                 <Col>
                   <StyledStatus component="small">{user.status}</StyledStatus>

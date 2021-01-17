@@ -17,10 +17,13 @@ interface IProps {
 const Avatar = styled.div<IProps>`
   position: relative;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.accentBlue};
+  background: ${({ theme }) => theme.colors.accent};
   border: 1px solid transparent;  
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   ${({ icon }) => {
     switch (icon) {
@@ -38,12 +41,10 @@ const Avatar = styled.div<IProps>`
   ${({ title, icon, theme }) => !icon && css`
     &:before {
       content: '${title[0]}';
-      position: absolute;
+      position: static;
       font-size: 26px;
-      left: 50%;
-      top: 48%;
-      transform: translateX(-50%) translateY(-50%);
-      color: ${theme.colors.accentBlueText};
+      height: 28px;
+      color: ${theme.colors.button.color};
       text-transform: uppercase;
     }
   `}
@@ -55,7 +56,7 @@ const Avatar = styled.div<IProps>`
       width: 10px;
       height: 10px;
       background: ${theme.colors.status[status]};
-      border: 2px solid ${theme.colors.accentBlueText};
+      border: 2px solid ${theme.colors.background};
       z-index: 10;
       right: -5px;
       bottom: 0;
@@ -73,6 +74,7 @@ const Avatar = styled.div<IProps>`
 
         &:before {
           font-size: 16px;
+          height: 16px;
         }
 
         &:after {
@@ -95,13 +97,6 @@ const Avatar = styled.div<IProps>`
       default: return css``;
     }
   }}
-
-  /*
-  &:hover {
-    border-color: ${({ theme }) => theme.colors.inputBorder};
-    cursor: pointer;
-  }
-  */
 `;
 
 export default Avatar;

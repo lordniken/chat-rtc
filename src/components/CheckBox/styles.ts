@@ -6,7 +6,7 @@ export const StyledFakeCheckBox = styled.span`
   height: 20px;
   top: 50%;
   transform: translateY(-50%);
-  background: ${({ theme }) => theme.colors.inputBackground};
+  background: ${({ theme }) => theme.colors.input.background};
   border-radius: ${({ theme }) => theme.borderRadius};
   border: 1px solid transparent;
   transition: border-color 0.3s ease-out;
@@ -21,10 +21,10 @@ export const StyledCheckBoxWrapper = styled.label`
 
   &:hover {
     ${StyledFakeCheckBox} {
-      border-color: ${({ theme }) => theme.colors.inputBorder};
+      border-color: ${({ theme }) => theme.colors.input.border};
       
       &:before, &:after {
-        background-color: ${({ theme }) => theme.colors.accentBlue90};
+        background-color: ${({ theme }) => theme.colors.accent90};
       }
     }
   }
@@ -44,7 +44,7 @@ export const StyledCheckBox = styled.input.attrs({ type: 'checkbox' })`
       &:before, &:after{
         content: '';
         position: absolute;
-        background-color: ${({ theme }) => theme.colors.accentBlue};
+        background-color: ${({ theme }) => theme.colors.accent};
         border-radius: 2px;
         transform: rotate(45deg);
         transition: background-color 0.3s ease-out;
@@ -72,7 +72,7 @@ export const StyledCheckBox = styled.input.attrs({ type: 'checkbox' })`
     }
     
     ~ ${StyledFakeCheckBox} {     
-      background-color: ${({ theme }) => theme.colors.inputBorder};
+      background-color: ${({ theme }) => theme.colors.input.border};
     }    
   }
 `;

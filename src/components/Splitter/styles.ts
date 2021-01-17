@@ -30,6 +30,6 @@ export const StyledSeparator = styled.div<ISeparatorProps>`
   width: ${({ width }) => width}px;
   background: ${({ theme }) => theme.colors.splitter};
   cursor: col-resize;
-  border-left: 2px solid ${({ theme }) => theme.colors.inputBackground};
-  border-right: 2px solid ${({ theme }) => theme.colors.inputBackground};
+  border-left: 2px solid ${({ theme }) => theme.colors.background};
+  border-right: 2px solid ${({ theme }) => theme.colors.background};
 `;

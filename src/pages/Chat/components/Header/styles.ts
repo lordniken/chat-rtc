@@ -12,7 +12,7 @@ export const StyledWrapper = styled.header`
 `;
 
 export const StyledLogo = styled(Typography)`
-  background-image: ${({ theme }) => theme.gradients.purple};
+  background-image: ${({ theme }) => theme.gradients.logo};
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;

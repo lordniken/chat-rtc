@@ -1,31 +1,23 @@
 import React from 'react';
-import { Avatar } from 'components/Avatar';
 import { Button } from 'components/Button';
-import { Col } from 'components/Grid';
 import Typography from 'components/Typography';
 import CallIcon from './icons/call.svg';
 import DeleteIcon from './icons/delete.svg';
 import { StyledStatus, StyledUsername } from '../Online/styles';
-import { StyledWrapper, StyledUserBlock, StyledUserFuncs } from './styles';
+import { StyledWrapper, StyledUserBlock, StyledUserFuncs, StyledAvatar } from './styles';
 
 const Toolbar: React.FC = () => {
 
   return (
     <StyledWrapper>
       <StyledUserBlock>
-        <Avatar 
+        <StyledAvatar 
           title="Василий" 
         />
-        <Typography>
-          <StyledUsername>
-            <Col>
-              <span>Василий</span>
-            </Col>         
-            <Col>
-              <StyledStatus component="small" dark>в сети</StyledStatus>
-            </Col>
-          </StyledUsername>
-        </Typography>
+        <StyledUsername>
+          <Typography>Василий</Typography>
+          <StyledStatus component="small">в сети</StyledStatus>
+        </StyledUsername>
       </StyledUserBlock>
       <StyledUserFuncs>
         <Button icon={CallIcon} transparent title="Вызов" />

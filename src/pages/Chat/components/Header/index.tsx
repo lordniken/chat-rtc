@@ -1,10 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'components/Grid';
-import Popup from 'reactjs-popup';
-import { PopupMenu, PopupItem } from 'components/Popup';
-
-import Switches from './Switches';
-import { StyledWrapper, StyledLogo, StyledHeaderWrapper, StyledAvatar } from './styles';
+import { StyledWrapper, StyledLogo } from './styles';
 import HeaderControls from './HeaderControls';
 
 const ChatHeader: React.FC = () => {

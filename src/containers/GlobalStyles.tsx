@@ -1,4 +1,4 @@
-import { AppThemeType } from 'global/theme';
+import { AppThemeType } from 'global/themes';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle<{ theme: AppThemeType }>`
@@ -25,6 +25,10 @@ const GlobalStyles = createGlobalStyle<{ theme: AppThemeType }>`
         url('../fonts/SFProText-400-normal.woff2') format('woff2'),
         url('../fonts/SFProText-400-normal.woff') format('woff'),
         url('../fonts/SFProText-400-normal.ttf') format('truetype');
+  }
+
+  .popup-arrow {
+    color: ${({ theme }) => theme.colors.input.background};
   }
 `;
 

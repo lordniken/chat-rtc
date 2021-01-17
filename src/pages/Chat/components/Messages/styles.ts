@@ -22,7 +22,7 @@ export const StyledMessage = styled.div<IProps>`
     width: 5px;
     height: 2px;
     ${({ self }) => self ? css`
-      border-right: 1px solid ${({ theme }) => theme.colors.splitter};
+      border-right: 1px solid ${({ theme }) => theme.colors.input.border};
       right: -2px;
       -moz-transform: skew(-45deg, 0deg);
       -webkit-transform: skew(-45deg, 0deg);
@@ -31,7 +31,7 @@ export const StyledMessage = styled.div<IProps>`
       transform: skew(-45deg, 0deg);
     `: css`
       left: -2px;
-      border-left: 1px solid ${({ theme }) => theme.colors.splitter};
+      border-left: 1px solid ${({ theme }) => theme.colors.input.border};
       -moz-transform: skew(45deg, 0deg);
       -webkit-transform: skew(45deg, 0deg);
       -o-transform: skew(45deg, 0deg);
@@ -39,8 +39,8 @@ export const StyledMessage = styled.div<IProps>`
       transform: skew(45deg, 0deg);
     `}
     top: 0;
-    border-top: 1px solid ${({ theme }) => theme.colors.splitter};
-    background: ${({ theme }) => theme.colors.accentBlueText};
+    border-top: 1px solid ${({ theme }) => theme.colors.input.border};
+    background: ${({ theme }) => theme.colors.splitter};
     z-index: 500;
   }
 
@@ -59,21 +59,20 @@ export const StyledMessageGroup = styled(StyledMessage)`
   }
 
   &:before {
-    width: 0;
+    content: none;
   }
 `;
 
 export const StyledMessageWrapper = styled.div<IProps>`
-  background: ${({ theme }) => theme.colors.accentBlueText};
+  background: ${({ theme }) => theme.colors.splitter};
   display: inline-flex;
   position: relative;
   padding: 10px;
   border-radius: ${({ self }) => self ? '8px 0 8px 8px' : '0 8px 8px 8px'};
-  border: 1px solid ${({ theme }) => theme.colors.splitter};
+  border: 1px solid ${({ theme }) => theme.colors.input.border};
   width: ${({ isMobile }) => isMobile ? '95%' : '45%'};
   max-width: ${({ isMobile }) => isMobile ? '95%' : '45%'};
 `;
-
 
 export const StyledMessageGroupWrapper = styled(StyledMessageWrapper)`
   border-radius: ${({ theme }) => theme.borderRadius};
@@ -100,7 +99,7 @@ export const StyledMessageHeader = styled.div`
   justify-content: space-between;
 
   & small {
-    color: ${({ theme }) => theme.colors.inputBorder};
+    color: ${({ theme }) => theme.colors.input.border};
   }
 `;
 

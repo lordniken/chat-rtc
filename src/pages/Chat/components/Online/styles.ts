@@ -6,7 +6,7 @@ export const StyledUserWrapper = styled.div`
   align-items: center;
   border-top: 1px solid ${({ theme }) => theme.colors.splitter};
   padding: 5px 10px;
-  height: 58px;
+  height: 59px;
   position: relative;
   transition: background-color 0.3s ease-in;
 
@@ -25,10 +25,12 @@ export const StyledUsername = styled.div`
   white-space: nowrap;
   overflow: hidden;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 `;
 
 export const StyledWrapper = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.accentBlueText};
   overflow-y: auto;
 `;
 
@@ -37,5 +39,5 @@ interface IStatusProps {
 }
 
 export const StyledStatus = styled(Typography)<IStatusProps>`
-  color: ${({ theme, dark }) => dark ? theme.colors.accentBlue : theme.colors.accentBlue90};
+  color: ${({ theme }) => theme.colors.accent90};
 `;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Avatar } from 'components/Avatar';
 
 export const StyledWrapper = styled.div`
   display: flex;
@@ -17,4 +18,8 @@ export const StyledUserBlock = styled.div`
 export const StyledUserFuncs = styled.div`
   display: flex;
   margin-right: 10px;
+`;
+
+export const StyledAvatar = styled(Avatar)`
+  margin-right: 8px;
 `;

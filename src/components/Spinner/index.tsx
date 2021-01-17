@@ -8,8 +8,8 @@ const Spinner = styled.div<IProps>`
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
-  border: 0.2em solid ${({ theme }) => theme.colors.accentBlue50};
-  border-left: 0.2em solid ${({ theme }) => theme.colors.accentBlue};
+  border: 0.2em solid ${({ theme }) => theme.colors.splitter};
+  border-left: 0.2em solid ${({ theme }) => theme.colors.accent};
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);

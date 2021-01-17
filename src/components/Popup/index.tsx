@@ -6,14 +6,14 @@ interface IItemProps {
 
 const PopupMenu = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius};
-  background-color: ${({ theme }) => theme.colors.accentBlueText};
-  border: 1px solid ${({ theme }) => theme.colors.splitter};
-  color: ${({ theme }) => theme.colors.menu};
+  background-color: ${({ theme }) => theme.colors.input.background};
+  border: 1px solid ${({ theme }) => theme.colors.input.border};
+  color: ${({ theme }) => theme.colors.input.color};
   padding: 10px 0;
 `;
 
 const PopupItem = styled.div<IItemProps>`
-  color: ${({ theme }) => theme.colors.menu};
+  color: ${({ theme }) => theme.colors.input.color};
   padding: 10px 20px 10px 30px;
   cursor: pointer;
   position: relative;

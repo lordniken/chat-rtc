@@ -20,7 +20,58 @@ const MOCK = [
     author: 'Василий',
     message: 'Всем привет!',
     self: false,
-  }
+  },
+  {
+    author: 'Василий',
+    message: 'Всем привет!',
+    self: false,
+  },
+  {
+    author: 'Василий',
+    message: 'Всем привет!',
+    self: false,
+  },
+  {
+    author: 'Василий',
+    message: 'Всем привет!',
+    self: false,
+  },
+  {
+    author: 'Василий',
+    message: 'Всем привет!',
+    self: false,
+  },
+  {
+    author: 'Василий',
+    message: 'Всем привет!',
+    self: false,
+  },
+  {
+    author: 'Василий',
+    message: 'Всем привет!',
+    self: false,
+  },
+  {
+    author: 'Василий',
+    message: 'Всем привет!',
+    self: false,
+  },
+  {
+    author: 'Василий',
+    message: 'Всем привет!',
+    self: false,
+  },
+  {
+    author: 'Василий',
+    message: 'Всем привет!',
+    self: true,
+  },
+  {
+    author: 'Василий',
+    message: 'Всем привет!',
+    self: false,
+  },
+  
 ];
 
 const Messages: React.FC = () => {

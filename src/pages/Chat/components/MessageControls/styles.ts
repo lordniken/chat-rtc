@@ -4,7 +4,7 @@ export const StyledWrapper = styled.div`
   background: ${({ theme }) => theme.colors.splitter};
   padding: 10px;
   height: 60px;
-  border-top: 1px solid ${({ theme }) => theme.colors.inputBorder};
+  border-top: 2px solid ${({ theme }) => theme.colors.background};
 `;
 
 export const ControlWrapper = styled.div`

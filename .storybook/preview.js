@@ -1,11 +1,11 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
 import { ThemeProvider } from 'styled-components';
-import { lightTheme } from '../src/global/theme';
+import themes from '../src/global/themes';
 
 export const decorators = [
   Story => (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={themes.light}>
       <Formik
         initialValues={{}}
         onSubmit={() => {}}

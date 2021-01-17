@@ -6,7 +6,7 @@ export const StyledFakeSwitch = styled.div`
   width: 42px;
   height: 22px;
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.inputBackground};
+  background-color: ${({ theme }) => theme.colors.input.background};
   border: 1px solid ${({ theme }) => theme.colors.splitter};
   transition: border-color 0.3s ease-out;
   cursor: pointer;
@@ -18,7 +18,7 @@ export const StyledFakeSwitch = styled.div`
     height: 18px;
     top: 1px;
     left: 1px;
-    background-color: ${({ theme }) => theme.colors.inputBorder};
+    background-color: ${({ theme }) => theme.colors.input.border};
     border-radius: 10px;
     transition: all 0.2s ease-in;
     z-index: 999;
@@ -32,7 +32,7 @@ export const StyledSwitch = styled.input.attrs({ type: 'checkbox' })`
     ~ ${StyledFakeSwitch} {
       &:before {
         transform: translateX(20px);
-        background-color: ${({ theme }) => theme.colors.accentPurple};
+        background-color: ${({ theme }) => theme.colors.button.disabled};
       }
     }
   }
@@ -40,7 +40,7 @@ export const StyledSwitch = styled.input.attrs({ type: 'checkbox' })`
   &:disabled {
     ~ ${StyledFakeSwitch} {
       cursor: default;
-      background-color: ${({ theme }) => theme.colors.inputBorder};
+      background-color: ${({ theme }) => theme.colors.input.border};
     }
   }
 `;
@@ -78,7 +78,7 @@ export const StyledWrapper = styled.label<IProps>`
   &:hover {
     ${StyledSwitch}:enabled {
       ~ ${StyledFakeSwitch} {
-        border-color: ${({ theme }) => theme.colors.inputBorder}
+        border-color: ${({ theme }) => theme.colors.input.borderHover};
       }
     }
   }
