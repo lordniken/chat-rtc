@@ -1,5 +1,7 @@
+import React from 'react';
 import { AppThemeType } from 'global/themes';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, useTheme } from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 const GlobalStyles = createGlobalStyle<{ theme: AppThemeType }>`
   body {
@@ -32,4 +34,17 @@ const GlobalStyles = createGlobalStyle<{ theme: AppThemeType }>`
   }
 `;
 
-export default GlobalStyles;
+const Styles: React.FC = () => {
+  const theme = useTheme() as AppThemeType;
+
+  return (
+    <>
+      <GlobalStyles />
+      <Helmet>
+        <meta name="theme-color" content={theme.colors.input.background} /> 
+      </Helmet>
+    </>
+  );
+};
+
+export default Styles;
