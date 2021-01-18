@@ -9,7 +9,7 @@ import { Button } from 'components/Button';
 import Select from 'components/Select';
 import { getDefaultLang, getDefaultTheme, saveDefaultTheme } from 'utils/selectors';
 import { useDispatch } from 'react-redux';
-import { setTheme } from 'store/app';
+import { setAppTheme } from 'store/app';
 import { StyledRow } from './styles';
 import { loginValidation } from './validation';
 
@@ -36,7 +36,7 @@ const LoginPage: React.FC = () => {
 
   const onThemeChange = (value: string) => {
     saveDefaultTheme(value);
-    dispatch(setTheme(value as TAppTheme));
+    dispatch(setAppTheme(value as TAppTheme));
   };
 
   const THEME_LIST = [

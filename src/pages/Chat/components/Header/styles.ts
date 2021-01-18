@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form } from 'formik';
 import Typography from 'components/Typography';
 import { Avatar } from 'components/Avatar';
 
@@ -38,6 +39,6 @@ export const StyledAvatar = styled(Avatar)`
   margin-left: 10px;
 `;
 
-export const StyledForm = styled.form`
+export const StyledForm = styled(Form)`
   display: flex;
 `;

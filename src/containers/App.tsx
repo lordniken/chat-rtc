@@ -15,7 +15,7 @@ const renderedRoutes = renderRoutes(routes);
 
 const App: React.FC = () => {
   const currentTheme = useSelector(getAppTheme);
-  // getDefaultTheme()
+ 
   return (
     <ThemeProvider theme={themes[currentTheme]}>
       <Suspense fallback={<SuspenseComponent />}>

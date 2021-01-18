@@ -35,11 +35,11 @@ const app = createSlice({
     setAppLoaded(state, action: PayloadAction<boolean>) {
       state.isLoaded = action.payload;
     },
-    setTheme(state, action: PayloadAction<TAppTheme>)   {
+    setAppTheme(state, action: PayloadAction<TAppTheme>)   {
       state.theme = action.payload;
     }
   },
 });
 
-export const { setAppFetching, setAppError, setAppSuccess, setAppLoaded, setTheme } = app.actions;
+export const { setAppFetching, setAppError, setAppSuccess, setAppLoaded, setAppTheme } = app.actions;
 export default app.reducer;
