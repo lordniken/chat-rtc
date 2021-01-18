@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import themes from 'global/themes';
 import i18n from 'utils/i18n';
 import { I18nextProvider } from 'react-i18next';
-import SuspenseComponent from 'pages/Suspense';
+import SuspenseComponent from 'containers/Suspense';
 import AdaptiveProvider from 'providers/AdaptiveProvider';
 import { renderRoutes } from 'utils/router';
 import routes from 'global/routes';

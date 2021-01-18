@@ -20,6 +20,8 @@ const INITIAL_VALUES = {
 
 const Switches: React.FC = () => {
   const { i18n } = useTranslation(['common']);
+  const translation = useTranslation(['pages/chat']);
+
   const dispatch = useDispatch();
   const currentTheme = useSelector(getAppTheme);
 
@@ -40,11 +42,11 @@ const Switches: React.FC = () => {
       {({ submitForm }) => (
         <StyledForm onChange={submitForm}>
           <StyledSwitchWrapper>
-            <Typography component="small" gutter>Тема</Typography>
+            <Typography component="small" gutter>{translation.t('theme')}</Typography>
             <Switch name="theme" icons={[SunIcon, MoonIcon]} />
           </StyledSwitchWrapper>
           <StyledSwitchWrapper>
-            <Typography component="small" gutter>Язык</Typography>
+            <Typography component="small" gutter>{translation.t('lang')}</Typography>
             <Switch name="lang" icons={[RusIcon, EnIcon]} />
           </StyledSwitchWrapper>
         </StyledForm>

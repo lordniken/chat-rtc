@@ -5,6 +5,7 @@ import useSplitter from 'hooks/useSplitter';
 import useBreakpoints from 'hooks/useBreakpoints';
 import Typography from 'components/Typography';
 import { saveSplitterCollapseState, saveSplitterPosition } from 'utils/selectors';
+import { useTranslation } from 'react-i18next';
 import { StyledUserWrapper, StyledWrapper, StyledUsername, StyledStatus } from './styles';
 import UnreadedMessages from './components/UnreadedMessages';
 
@@ -28,6 +29,7 @@ const MOCK = [
 const Online: React.FC = () => {
   const { setCollapsed, collapsed, separatorPosition } = useSplitter();
   const { isMobile, isTablet } = useBreakpoints();
+  const translation = useTranslation(['pages/chat']);
    
   useEffect(() => {
     setCollapsed(isMobile || isTablet);
@@ -61,7 +63,7 @@ const Online: React.FC = () => {
                   <StyledStatus component="small">{user.status}</StyledStatus>
                 </Col>
               </StyledUsername>}
-            {!!user.unreaded && <UnreadedMessages>{collapsed ? user.unreaded : `${user.unreaded } новых сообщений`}</UnreadedMessages>}
+            {!!user.unreaded && <UnreadedMessages>{collapsed ? user.unreaded : `${user.unreaded } ${translation.t('unreadedMessages')}`}</UnreadedMessages>}
           </StyledUserWrapper>
         ))
       }

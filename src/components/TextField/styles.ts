@@ -23,7 +23,7 @@ export const StyledTextField = styled.input`
   &::placeholder {
     font-style: italic;
     font-size: 14px;
-    color: ${({ theme }) => theme.colors.input.borderHover};
+    color: ${({ theme }) => theme.colors.input.border};
   }
 `;
 

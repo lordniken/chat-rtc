@@ -1,0 +1,17 @@
+{
+  "changeStatus": "Status",
+  "status": {
+    "online": "Online",
+    "away": "Away",
+    "busy": "Busy"
+  },
+  "unreadedMessages": "new messages",
+  "exit": "Exit",
+  "theme": "Theme",
+  "lang": "Language",
+  "call": "Call",
+  "clearHistory": "Delete history",
+  "send": "Send message",
+  "attach": "Attach image",
+  "sendPlaceholder": "Type message"
+}

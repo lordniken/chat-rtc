@@ -2,12 +2,14 @@ import React, { useCallback, useRef } from 'react';
 import { Button } from 'components/Button';
 import TextField from 'components/TextField';
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
 import SendIcon from './icons/send.svg';
 import AttachImgIcon from './icons/attach_img.svg';
 import { StyledWrapper, ControlWrapper, StyledFile } from './styles';
 
 const MessageControls: React.FC = () => {
   const attachRef = useRef<HTMLInputElement>( null );
+  const translation = useTranslation(['pages/chat']);
 
   const attachTrigger = useCallback(() => {
     attachRef!.current!.click();
@@ -31,10 +33,10 @@ const MessageControls: React.FC = () => {
         }) => (
           <form onSubmit={handleSubmit}>
             <ControlWrapper>
-              <Button type="button" onClick={attachTrigger} icon={AttachImgIcon} transparent title="Прикрепить картинку" />
+              <Button type="button" onClick={attachTrigger} icon={AttachImgIcon} transparent title={translation.t('attach')} />
               <StyledFile ref={attachRef} onChange={onLoadFile} />
-              <TextField name="message" placeholder="Текст сообщения" fullWidth />
-              <Button type="submit" icon={SendIcon} transparent title="Отправить сообщение" />
+              <TextField name="message" placeholder={translation.t('sendPlaceholder')} fullWidth />
+              <Button type="submit" icon={SendIcon} transparent title={translation.t('send')} />
             </ControlWrapper>
           </form>
         )}
