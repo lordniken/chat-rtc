@@ -5,7 +5,8 @@ const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-
+const Dotenv = require('dotenv-webpack')
+ 
 const getEnvFromDotEnvFile = dotenv.config()
 let envKeys
 
@@ -83,5 +84,6 @@ module.exports = {
     new webpack.ProvidePlugin({
       process: 'process/browser',
     }),
+    new Dotenv(),
   ],
 }

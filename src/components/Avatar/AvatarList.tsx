@@ -16,7 +16,7 @@ const AvatarList: React.FC<IAvatarListProps> = ({ name, userName, ...rest }) => 
     <StyledWrapper>
       {
         avatars.map((avatar) => (
-          <StyledAvatarWrapper key={avatar}>
+          <StyledAvatarWrapper key={avatar || 'defaultUser'}>
             <input        
               {...rest}
               {...field}

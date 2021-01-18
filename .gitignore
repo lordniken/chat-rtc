@@ -12,6 +12,7 @@
 .vscode
 .coverage
 .scannerwork/
+.env
 
 allure-results
 allure-report
