@@ -2,15 +2,19 @@ import React, { useRef, useState } from 'react';
 import DropIcon from './icons/dropfile.svg';
 import { StyledWrapper, StyledShadow, StyledText } from './styles';
 
-const DragNDrop: React.FC = () => {
+interface IProps {
+  dragText?: string;
+}
+
+const DragNDrop: React.FC<IProps> = ({ children, dragText = 'Отправить файл' }) => {
   const [isDragging, setDragging] = useState(false);
-  const dragCounterRef = useRef(0);
+  const dragCounterRef = useRef(1);
 
   const onDragEnter = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
-    dragCounterRef.current += 1;
+    if (isDragging) dragCounterRef.current += 1;
     if (e.dataTransfer.items && e.dataTransfer.items.length > 0){
       setDragging(true);
     }
@@ -20,7 +24,8 @@ const DragNDrop: React.FC = () => {
     e.preventDefault();
     e.stopPropagation();
 
-    dragCounterRef.current -= 1;
+    if (isDragging) dragCounterRef.current -= 1;
+    
     if (dragCounterRef.current > 1){
       return;
     }
@@ -38,7 +43,8 @@ const DragNDrop: React.FC = () => {
     e.stopPropagation();
 
     if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
-      dragCounterRef.current = 0;
+      console.log('file dropped!');
+      dragCounterRef.current = 1;
     }
     setDragging(false);
   };
@@ -50,12 +56,12 @@ const DragNDrop: React.FC = () => {
       onDragLeave={onDragLeave}
       onDrop={onDragDrop}
     >
-      {isDragging && 
+      {isDragging ? 
         <>
           <StyledShadow />
           <img src={DropIcon} alt="" />
-          <StyledText component="h1">Отправить файл</StyledText>
-        </>}      
+          <StyledText component="h1">{dragText}</StyledText>
+        </> : children}
     </StyledWrapper>);
 
 };

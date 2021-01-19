@@ -26,11 +26,11 @@ module.exports = merge(common, {
   devServer: {
     historyApiFallback: true,
     host: '0.0.0.0',
-    public: 'localhost:3000',
+    public: 'localhost:3005',
     open: true,
     compress: true,
     hot: true,
-    port: 3000,
+    port: 3005,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

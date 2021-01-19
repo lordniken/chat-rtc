@@ -2,6 +2,7 @@ import React from 'react';
 import useBreakpoints from 'hooks/useBreakpoints';
 import { Avatar } from 'components/Avatar';
 import Typography from 'components/Typography';
+import { useTranslation } from 'react-i18next';
 import DragNDrop from 'components/DropFile';
 import { 
   StyledMessage, 
@@ -20,66 +21,15 @@ const MOCK = [
     author: 'Василий',
     message: 'Всем привет!',
     self: false,
-  },
-  {
-    author: 'Василий',
-    message: 'Всем привет!',
-    self: false,
-  },
-  {
-    author: 'Василий',
-    message: 'Всем привет!',
-    self: false,
-  },
-  {
-    author: 'Василий',
-    message: 'Всем привет!',
-    self: false,
-  },
-  {
-    author: 'Василий',
-    message: 'Всем привет!',
-    self: false,
-  },
-  {
-    author: 'Василий',
-    message: 'Всем привет!',
-    self: false,
-  },
-  {
-    author: 'Василий',
-    message: 'Всем привет!',
-    self: false,
-  },
-  {
-    author: 'Василий',
-    message: 'Всем привет!',
-    self: false,
-  },
-  {
-    author: 'Василий',
-    message: 'Всем привет!',
-    self: false,
-  },
-  {
-    author: 'Василий',
-    message: 'Всем привет!',
-    self: true,
-  },
-  {
-    author: 'Василий',
-    message: 'Всем привет!',
-    self: false,
-  },
-  
+  },  
 ];
 
 const Messages: React.FC = () => {
   const { isMobile } = useBreakpoints();
+  const translation = useTranslation(['pages/chat']);
 
   return (
-    <>
-      <DragNDrop />
+    <DragNDrop dragText={translation.t('dragText')}>
       <StyledBackground>
         <StyledWrapper>
           {
@@ -110,7 +60,7 @@ const Messages: React.FC = () => {
           }
         </StyledWrapper>
       </StyledBackground>
-    </>
+    </DragNDrop>
   );
 };
 

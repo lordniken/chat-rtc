@@ -1,5 +1,5 @@
+import Typography from 'components/Typography';
 import React from 'react';
-import styled from 'styled-components';
 import DragAndDrop from '..';
 
 export default {
@@ -7,13 +7,8 @@ export default {
   component: DragAndDrop,
 };
 
-const Wrapper = styled.div`
-  position: relative;
-  height: 80vh;
-`;
-
 export const Component = () => (
-  <Wrapper>
-    <DragAndDrop />
-  </Wrapper>
+  <DragAndDrop>
+    <Typography component="h2">Перетащите файл</Typography>
+  </DragAndDrop>
 );

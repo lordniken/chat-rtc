@@ -2,9 +2,9 @@ import Typography from 'components/Typography';
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 180px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,7 @@ export const StyledShadow = styled.div`
   height: 100%;
   opacity: 0.2;
   z-index: 800;
-  background: ${({ theme}) => theme.colors.menu};
+  background: ${({ theme }) => theme.colors.accent};
   border: ${({ theme }) => theme.borderRadius} dashed ${({ theme}) => theme.colors.inputBorder};
 `;
 
@@ -31,4 +31,3 @@ export const StyledText = styled(Typography)`
   z-index: 1000;
   color: ${({ theme}) => theme.colors.menu};
 `;
-

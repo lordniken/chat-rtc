@@ -91,6 +91,8 @@ export const StyledBackground = styled.div`
   background: ${({ theme }) => theme.gradients.footer};
   overflow-y: auto;
   padding: 10px;
+  display: flex;
+  flex: 1;
 `;
 
 export const StyledMessageHeader = styled.div`

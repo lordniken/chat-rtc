@@ -13,5 +13,6 @@
   "clearHistory": "Delete history",
   "send": "Send message",
   "attach": "Attach image",
-  "sendPlaceholder": "Type message"
+  "sendPlaceholder": "Type message",
+  "dragText": "Send image"
 }
