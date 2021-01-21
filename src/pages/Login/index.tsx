@@ -9,6 +9,7 @@ import { Button } from 'components/Button';
 import Select from 'components/Select';
 import { getDefaultLang, getDefaultTheme, saveDefaultTheme } from 'utils/selectors';
 import { useDispatch } from 'react-redux';
+import { Tabs, Tab } from 'components/Tabs';
 import { setAppTheme } from 'store/app';
 import { StyledRow } from './styles';
 import { loginValidation } from './validation';
@@ -17,7 +18,8 @@ const INITIAL_FORM = {
   username: '',
   avatar: '',
   theme: getDefaultTheme(),
-  lang: getDefaultLang()
+  lang: getDefaultLang(),
+  variant: 'login'
 };
 
 const LANG_LIST = [
@@ -66,6 +68,10 @@ const LoginPage: React.FC = () => {
             values
           }) => (
             <Form>
+              <Tabs name="variant">
+                <Tab value="login" label="Авторизация">Tab1 Content</Tab>
+                <Tab value="registration" label="Регистрация">Tab2 Content</Tab>
+              </Tabs>
               <Col gutter>
                 <TextField name="username" label={translation.t('name')} />
               </Col>
