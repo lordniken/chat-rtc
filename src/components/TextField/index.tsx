@@ -1,6 +1,6 @@
+import React, { useMemo, useState } from 'react';
 import { useField } from 'formik';
-import React from 'react';
-import { StyledTextField, StyledWrapper, StyledLabelWrapper, StyledInputWrapper } from './styles';
+import { StyledTextField, StyledWrapper, StyledLabelWrapper, StyledInputWrapper, PasswordIcon } from './styles';
 
 interface ITextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -12,6 +12,13 @@ interface ITextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const TextField: React.FC<ITextFieldProps> = ({ name, type = 'text', icon, fullWidth = false, label, ...rest }) => {
   const [field, meta] = useField({ name, type });
+  const [isPwdShown, setPwdShown] = useState(false);
+
+  const inputType = useMemo(() => {
+    if (type === 'password') return isPwdShown ? 'text' : 'password';
+    
+    return type;
+  }, [isPwdShown]);
 
   return (
     <StyledWrapper>
@@ -20,9 +27,15 @@ const TextField: React.FC<ITextFieldProps> = ({ name, type = 'text', icon, fullW
         <StyledTextField 
           {...rest}
           {...field}
-          type={type}
+          type={inputType}
+          htmlType={type}
           data-error={meta.error}
         />
+        {type === 'password' && 
+          <PasswordIcon 
+            isPwnShown={isPwdShown} 
+            onClick={() => setPwdShown(prev => !prev)} 
+          />}
       </StyledInputWrapper>
     </StyledWrapper>
   );
