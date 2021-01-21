@@ -13,7 +13,7 @@ const Tab: React.FC<IProps> = ({ children, name = 'tab', label, value, ...rest }
 
   return (
     <StyledTab>
-      <Typography component="h5" align="center">{label}</Typography>
+      <Typography component="h4" align="center">{label}</Typography>
       <StyledTabInput
         {...field}   
         {...meta}

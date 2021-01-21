@@ -1,5 +1,5 @@
-import { useField } from 'formik';
 import React from 'react';
+import { useField } from 'formik';
 import { Option } from 'react-select/src/filters';
 import { StyledSelect, StyledWrapper } from './styles';
 

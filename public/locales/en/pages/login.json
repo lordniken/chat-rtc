@@ -1,7 +1,11 @@
 {
   "title": "Enter the chat",
   "sign_in": "Sign in",
-  "name": "Your name",
+  "sign_up": "Sign up",
+  "auth": "Authorization",
+  "reg": "Registration",
+  "login": "Login",
+  "password": "Password",
   "theme": "Color scheme",
   "theme_light": "Light theme",
   "theme_dark": "Dark theme",

@@ -6,9 +6,10 @@ import { StyledTabContent, StyledTabsHeader, StyledTabWrapper, TabsWrapper } fro
 interface IProps {
   name: string;
   defaultTab?: number;
+  className?: string;
 }
 
-const Tabs: React.FC<IProps> = ({ children, defaultTab = 0, name }) => {
+const Tabs: React.FC<IProps> = ({ children, className, defaultTab = 0, name }) => {
   const items: React.ReactElement[] = 
     useMemo(() => React.Children.toArray(children) as React.ReactElement[], [children]);
   const [,meta] = useField({ name });
@@ -17,7 +18,7 @@ const Tabs: React.FC<IProps> = ({ children, defaultTab = 0, name }) => {
   const activeIndex = items.findIndex(el => el.props.value === meta.value);
 
   return (
-    <TabsWrapper>
+    <TabsWrapper className={className}>
       <StyledTabsHeader activeIndex={activeIndex} totalTabs={items.length}>
         {items.map(tab => (
           <StyledTabWrapper key={tab.props.value} totalTabs={items.length}>
