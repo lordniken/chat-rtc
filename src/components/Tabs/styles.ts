@@ -10,10 +10,8 @@ interface IActiveTab {
 }
 
 export const TabsWrapper = styled.div`
-
+  width: 100%;
 `;
-
-
 
 export const StyledTabsHeader = styled.div<IActiveTab>`
   display: flex;
@@ -40,7 +38,6 @@ export const StyledTabContent = styled.div`
 
 export const StyledTab = styled.label`
   width: 100%;
-  text-align: center;
   padding: 10px;
   cursor: pointer;
   user-select: none;

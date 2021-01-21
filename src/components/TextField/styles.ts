@@ -31,6 +31,7 @@ export const StyledWrapper = styled.div`
   display: inline-block;
   position: relative;
   width: 100%;
+  text-align: end;
 `;
 
 export const StyledLabelWrapper = styled.span`

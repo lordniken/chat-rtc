@@ -1,9 +1,11 @@
 import React from 'react';
 import { useField } from 'formik';
+import Typography from 'components/Typography';
 import { StyledTab, StyledTabInput } from './styles';
 
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  value: string;
 }
 
 const Tab: React.FC<IProps> = ({ children, name = 'tab', label, value, ...rest }) => {
@@ -11,7 +13,7 @@ const Tab: React.FC<IProps> = ({ children, name = 'tab', label, value, ...rest }
 
   return (
     <StyledTab>
-      {label}
+      <Typography component="h5" align="center">{label}</Typography>
       <StyledTabInput
         {...field}   
         {...meta}
