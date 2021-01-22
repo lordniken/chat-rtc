@@ -17,7 +17,7 @@ const Registration: React.FC<IProps> = ({ username }) => {
         <TextField name="reg_login" label={translation.t('login')} />
       </Col>
       <Col gutter>
-        <TextField name="reg_pwd" type="password" label={translation.t('password')} />
+        <TextField name="reg_pwd" placeholder="Не менее 6 символов" type="password" label={translation.t('password')} />
       </Col>      
       <Col gutter>
         <AvatarList name="avatar" userName={username} />

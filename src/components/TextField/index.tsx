@@ -34,6 +34,7 @@ const TextField: React.FC<ITextFieldProps> = ({ name, type = 'text', icon, fullW
         {type === 'password' && 
           <PasswordIcon 
             isPwnShown={isPwdShown} 
+            type="button"
             onClick={() => setPwdShown(prev => !prev)} 
           />}
       </StyledInputWrapper>

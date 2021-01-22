@@ -68,6 +68,7 @@ export const StyledInputWrapper = styled.div<IIconWrapper>`
       background-size: contain;
       left: 10px;
       top: calc(50% - 10px);
+      z-index: 100;
     }
 
     ${StyledTextField} {
