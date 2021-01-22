@@ -14,10 +14,10 @@ const Registration: React.FC<IProps> = ({ username }) => {
   return (
     <>
       <Col gutter>
-        <TextField name="username" label={translation.t('login')} />
+        <TextField name="reg_login" label={translation.t('login')} />
       </Col>
       <Col gutter>
-        <TextField name="password" label={translation.t('password')} />
+        <TextField name="reg_pwd" type="password" label={translation.t('password')} />
       </Col>      
       <Col gutter>
         <AvatarList name="avatar" userName={username} />
@@ -25,10 +25,5 @@ const Registration: React.FC<IProps> = ({ username }) => {
     </>
   );
 };
-
-/*
-      
-
-*/
 
 export default Registration;

@@ -12,7 +12,10 @@ import Registration from './components/Registration';
 import { StyledRow, StyledTabs } from './styles';
 
 const INITIAL_FORM = { 
-  username: '',
+  auth_login: '',
+  auth_pwd: '',
+  reg_login: '',
+  reg_pwd: '',
   avatar: '',
   theme: getDefaultTheme(),
   lang: getDefaultLang(),
@@ -49,7 +52,7 @@ const LoginPage: React.FC = () => {
                   <Auth />
                 </Tab>
                 <Tab value="registration" label={translation.t('reg')}>
-                  <Registration username={values.username} />
+                  <Registration username={values.reg_login} />
                 </Tab>
               </StyledTabs>
               <Col>

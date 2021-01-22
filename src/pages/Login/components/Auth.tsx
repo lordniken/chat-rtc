@@ -36,10 +36,10 @@ const Auth: React.FC = () => {
   return (
     <>
       <Col gutter flex justify="flex-end">
-        <TextField name="username" label={translation.t('login')} />
+        <TextField name="auth_login" label={translation.t('login')} />
       </Col>
       <Col gutter flex justify="flex-end">
-        <TextField name="password" type="password" label={translation.t('password')} />
+        <TextField name="auth_pwd" type="password" label={translation.t('password')} />
       </Col>
       <StyledBlock>
         <Col gutter flex justify="space-between" align="center">
