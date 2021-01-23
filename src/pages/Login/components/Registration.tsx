@@ -14,10 +14,10 @@ const Registration: React.FC<IProps> = ({ username }) => {
   return (
     <>
       <Col gutter>
-        <TextField name="reg_login" label={translation.t('login')} />
+        <TextField name="regLogin" label={translation.t('login')} />
       </Col>
       <Col gutter>
-        <TextField name="reg_pwd" placeholder="Не менее 6 символов" type="password" label={translation.t('password')} />
+        <TextField name="regPwd" placeholder="Не менее 6 символов" type="password" label={translation.t('password')} />
       </Col>      
       <Col gutter>
         <AvatarList name="avatar" userName={username} />

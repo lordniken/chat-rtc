@@ -5,18 +5,21 @@ import { useTranslation } from 'react-i18next';
 import { Form, Formik } from 'formik';
 import { Button } from 'components/Button';
 import { getDefaultLang, getDefaultTheme } from 'utils/selectors';
+import { useDispatch, useSelector } from 'react-redux';
 import { Tab } from 'components/Tabs';
+import { getIsAppFetching } from 'store/app/selectors';
 import { loginValidation } from './validation';
 import Auth from './components/Auth';
 import Registration from './components/Registration';
 import { StyledRow, StyledTabs } from './styles';
+import { RegistrationAction } from './store/actions';
 
 const INITIAL_FORM = { 
-  auth_login: '',
-  auth_pwd: '',
-  reg_login: '',
-  reg_pwd: '',
-  avatar: '',
+  authLogin: '',
+  authPwd: '',
+  regLogin: '',
+  regPwd: '',
+  avatar: 'default',
   theme: getDefaultTheme(),
   lang: getDefaultLang(),
   variant: 'login'
@@ -24,6 +27,8 @@ const INITIAL_FORM = {
 
 const LoginPage: React.FC = () => {
   const translation = useTranslation(['pages/login']);
+  const dispatch = useDispatch();
+  const isFetching = useSelector(getIsAppFetching);
 
   return (
     <Container mt={50}>
@@ -38,7 +43,11 @@ const LoginPage: React.FC = () => {
           validationSchema={loginValidation}
           validateOnMount
           onSubmit={(values, { setSubmitting }) => {
-            console.log(values);
+            dispatch(
+              values.variant === 'registration' ? 
+                RegistrationAction(values) : 
+                null
+            );
             setSubmitting(false);
           }}
         >
@@ -52,14 +61,15 @@ const LoginPage: React.FC = () => {
                   <Auth />
                 </Tab>
                 <Tab value="registration" label={translation.t('reg')}>
-                  <Registration username={values.reg_login} />
+                  <Registration username={values.regLogin} />
                 </Tab>
               </StyledTabs>
               <Col>
                 <Button 
                   type="submit" 
                   fullWidth 
-                  disabled={!isValid}
+                  disabled={!isValid || isFetching}
+                  isLoading={isFetching}
                 >
                   {translation.t(values.variant === 'login' ? 'sign_in' : 'sign_up')}
                 </Button>

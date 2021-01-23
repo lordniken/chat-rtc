@@ -1,12 +1,7 @@
-enum SPLITTER {
-  position = 'position',
-  collapsed = 'collapsed',
-}
-
-export const saveSplitterPosition = (position: number) => localStorage.setItem(SPLITTER.position, position.toString());
-export const getSplitterPosition = () => parseInt(localStorage.getItem(SPLITTER.position) || '', 10);
-export const saveSplitterCollapseState = (state: boolean) => localStorage.setItem(SPLITTER.collapsed, state.toString());
-export const getSplitterCollapseState = () => localStorage.getItem(SPLITTER.collapsed) === 'true';
+export const saveSplitterPosition = (position: number) => localStorage.setItem('position', position.toString());
+export const getSplitterPosition = () => parseInt(localStorage.getItem('position') || '', 10);
+export const saveSplitterCollapseState = (state: boolean) => localStorage.setItem('collapsed', state.toString());
+export const getSplitterCollapseState = () => localStorage.getItem('collapsed') === 'true';
 
 export const getDefaultLang = () => localStorage.getItem('i18nextLng') || 'ru';
 

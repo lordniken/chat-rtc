@@ -20,9 +20,9 @@ const AvatarList: React.FC<IAvatarListProps> = ({ name, userName, ...rest }) => 
             <input        
               {...rest}
               {...field}
-              checked={meta.value === (avatar || '')}
+              checked={meta.value === (avatar || 'default')}
               type="radio"
-              value={avatar || ''}
+              value={avatar || 'default'}
             />
             <Avatar title={userName || 'user'} icon={avatar} size="small" />
           </StyledAvatarWrapper>
