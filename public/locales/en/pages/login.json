@@ -9,5 +9,10 @@
   "theme": "Color scheme",
   "theme_light": "Light theme",
   "theme_dark": "Dark theme",
-  "lang": "Localization"
+  "lang": "Localization",
+  "user_exist": "Login is already exists",
+  "placeholders": {
+    "login": "In english",
+    "password": "At least 6 characters"
+  }
 }

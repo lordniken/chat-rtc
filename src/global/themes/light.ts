@@ -29,6 +29,16 @@ export default {
       disabled: '#bfc6f7',
       color: '#def5ff'
     },
+    alert: {
+      success: {
+        background: '#92ea92',
+        border: '#89d889'
+      },
+      error: {
+        background: 'red',
+        border: 'red',
+      }
+    },
 
     status: {
       online: '#009800',

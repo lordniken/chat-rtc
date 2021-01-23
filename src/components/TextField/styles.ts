@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Typography from 'components/Typography';
 import ShowPwdIcon from './icons/showPwd.svg';
 import HidePwdIcon from './icons/hidePwd.svg';
 
@@ -92,3 +93,10 @@ interface IIconWrapper {
   icon?: string;
   fullWidth?: boolean;
 }
+
+export const StyledError = styled(Typography)`
+  display: block;
+  text-align: right;
+  padding-top: 5px;
+  color: ${({ theme }) => theme.colors.alert.error.border};
+`;

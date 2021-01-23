@@ -5,11 +5,9 @@ import { IApiRequest } from 'store/app/types';
 
 const ApiMiddleware: Middleware = ({ dispatch }) => next => async action => {
   next(action);
-
   if (action.type !== ApiRequest.type) return;
 
-  const { url, method, body } = action.payload as IApiRequest;
-
+  const { url, method, body, successAction } = action.payload as IApiRequest;
   dispatch(setAppFetching(true));
   
   try {
@@ -20,16 +18,15 @@ const ApiMiddleware: Middleware = ({ dispatch }) => next => async action => {
         'Content-Type': 'application/json',
       }
     });
-
     const json = await response.json();
 
-    if (response.status === 200) {
-      console.log('ok');
+    if (response.status === 200 || response.status === 201) {
+      dispatch(successAction(json.payload));
     } else {
-      dispatch(setAppError(json.errors));
+      dispatch(setAppError(json.error));
     }
   } catch (error) {
-    dispatch(setAppError(error));
+    dispatch(setAppError('FETCH_FAILED'));
   }
 
   dispatch(setAppFetching(false));

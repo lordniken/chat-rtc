@@ -1,6 +1,6 @@
 import { call, takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
-import { setAppError, setAppTheme } from 'store/app';
+import { setAppTheme } from 'store/app';
 import { saveDefaultTheme } from 'utils/selectors';
 
 function* saveAppTheme({ payload }: PayloadAction<TAppTheme>){

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Col, Container } from 'components/Grid';
 import Typography from 'components/Typography';
 import { useTranslation } from 'react-i18next';
@@ -7,7 +7,8 @@ import { Button } from 'components/Button';
 import { getDefaultLang, getDefaultTheme } from 'utils/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { Tab } from 'components/Tabs';
-import { getIsAppFetching } from 'store/app/selectors';
+import { getIsAppError, getIsAppFetching } from 'store/app/selectors';
+import { setAppError } from 'store/app';
 import { loginValidation } from './validation';
 import Auth from './components/Auth';
 import Registration from './components/Registration';
@@ -17,8 +18,8 @@ import { RegistrationAction } from './store/actions';
 const INITIAL_FORM = { 
   authLogin: '',
   authPwd: '',
-  regLogin: '',
-  regPwd: '',
+  regLogin: 'lordniken',
+  regPwd: '1231231',
   avatar: 'default',
   theme: getDefaultTheme(),
   lang: getDefaultLang(),
@@ -29,9 +30,19 @@ const LoginPage: React.FC = () => {
   const translation = useTranslation(['pages/login']);
   const dispatch = useDispatch();
   const isFetching = useSelector(getIsAppFetching);
+  const error = useSelector(getIsAppError);
+
+  const formSubmitHandler = useCallback((values) => {
+    if (error) dispatch(setAppError(null));
+    dispatch(
+      values.variant === 'registration' ? 
+        RegistrationAction(values) : 
+        null
+    );
+  }, [error]);
 
   return (
-    <Container mt={50}>
+    <Container mt={80}>
       <StyledRow justify="flex-start" align="center" wrap={false}>
         <Col gutter>
           <Typography component="h1" gutter align="center">
@@ -42,14 +53,7 @@ const LoginPage: React.FC = () => {
           initialValues={INITIAL_FORM}
           validationSchema={loginValidation}
           validateOnMount
-          onSubmit={(values, { setSubmitting }) => {
-            dispatch(
-              values.variant === 'registration' ? 
-                RegistrationAction(values) : 
-                null
-            );
-            setSubmitting(false);
-          }}
+          onSubmit={formSubmitHandler}
         >
           {({
             isValid,
@@ -77,7 +81,7 @@ const LoginPage: React.FC = () => {
             </Form>
           )}
         </Formik>
-      </StyledRow>
+      </StyledRow>      
     </Container>
   );
 };

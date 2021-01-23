@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useField } from 'formik';
-import { StyledTextField, StyledWrapper, StyledLabelWrapper, StyledInputWrapper, PasswordIcon } from './styles';
+import { StyledTextField, StyledWrapper, StyledLabelWrapper, StyledInputWrapper, PasswordIcon, StyledError } from './styles';
 
 interface ITextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -38,6 +38,7 @@ const TextField: React.FC<ITextFieldProps> = ({ name, type = 'text', icon, fullW
             onClick={() => setPwdShown(prev => !prev)} 
           />}
       </StyledInputWrapper>
+      {meta.error && <StyledError component="small">{meta.error}</StyledError>}
     </StyledWrapper>
   );
 };

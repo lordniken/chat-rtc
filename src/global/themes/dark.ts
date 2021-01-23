@@ -28,6 +28,16 @@ export default {
       disabled: '#4e5f67',
       color: '#cbdfe8'
     },
+    alert: {
+      success: {
+        background: '#306530',
+        border: '#528852'
+      },
+      error: {
+        background: 'red',
+        border: '#ef9595',
+      }
+    },    
     status: {
       online: '#009800',
       busy: 'red',
