@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Col, Container } from 'components/Grid';
 import Typography from 'components/Typography';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Tab } from 'components/Tabs';
 import { getIsAppError, getIsAppFetching } from 'store/app/selectors';
 import { setAppError } from 'store/app';
+import useNotifications from 'hooks/useNotifications';
 import { loginValidation } from './validation';
 import Auth from './components/Auth';
 import Registration from './components/Registration';
@@ -31,6 +32,7 @@ const LoginPage: React.FC = () => {
   const dispatch = useDispatch();
   const isFetching = useSelector(getIsAppFetching);
   const error = useSelector(getIsAppError);
+  const { createNotification } = useNotifications();
 
   const formSubmitHandler = useCallback((values) => {
     if (error) dispatch(setAppError(null));
@@ -39,6 +41,16 @@ const LoginPage: React.FC = () => {
         RegistrationAction(values) : 
         null
     );
+  }, [error]);
+
+  useEffect(() => {
+    if (error) {
+      createNotification({
+        type: 'error',
+        message: translation.t(`errors.${error}`),
+      });
+      dispatch(setAppError(null));
+    } 
   }, [error]);
 
   return (

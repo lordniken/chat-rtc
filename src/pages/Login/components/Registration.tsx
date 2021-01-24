@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { AvatarList } from 'components/Avatar';
 import { Col } from 'components/Grid';
 import TextField from 'components/TextField';
+import useNotifications from 'hooks/useNotifications';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { getIsAppError } from 'store/app/selectors';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormikContext } from 'formik';
 import { getIsRegistr } from '../store/selectors';
+import { setRegistr } from '../store/slices';
 
 interface IProps {
   username: string;
@@ -14,18 +15,21 @@ interface IProps {
 
 const Registration: React.FC<IProps> = ({ username }) => {
   const translation = useTranslation(['pages/login']);
-  const error = useSelector(getIsAppError);
   const isSuccessRegistr = useSelector(getIsRegistr);
   const formikContext = useFormikContext();
+  const dispatch = useDispatch();
+  const { createNotification } = useNotifications();
 
   useEffect(() => {
-    if (error === 'LOGIN_EXIST') 
-      formikContext.setFieldError('regLogin', translation.t('user_exist'));
-
-  }, [error]);
-
-  useEffect(() => {
-    if (isSuccessRegistr) formikContext.resetForm();
+    if (isSuccessRegistr) {
+      createNotification({
+        type: 'success',
+        message: translation.t('user_created'),
+        delay: 10000
+      });
+      dispatch(setRegistr(''));
+      formikContext.resetForm();
+    }
   }, [isSuccessRegistr]);
   
   return (

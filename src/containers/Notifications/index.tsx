@@ -1,6 +1,7 @@
 import React, { createContext, useRef, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { Wrapper, Notification, SuccessIcon, ErrorIcon } from './styles';
+import { Close } from '@styled-icons/material';
+import { Wrapper, NotificationWrapper, Notification, NotificationContent, SuccessIcon, ErrorIcon, CloseNotification, NotificationMessage } from './styles';
 
 type NotificationProps = {
   type: 'success' | 'error';
@@ -13,7 +14,7 @@ interface ExternalNotificationProps extends NotificationProps {
 }
 
 interface INotificationsContext {
-  createNotification: (x: NotificationProps) => void;
+  createNotification: ({ type, message, delay }: NotificationProps) => void;
 }
 
 export const NotificationsContext = createContext<INotificationsContext>({
@@ -34,8 +35,11 @@ const Notifications: React.FC = ({ children }) => {
   };
 
   const deleteNotification = (item: ExternalNotificationProps) => {
-    setTimeout(() => 
-      setNotifcations(prev => prev.filter(i => i.id !== item.id)), item.delay || 5000);
+    setNotifcations(prev => prev.filter(i => i.id !== item.id));
+  };
+
+  const deleteNotificationWithTimeout = (item: ExternalNotificationProps) => {
+    setTimeout(() => deleteNotification(item), item.delay || 5000);
   };
     
   return (
@@ -49,18 +53,26 @@ const Notifications: React.FC = ({ children }) => {
         <AnimatePresence initial={false}>
           {notifications.map(item => (
             <Notification
-              key={item.id}  
+              key={item.id}
               initial={{ opacity: 0, scale: 0.5, x: -300 }}
               animate={{ opacity: 1, scale: 1, x: 10 }}
               exit={{ opacity: 0, scale: 0.5, x: -300 }}
-              onAnimationComplete={() => deleteNotification(item)}
+              onAnimationComplete={() => deleteNotificationWithTimeout(item)}
               layout
             >
-              {
-                item.type === 'success' ? <SuccessIcon size={32} /> : <ErrorIcon size={32} />
-              }
-              {item.message}
+              <NotificationWrapper>
+                <NotificationContent>
+                  {
+                    item.type === 'success' ? <SuccessIcon size={32} /> : <ErrorIcon size={32} />
+                  }
+                  <NotificationMessage component="message">{item.message}</NotificationMessage>
+                </NotificationContent>
+                <CloseNotification onClick={() => deleteNotification(item)}>
+                  <Close size={20} color="#ddd" />
+                </CloseNotification>
+              </NotificationWrapper>
             </Notification>
+            
           ))}
         </AnimatePresence>
       </Wrapper>
