@@ -7,6 +7,7 @@ import SuspenseComponent from 'containers/Suspense';
 import AdaptiveProvider from 'providers/AdaptiveProvider';
 import { renderRoutes } from 'utils/router';
 import routes from 'global/routes';
+import NotificationProvider from 'containers/Notifications';
 import { useSelector } from 'react-redux';
 import { getAppTheme } from 'store/app/selectors';
 import GlobalStyles from './GlobalStyles';
@@ -21,8 +22,10 @@ const App: React.FC = () => {
       <Suspense fallback={<SuspenseComponent />}>
         <I18nextProvider i18n={i18n}>
           <AdaptiveProvider>
-            <GlobalStyles />
-            {renderedRoutes}
+            <NotificationProvider>
+              <GlobalStyles />
+              {renderedRoutes}
+            </NotificationProvider>
           </AdaptiveProvider>
         </I18nextProvider>
       </Suspense>

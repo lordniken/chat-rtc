@@ -18,8 +18,8 @@ import { RegistrationAction } from './store/actions';
 const INITIAL_FORM = { 
   authLogin: '',
   authPwd: '',
-  regLogin: 'lordniken',
-  regPwd: '1231231',
+  regLogin: '',
+  regPwd: '',
   avatar: 'default',
   theme: getDefaultTheme(),
   lang: getDefaultLang(),

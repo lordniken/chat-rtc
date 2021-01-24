@@ -28,15 +28,11 @@ export default {
       disabled: '#4e5f67',
       color: '#cbdfe8'
     },
-    alert: {
-      success: {
-        background: '#306530',
-        border: '#528852'
-      },
-      error: {
-        background: 'red',
-        border: '#ef9595',
-      }
+    notifications: {
+      success: '#6ec75e',
+      error: '#ffc3c3',
+      background: '#4e5f67',
+      shadow: '0px 0px 8px 0px rgba(34, 60, 80, 0.4)',
     },    
     status: {
       online: '#009800',

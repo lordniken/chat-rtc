@@ -29,17 +29,12 @@ export default {
       disabled: '#bfc6f7',
       color: '#def5ff'
     },
-    alert: {
-      success: {
-        background: '#92ea92',
-        border: '#89d889'
-      },
-      error: {
-        background: 'red',
-        border: 'red',
-      }
-    },
-
+    notifications: {
+      success: '#6ec75e',
+      error: '#ffc3c3',
+      background: '#565656',
+      shadow: 'none',
+    },  
     status: {
       online: '#009800',
       busy: 'red',
