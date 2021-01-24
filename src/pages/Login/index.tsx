@@ -14,7 +14,7 @@ import { loginValidation } from './validation';
 import Auth from './components/Auth';
 import Registration from './components/Registration';
 import { StyledRow, StyledTabs } from './styles';
-import { RegistrationAction } from './store/actions';
+import { AuthAction, RegistrationAction } from './store/actions';
 
 const INITIAL_FORM = { 
   authLogin: '',
@@ -39,7 +39,7 @@ const LoginPage: React.FC = () => {
     dispatch(
       values.variant === 'registration' ? 
         RegistrationAction(values) : 
-        null
+        AuthAction(values)
     );
   }, [error]);
 

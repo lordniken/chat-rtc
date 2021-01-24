@@ -1,7 +1,8 @@
 import sha from 'js-sha512';
 import { ApiRequest } from 'store/app/actions';
 import { ApiMethods } from 'store/app/types';
-import { IRegValues } from './types';
+import { createAction } from '@reduxjs/toolkit';
+import { IAuthValues, IRegValues, LoginTypes } from './types';
 import { setRegistr } from './slices';
 
 export const RegistrationAction = (values: IRegValues) => {
@@ -18,5 +19,26 @@ export const RegistrationAction = (values: IRegValues) => {
       }
     ),
     successAction: setRegistr
+  });
+};
+
+export const AuthSuccess = createAction<string>(
+  LoginTypes.AUTH_SUCCESS
+);
+
+export const AuthAction = (values: IAuthValues) => {
+  const { authPwd, ...rest } = values;
+  const hashedPwd = sha.sha512(authPwd);
+
+  return ApiRequest({
+    url: 'auth',
+    method: ApiMethods.POST,
+    body: JSON.stringify(
+      {
+        ...rest,
+        authPwd: hashedPwd
+      }
+    ),
+    successAction: AuthSuccess
   });
 };

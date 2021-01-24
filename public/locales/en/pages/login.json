@@ -13,7 +13,8 @@
   "user_created": "The user has been successfully created!",
   "errors": {
     "USER_EXIST": "Login is already exists",
-    "FETCH_FAILED": "Failed request. Please try again later"
+    "FETCH_FAILED": "Failed request. Please try again later",
+    "AUTH_FAILED": "Invalid username or password"
   },
   "placeholders": {
     "login": "In english",
