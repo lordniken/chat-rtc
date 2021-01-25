@@ -1,6 +1,6 @@
 export enum AppTypes {
   API_REQUEST = '@app/API_REQUEST',
-  API_REQUEST_SUCCESS = '@app/API_REQUEST_SUCCESS'
+  API_RESPONSE = '@app/API_RESPONSE'
 }
 
 export enum ApiMethods {
@@ -12,5 +12,6 @@ export enum ApiMethods {
 export interface IApiRequest {
   url: string;
   method: ApiMethods;
-  body: string;
+  body?: string | undefined;
+  headers?: {};
 }

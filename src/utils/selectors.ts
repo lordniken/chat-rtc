@@ -9,4 +9,5 @@ export const saveDefaultTheme = (theme: string) => localStorage.setItem('theme',
 export const getDefaultTheme = (): TAppTheme => localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
 
 export const setToken = (token: string) => localStorage.setItem('token', token);
-export const getToken = () => localStorage.getItem('token');
+export const getToken = () => localStorage.getItem('token') || '';
+export const removeToken = () => localStorage.removeItem('token');

@@ -8,3 +8,7 @@ export const RegistrationAction = createAction<IRegValues>(
 export const AuthAction = createAction<IAuthValues>(
   LoginTypes.AUTH_SUCCESS
 );
+
+export const AuthCheck = createAction(
+  LoginTypes.AUTH_CHECK
+);

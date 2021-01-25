@@ -1,15 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getToken } from 'utils/selectors';
 import { AuthProps } from './types';
 
 export interface IUserState {
-  isAuth: boolean;
+  isAuth: boolean | null;
   username: string | null;
   avatar: string | null;
 }
 
 const initialState: IUserState = { 
-  isAuth: !!getToken(),
+  isAuth: null,
   username: null,
   avatar: null
 };

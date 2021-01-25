@@ -6,7 +6,9 @@ import RedirectRoute from './RedirectRoute';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const PrivateRoute = (props: any) => {
   const isAuth = useSelector(getIsAuth);
-
+  
+  if (isAuth === null) return null;
+  
   return <RedirectRoute routeProps={props} redirect="/" condition={isAuth} />;
 };
 

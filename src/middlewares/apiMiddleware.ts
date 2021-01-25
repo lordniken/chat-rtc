@@ -1,30 +1,35 @@
 import { Middleware } from 'redux';
 import { setAppError, setAppFetching } from 'store/app';
-import { ApiRequest, ApiSuccessed } from 'store/app/actions';
+import { ApiRequest, ApiResponse } from 'store/app/actions';
 import { IApiRequest } from 'store/app/types';
+import { getToken } from 'utils/selectors';
 
 const ApiMiddleware: Middleware = ({ dispatch }) => next => async action => {
   next(action);
   if (action.type !== ApiRequest.type) return;
 
-  const { url, method, body } = action.payload as IApiRequest;
+  const { url, method, body, headers } = action.payload as IApiRequest;
   dispatch(setAppFetching(true));
+
+  let tokenHeader = {};
   
+  const token = getToken();
+  if (token) tokenHeader = { 'Authorization': `Bearer ${token}` };
+ 
   try {
     const response = await fetch(`${process.env.HOST}/${url}`, {
       method,
       body,
       headers: {
         'Content-Type': 'application/json',
+        ...tokenHeader,
+        ...headers
       }
     });
     const json = await response.json();
 
-    if (response.status === 200 || response.status === 201) {
-      dispatch(ApiSuccessed(json.payload));
-    } else {
-      dispatch(setAppError(json.error));
-    }
+    dispatch(ApiResponse({ ...json, code: response.status }));
+
   } catch (error) {
     dispatch(setAppError('FETCH_FAILED'));
   }
