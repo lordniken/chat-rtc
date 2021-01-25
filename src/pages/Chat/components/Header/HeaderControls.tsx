@@ -1,10 +1,11 @@
-import { PopupItem, PopupMenu } from 'components/Popup';
 import React from 'react';
 import Popup from 'reactjs-popup';
+import { PopupItem, PopupMenu } from 'components/Popup';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfo } from 'store/user/selectors';
 import { UserStatus } from 'components/Avatar';
+import { UserExit } from 'store/user/actions';
 import { StyledAvatar, StyledHeaderWrapper } from './styles';
 import ExitIcon from './icons/exit.svg';
 import Switches from './Switches';
@@ -13,6 +14,11 @@ const HeaderControls: React.FC = () => {
   const translation = useTranslation(['pages/chat']);
   const userInfo = useSelector(getUserInfo);
   const statusList = [...Object.values(UserStatus)];
+  const dispatch = useDispatch();
+
+  const exitHandler = () => {
+    dispatch(UserExit());
+  };
 
   return (
     <StyledHeaderWrapper>
@@ -43,7 +49,12 @@ const HeaderControls: React.FC = () => {
               }
             </PopupMenu>
           </Popup>
-          <PopupItem icon={ExitIcon}>{translation.t('exit')}</PopupItem>
+          <PopupItem 
+            icon={ExitIcon} 
+            onClick={exitHandler}
+          >
+            {translation.t('exit')}
+          </PopupItem>
         </PopupMenu>
       </Popup>
     </StyledHeaderWrapper>

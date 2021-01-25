@@ -11,3 +11,7 @@ export interface IUserInfo {
   avatar: keyof typeof AvatarIcons;
   status: keyof typeof UserStatus;
 }
+
+export enum UserTypes {
+  USER_EXIT = '@user/USER_EXIT'
+}
