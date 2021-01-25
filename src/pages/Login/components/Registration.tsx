@@ -6,8 +6,8 @@ import useNotifications from 'hooks/useNotifications';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormikContext } from 'formik';
-import { getIsRegistr } from '../store/selectors';
-import { setRegistr } from '../store/slices';
+import { getIsAppSuccessed } from 'store/app/selectors';
+import { setAppSuccess } from 'store/app';
 
 interface IProps {
   username: string;
@@ -15,7 +15,7 @@ interface IProps {
 
 const Registration: React.FC<IProps> = ({ username }) => {
   const translation = useTranslation(['pages/login']);
-  const isSuccessRegistr = useSelector(getIsRegistr);
+  const isSuccessRegistr = useSelector(getIsAppSuccessed);
   const formikContext = useFormikContext();
   const dispatch = useDispatch();
   const { createNotification } = useNotifications();
@@ -27,7 +27,7 @@ const Registration: React.FC<IProps> = ({ username }) => {
         message: translation.t('user_created'),
         delay: 10000
       });
-      dispatch(setRegistr(''));
+      dispatch(setAppSuccess(false));
       formikContext.resetForm();
     }
   }, [isSuccessRegistr]);

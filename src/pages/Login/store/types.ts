@@ -10,5 +10,7 @@ export interface IAuthValues {
 }
 
 export enum LoginTypes {
-  AUTH_SUCCESS = '@login/AUTH_SUCCESS'
+  REG_FETCH = '@auth/REG_FETCH',
+  REG_SUCCESS = '@auth/REG_SUCCESS',
+  AUTH_SUCCESS = '@auth/AUTH_SUCCESS'
 }

@@ -15,10 +15,12 @@ interface ExternalNotificationProps extends NotificationProps {
 
 interface INotificationsContext {
   createNotification: ({ type, message, delay }: NotificationProps) => void;
+  clearNotifications: () => void;
 }
 
 export const NotificationsContext = createContext<INotificationsContext>({
   createNotification: () => {},
+  clearNotifications: () => {},
 });
 
 const Notifications: React.FC = ({ children }) => {
@@ -34,6 +36,10 @@ const Notifications: React.FC = ({ children }) => {
     );
   };
 
+  const clearNotifications = () => {
+    setNotifcations([]);
+  };
+
   const deleteNotification = (item: ExternalNotificationProps) => {
     setNotifcations(prev => prev.filter(i => i.id !== item.id));
   };
@@ -45,7 +51,8 @@ const Notifications: React.FC = ({ children }) => {
   return (
     <NotificationsContext.Provider
       value={{
-        createNotification
+        createNotification,
+        clearNotifications
       }}
     >
       {children}

@@ -1,7 +1,6 @@
-import { ActionCreatorWithoutPayload, ActionCreatorWithPayload } from '@reduxjs/toolkit';
-
 export enum AppTypes {
-  API_REQUEST = '@app/API_REQUEST'
+  API_REQUEST = '@app/API_REQUEST',
+  API_REQUEST_SUCCESS = '@app/API_REQUEST_SUCCESS'
 }
 
 export enum ApiMethods {
@@ -14,5 +13,4 @@ export interface IApiRequest {
   url: string;
   method: ApiMethods;
   body: string;
-  successAction: ActionCreatorWithPayload<string> | ActionCreatorWithoutPayload
 }
