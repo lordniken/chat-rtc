@@ -14,7 +14,8 @@ const Toolbar: React.FC = () => {
     <StyledWrapper>
       <StyledUserBlock>
         <StyledAvatar 
-          title="Василий" 
+          title="Василий"
+          icon="default"
         />
         <StyledUsername>
           <Typography>Василий</Typography>

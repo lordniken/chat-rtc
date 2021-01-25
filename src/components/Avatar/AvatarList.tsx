@@ -9,18 +9,18 @@ interface IAvatarListProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const AvatarList: React.FC<IAvatarListProps> = ({ name, userName, ...rest }) => {
-  const avatars = [...Object.values(AvatarIcons), undefined];
+  const avatars = [...Object.values(AvatarIcons)];
   const [field, meta] = useField({ name, type: 'radio' });
 
   return (
     <StyledWrapper>
       {
         avatars.map((avatar) => (
-          <StyledAvatarWrapper key={avatar || 'defaultUser'}>
+          <StyledAvatarWrapper key={avatar}>
             <input        
               {...rest}
               {...field}
-              checked={meta.value === (avatar || 'default')}
+              checked={meta.value === avatar}
               type="radio"
               value={avatar || 'default'}
             />

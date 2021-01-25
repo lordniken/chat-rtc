@@ -9,5 +9,5 @@ export default {
 };
 
 export const Component = ({ ...props }) => (
-  <Avatar title={text('name', 'name')} {...props} />
+  <Avatar icon="default" title={text('name', 'name')} {...props} />
 );

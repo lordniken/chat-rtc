@@ -7,7 +7,8 @@ export enum AvatarIcons {
   m3 = 'm3',
   g1 = 'g1',
   g2 = 'g2',
-  g3 = 'g3'
+  g3 = 'g3',
+  default = 'default'
 }
 
 export enum UserStatus {

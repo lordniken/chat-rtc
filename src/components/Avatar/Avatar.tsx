@@ -9,7 +9,7 @@ import Girl3 from './svg/girl3.svg';
 
 interface IProps {
   size?: 'small' | 'medium' | 'large';
-  icon?: keyof typeof AvatarIcons | null;
+  icon: keyof typeof AvatarIcons;
   status?: keyof typeof UserStatus;
   title: string; 
 }
@@ -38,7 +38,7 @@ const Avatar = styled.div<IProps>`
   }}
   background-repeat: no-repeat;
 
-  ${({ title, icon, theme }) => !icon && css`
+  ${({ title, icon, theme }) => icon === 'default' && css`
     &:before {
       content: '${title[0]}';
       position: static;

@@ -46,7 +46,7 @@ const Messages: React.FC = () => {
               (
                 <StyledMessage key={message.message} self={message.self}>
                   <StyledMessageWrapper self={message.self} isMobile={isMobile}>
-                    <Avatar title="Петр" icon="m1" size="small" />
+                    <Avatar icon="default" title="Петр" size="small" />
                     <StyledText>
                       <StyledMessageHeader>
                         <Typography component="strong">Петр</Typography>

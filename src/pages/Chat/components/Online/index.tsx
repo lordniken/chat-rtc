@@ -13,15 +13,15 @@ const MOCK = [
   {
     id: 1,
     nickname: 'Василий',
-    avatar: null,
-    status: 'online',
+    avatar: AvatarIcons.default,
+    status: UserStatus.online,
     unreaded: 10,
   },
   {
     id: 2,
     nickname: 'Петр',
-    avatar: 'm1',
-    status: 'away',
+    avatar: AvatarIcons.m1,
+    status: UserStatus.away,
     unreaded: 0,
   },
 ];
@@ -50,9 +50,9 @@ const Online: React.FC = () => {
           <StyledUserWrapper key={user.id}>
             <Avatar 
               title={user.nickname} 
-              icon={user.avatar ? user.avatar as keyof typeof AvatarIcons : null} 
+              icon={user.avatar} 
               size="small"
-              status={user.status as keyof typeof UserStatus} 
+              status={user.status} 
             />
             {!collapsed &&
               <StyledUsername>

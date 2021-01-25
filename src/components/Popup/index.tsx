@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 interface IItemProps {
   icon?: string;
+  disabled?: boolean;
 }
 
 const PopupMenu = styled.div`
@@ -21,6 +22,15 @@ const PopupItem = styled.div<IItemProps>`
   &:hover {
     background-color: ${({ theme }) => theme.colors.splitter};
   }
+
+  ${({ disabled = false }) => disabled && css`
+    cursor: default;
+    opacity: 0.5;
+
+    &:hover {
+      background-color: transparent;
+    }
+  `}
 
   ${({ icon }) => icon && css`
     &:before {
