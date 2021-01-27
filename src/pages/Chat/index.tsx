@@ -3,7 +3,7 @@ import { Col, Row } from 'components/Grid';
 import Splitter from 'components/Splitter';
 import { getSplitterCollapseState, getSplitterPosition } from 'utils/selectors';
 import { useDispatch } from 'react-redux';
-import { WsConnect } from 'store/chat/actions';
+import { WsConnect } from 'store/app/actions';
 import ChatHeader from './components/Header';
 import MessageControls from './components/MessageControls';
 import Messages from './components/Messages';

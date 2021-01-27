@@ -2,8 +2,8 @@
   "changeStatus": "Статус",
   "status": {
     "online": "В сети",
-    "away": "Недоступен",
-    "busy": "Отошел"
+    "away": "Отошел",
+    "busy": "Недоступен"
   },
   "unreadedMessages": "новых сообщений",
   "exit": "Выйти",

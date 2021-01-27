@@ -1,1 +1,0 @@
-export default () => new WebSocket(`${process.env.WS_HOST}`);

@@ -9,3 +9,10 @@ export const ApiResponse = createAction<unknown>(
   AppTypes.API_RESPONSE
 );
 
+export const WsConnect = createAction(
+  AppTypes.WS_CONNECT
+);
+
+export const WsClose = createAction(
+  AppTypes.WS_CLOSE
+);

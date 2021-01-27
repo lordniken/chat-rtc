@@ -1,6 +1,8 @@
 export enum AppTypes {
   API_REQUEST = '@app/API_REQUEST',
-  API_RESPONSE = '@app/API_RESPONSE'
+  API_RESPONSE = '@app/API_RESPONSE',
+  WS_CONNECT = '@chat/WS_CONNECT',
+  WS_CLOSE = '@chat/WS_CLOSE'
 }
 
 export enum ApiMethods {
