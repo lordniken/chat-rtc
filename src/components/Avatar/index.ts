@@ -13,8 +13,8 @@ export enum AvatarIcons {
 
 export enum UserStatus {
   online = 'online',
-  busy = 'busy',
-  away = 'away'
+  away = 'away',
+  busy = 'busy'
 }
 
 export { Avatar, AvatarList };

@@ -28,9 +28,13 @@ const user = createSlice({
     setUserInfo(state, action: PayloadAction<IUserInfo>) {
       state.username = action.payload.username;
       state.avatar = action.payload.avatar;
+      state.status = action.payload.status;
+    },
+    STATUS_CHANGED(state, action: PayloadAction<UserStatus>) {
+      state.status = action.payload;
     },
   },
 });
 
-export const { setUserIsAuth, setUserInfo } = user.actions;
+export const { setUserIsAuth, setUserInfo, STATUS_CHANGED } = user.actions;
 export default user.reducer;

@@ -1,8 +1,9 @@
 import ws from 'ws';
-import { call, cancel, cancelled, delay, fork, put, take, takeLatest } from 'redux-saga/effects';
+import { call, cancel, cancelled, delay, fork, put, race, take, takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { setAppTheme } from 'store/app';
 import { saveDefaultTheme } from 'utils/selectors';
+import { ChangeStatus } from 'store/user/actions';
 import { END, eventChannel } from 'redux-saga';
 import { WsClose, WsConnect } from './actions';
 
@@ -37,9 +38,25 @@ function* listenForSocketMessages() {
     socketChannel = yield call(createSocketChannel, socket);
 
     while (true) {
-      const payload = yield take(socketChannel);
-      const action = yield call(JSON.parse, payload);
-      yield put(action);
+      const eventList = yield race({
+        socket: take(socketChannel),
+        status: take(ChangeStatus)
+      });
+
+      const event = Object.keys(eventList)[0];
+
+      switch (event) {
+        case 'socket': {
+          const action = yield call(JSON.parse, eventList[event]);
+          yield put(action);
+          break;
+        }
+        case 'status': {
+          socket.send(ws.status(eventList[event].payload));
+          break;
+        }
+        default: break;
+      }
     }
   } catch (error) {
     console.log('error while connecting', error);

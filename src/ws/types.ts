@@ -1,3 +1,4 @@
 export enum WsTypes {
-  USER_LOGIN = 'USER_LOGIN'
+  USER_LOGIN = '@WS/USER_LOGIN',
+  CHANGE_STATUS = '@WS/CHANGE_STATUS'
 }

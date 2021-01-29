@@ -1,3 +1,4 @@
 import { createAction } from '@reduxjs/toolkit';
-import { ChatTypes } from './types';
+import { UserStatus } from 'components/Avatar';
+
 

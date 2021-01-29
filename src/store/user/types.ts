@@ -13,5 +13,7 @@ export interface IUserInfo {
 }
 
 export enum UserTypes {
-  USER_EXIT = '@user/USER_EXIT'
+  USER_EXIT = '@user/USER_EXIT',
+  CHANGE_STATUS = '@user/CHANGE_STATUS',
+  STATUS_CHANGED = '@user/STATUS_CHANGED'
 }
