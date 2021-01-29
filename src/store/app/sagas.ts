@@ -4,6 +4,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { setAppTheme } from 'store/app';
 import { saveDefaultTheme } from 'utils/selectors';
 import { ChangeStatus } from 'store/user/actions';
+import { ChatBroadcast } from 'store/chat/actions';
 import { END, eventChannel } from 'redux-saga';
 import { WsClose, WsConnect } from './actions';
 
@@ -48,13 +49,17 @@ function* listenForSocketMessages() {
       switch (event) {
         case 'socket': {
           const action = yield call(JSON.parse, eventList[event]);
-          yield put(action);
+          if (action.type === ChatBroadcast.type){
+            socket.send(ws.init());
+          } else {
+            yield put(action);
+          }
           break;
         }
         case 'status': {
           socket.send(ws.status(eventList[event].payload));
           break;
-        }
+        }      
         default: break;
       }
     }

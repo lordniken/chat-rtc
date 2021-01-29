@@ -1,4 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
-import { UserStatus } from 'components/Avatar';
+import { ChatTypes } from './types';
 
-
+export const ChatBroadcast = createAction(
+  ChatTypes.CHAT_BROADCAST
+);
