@@ -70,12 +70,22 @@ function* authCheck(){
   
     yield put(ApiRequest(requestPayload));
     const { payload: response } = yield take(ApiResponse.type);
-    if (response.code === 200) {
-      yield put(setUserInfo(response.payload));
-      yield put(setUserIsAuth(true));
-    } else {
-      removeToken();
-      yield put(setUserIsAuth(false));
+    switch (response.code) {
+      case 200: {
+        yield put(setUserInfo(response.payload));
+        yield put(setUserIsAuth(true));
+        break;
+      }
+      case 403: {
+        yield put(setUserIsAuth(false));
+        yield put(setAppError(response.error));
+        break;
+      }
+      default: {
+        removeToken();
+        yield put(setUserIsAuth(false));
+        break;
+      }
     }
   } else {
     yield put(setUserIsAuth(false));

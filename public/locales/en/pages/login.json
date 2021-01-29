@@ -14,7 +14,8 @@
   "errors": {
     "USER_EXIST": "Login is already exists",
     "FETCH_FAILED": "Failed request. Please try again later",
-    "AUTH_FAILED": "Invalid username or password"
+    "AUTH_FAILED": "Invalid username or password",
+    "MULTIPLE": "This user is already logged in"
   },
   "placeholders": {
     "login": "In english",
