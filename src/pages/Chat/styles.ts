@@ -1,4 +1,3 @@
-import { Col } from 'components/Grid';
 import styled from 'styled-components';
 
 export const StyledSplitPane = styled.aside`
@@ -6,8 +5,4 @@ export const StyledSplitPane = styled.aside`
   background: ${({ theme }) => theme.colors.inputBackground};
   overflow-y: auto;
   width: 100%;
-`;
-
-export const StyledMessageCol = styled(Col)`
-  position: relative;
 `;

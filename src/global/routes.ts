@@ -13,7 +13,7 @@ const routes: TRouteItem[] = [
   },
   {
     path: '/chat',
-    exact: true,
+    exact: false,
     component: Chat,
     private: true,
   }

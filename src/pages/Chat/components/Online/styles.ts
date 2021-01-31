@@ -1,5 +1,6 @@
 import Typography from 'components/Typography';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
 export const StyledUserWrapper = styled.div`
   display: flex;
@@ -11,7 +12,6 @@ export const StyledUserWrapper = styled.div`
   transition: background-color 0.3s ease-in;
 
   &:hover {
-    cursor: pointer;
     background-color: ${({ theme }) => theme.colors.splitter};
   }
 
@@ -34,10 +34,22 @@ export const StyledWrapper = styled.div`
   overflow-y: auto;
 `;
 
-interface IStatusProps {
-  dark?: boolean;
+export const StyledStatus = styled(Typography)`
+  color: ${({ theme }) => theme.colors.accent90};
+`;
+
+interface ILinkProps {
+  selected: boolean;
 }
 
-export const StyledStatus = styled(Typography)<IStatusProps>`
-  color: ${({ theme }) => theme.colors.accent90};
+export const StyledLink = styled(Link)<ILinkProps>`
+  text-decoration: none;
+
+  ${({ selected }) => selected && css`
+    cursor: default; 
+
+    ${StyledUserWrapper} {
+      background-color: ${({ theme }) => theme.colors.splitter};
+    }
+  `}
 `;
