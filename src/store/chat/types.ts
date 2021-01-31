@@ -8,7 +8,8 @@ export interface IMessage {
   to: string;
 }
 
-export interface IStateMessage {
-  id: string;
-  messageList: IMessage[];
+export interface IStateMessage extends IMessage {
+  _id: string;
+  author: string;
+  date: Date;
 }

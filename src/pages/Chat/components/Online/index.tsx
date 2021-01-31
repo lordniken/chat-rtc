@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { getOnlineList } from 'store/chat/selectors';
 import { useLocation } from 'react-router-dom';
 import { saveSplitterCollapseState, saveSplitterPosition } from 'utils/selectors';
+import { getUserInfo } from 'store/user/selectors';
 import { useTranslation } from 'react-i18next';
 import { StyledUserWrapper, StyledWrapper, StyledUsername, StyledStatus, StyledLink } from './styles';
 import UnreadedMessages from './components/UnreadedMessages';
@@ -19,6 +20,7 @@ const Online: React.FC = () => {
   const onlineList = useSelector(getOnlineList);
   const { pathname } = useLocation();
   const selectedChat = pathname.split('/')[2];
+  const { username } = useSelector(getUserInfo);
 
   useEffect(() => {
     setCollapsed(isMobile || isTablet);
@@ -35,7 +37,7 @@ const Online: React.FC = () => {
   return (
     <StyledWrapper>
       {
-        onlineList.map((user) => (
+        onlineList.map((user) => user.username !== username && (
           <StyledLink 
             key={user.username} 
             to={`/chat/${user.id}`} 
