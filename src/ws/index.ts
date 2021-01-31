@@ -1,12 +1,16 @@
 import { UserStatus } from 'components/Avatar';
 import { Action } from 'redux';
+import { SendMessage } from 'store/chat/actions';
+import { IMessage } from 'store/chat/types';
+import { ChangeStatus } from 'store/user/actions';
 import { getToken } from 'utils/selectors';
-import { WsChangeStatus, WsNewUser } from './action';
+import { WsNewUser } from './action';
 
 const withToken = (wsEvent: Action) => (JSON.stringify({ ...wsEvent, token: getToken() }));
 
 export default {
   create: () => new WebSocket(`${process.env.WS_HOST}`),
   init: () => withToken(WsNewUser()),
-  status: (status: UserStatus) => withToken(WsChangeStatus(status))
+  status: (status: UserStatus) => withToken(ChangeStatus(status)),
+  message: (message: IMessage) => withToken(SendMessage(message)),
 };

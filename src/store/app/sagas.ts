@@ -4,7 +4,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { setAppTheme } from 'store/app';
 import { saveDefaultTheme } from 'utils/selectors';
 import { ChangeStatus } from 'store/user/actions';
-import { ChatBroadcast } from 'store/chat/actions';
+import { ChatBroadcast, SendMessage } from 'store/chat/actions';
 import { END, eventChannel } from 'redux-saga';
 import { WsClose, WsConnect } from './actions';
 
@@ -41,7 +41,8 @@ function* listenForSocketMessages() {
     while (true) {
       const eventList = yield race({
         socket: take(socketChannel),
-        status: take(ChangeStatus)
+        status: take(ChangeStatus),
+        message: take(SendMessage),
       });
 
       const event = Object.keys(eventList)[0];
@@ -59,7 +60,11 @@ function* listenForSocketMessages() {
         case 'status': {
           socket.send(ws.status(eventList[event].payload));
           break;
-        }      
+        }   
+        case 'message': {
+          socket.send(ws.message(eventList[event].payload));
+          break;
+        }              
         default: break;
       }
     }
