@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import useBreakpoints from 'hooks/useBreakpoints';
 import { Avatar } from 'components/Avatar';
 import Typography from 'components/Typography';
@@ -25,9 +25,15 @@ const Messages: React.FC = () => {
   const translation = useTranslation(['pages/chat']);
   const { pathname } = useLocation();
   const userId = pathname.split('/')[2];
+  const messagesRef = useRef<HTMLDivElement | null>(null);
   const onlineList = useSelector(getOnlineList);
   const messageList = useSelector(getMessageList);
   const messages = messageList.filter(message => message.author === userId || message.to === userId);
+
+  useEffect(() => {
+    messagesRef?.current?.scrollIntoView({ behavior: 'auto' });
+  }, [messagesRef, messages]);
+
 
   return (
     <DragNDrop dragText={translation.t('dragText')}>
@@ -36,6 +42,7 @@ const Messages: React.FC = () => {
           {
             messages.map((message, index, arr) => {
               const author = onlineList.find(user => user.id === message.author);
+              if (!author) return null;
               const isMeAuthor = !(userId === message.author);
               const date = new Date(message.date);
               const messageTime = 
@@ -55,10 +62,10 @@ const Messages: React.FC = () => {
                 (
                   <StyledMessage key={message._id} self={isMeAuthor}>
                     <StyledMessageWrapper self={isMeAuthor} isMobile={isMobile}>
-                      <Avatar icon={author!.avatar} title={author!.username} size="small" />
+                      <Avatar icon={author.avatar} title={author.username} size="small" />
                       <StyledText>
                         <StyledMessageHeader>
-                          <Typography component="strong">{author?.username}</Typography>
+                          <Typography component="strong">{author.username}</Typography>
                           <Typography component="small">{messageTime}</Typography>
                         </StyledMessageHeader>
                         <StyledMessageText component="message">{message.message}</StyledMessageText>
@@ -68,6 +75,7 @@ const Messages: React.FC = () => {
                 );
             })
           }
+          <div ref={messagesRef} />
         </StyledWrapper>
       </StyledBackground>
     </DragNDrop>

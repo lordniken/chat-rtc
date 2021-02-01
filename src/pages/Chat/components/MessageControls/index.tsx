@@ -3,9 +3,10 @@ import { useLocation } from 'react-router-dom';
 import { Button } from 'components/Button';
 import TextField from 'components/TextField';
 import { Form, Formik, FormikHelpers } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { SendMessage } from 'store/chat/actions';
+import { getIsWsUp } from 'store/app/selectors';
 import SendIcon from './icons/send.svg';
 import AttachImgIcon from './icons/attach_img.svg';
 import { StyledWrapper, ControlWrapper, StyledFile } from './styles';
@@ -20,6 +21,7 @@ const MessageControls: React.FC = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const userId = pathname.split('/')[2];
+  const isWsUp = useSelector(getIsWsUp);
 
   const attachTrigger = useCallback(() => {
     attachRef!.current!.click();
@@ -42,10 +44,10 @@ const MessageControls: React.FC = () => {
       >
         <Form>
           <ControlWrapper>
-            <Button type="button" onClick={attachTrigger} icon={AttachImgIcon} transparent title={translation.t('attach')} />
+            <Button disabled={!isWsUp} type="button" onClick={attachTrigger} icon={AttachImgIcon} transparent title={translation.t('attach')} />
             <StyledFile ref={attachRef} onChange={onLoadFile} />
             <TextField name="message" placeholder={translation.t('sendPlaceholder')} fullWidth />
-            <Button type="submit" icon={SendIcon} transparent title={translation.t('send')} />
+            <Button disabled={!isWsUp} type="submit" icon={SendIcon} transparent title={translation.t('send')} />
           </ControlWrapper>
         </Form>
       </Formik>

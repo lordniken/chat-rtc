@@ -31,7 +31,7 @@ export const StyledHeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 12px;
+  padding-right: 20px;
 `;
 
 export const StyledAvatar = styled(Avatar)`

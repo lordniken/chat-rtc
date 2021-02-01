@@ -32,6 +32,37 @@ const GlobalStyles = createGlobalStyle<{ theme: AppThemeType }>`
   .popup-arrow {
     color: ${({ theme }) => theme.colors.input.background};
   }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.accent};
+    border: 1px solid ${({ theme }) => theme.colors.button.hover};
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${({ theme }) => theme.colors.accent90};
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border: none;
+    border-radius: 30px;
+  }
+  ::-webkit-scrollbar-track:hover {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-track:active {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
 `;
 
 const Styles: React.FC = () => {
