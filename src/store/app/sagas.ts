@@ -1,12 +1,13 @@
 import ws from 'ws';
-import { call, cancel, cancelled, delay, fork, put, race, take, takeLatest } from 'redux-saga/effects';
+import { call, cancel, cancelled, delay, fork, put, race, select, take, takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
-import { setAppTheme } from 'store/app';
+import { setAppTheme, setWsConnectionState } from 'store/app';
 import { saveDefaultTheme } from 'utils/selectors';
 import { ChangeStatus } from 'store/user/actions';
-import { ChatBroadcast, SendMessage } from 'store/chat/actions';
+import { ChatBroadcast, FetchMessageList, SendMessage } from 'store/chat/actions';
 import { END, eventChannel } from 'redux-saga';
 import { WsClose, WsConnect } from './actions';
+import { getIsWsUp } from './selectors';
 
 function createSocketChannel(socket: WebSocket) {
   return eventChannel(emit => {
@@ -43,8 +44,9 @@ function* listenForSocketMessages() {
         socket: take(socketChannel),
         status: take(ChangeStatus),
         message: take(SendMessage),
+        fetch: take(FetchMessageList)
       });
-
+      
       const event = Object.keys(eventList)[0];
 
       switch (event) {
@@ -64,8 +66,16 @@ function* listenForSocketMessages() {
         case 'message': {
           socket.send(ws.message(eventList[event].payload));
           break;
-        }              
+        } 
+        case 'fetch': {
+          socket.send(ws.fetch(eventList[event].payload));
+          break;
+        }
         default: break;
+      }
+      const isWsConnectionUp = yield select(getIsWsUp);
+      if (!isWsConnectionUp) {
+        yield put(setWsConnectionState(true));
       }
     }
   } catch (error) {
@@ -75,6 +85,7 @@ function* listenForSocketMessages() {
       socketChannel.close();
       socket.close();
     } else {
+      yield put(setWsConnectionState(false));
       console.log('connection error, trying to reconnect..');
       yield delay(5000);
       yield put(WsConnect());

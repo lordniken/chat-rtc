@@ -1,6 +1,7 @@
 export enum ChatTypes {
   CHAT_BROADCAST = '@chat/BROADCAST',
-  SEND_MESSAGE = '@chat/SEND_MESSAGE'
+  SEND_MESSAGE = '@chat/SEND_MESSAGE',
+  FETCH_MESSAGES = '@chat/FETCH_MESSAGES'
 }
 
 export interface IMessage {

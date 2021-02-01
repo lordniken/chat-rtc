@@ -1,6 +1,6 @@
 import { UserStatus } from 'components/Avatar';
 import { Action } from 'redux';
-import { SendMessage } from 'store/chat/actions';
+import { FetchMessageList, SendMessage } from 'store/chat/actions';
 import { IMessage } from 'store/chat/types';
 import { ChangeStatus } from 'store/user/actions';
 import { getToken } from 'utils/selectors';
@@ -13,4 +13,5 @@ export default {
   init: () => withToken(WsNewUser()),
   status: (status: UserStatus) => withToken(ChangeStatus(status)),
   message: (message: IMessage) => withToken(SendMessage(message)),
+  fetch: (id: string) => withToken(FetchMessageList(id)),
 };

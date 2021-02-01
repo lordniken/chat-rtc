@@ -28,3 +28,8 @@ export const getAppTheme = createSelector<ApplicationState, IAppState, TAppTheme
   getAppState,
   (app) => app.theme,
 );
+
+export const getIsWsUp = createSelector<ApplicationState, IAppState, boolean>(
+  getAppState,
+  (app) => app.wsState,
+);

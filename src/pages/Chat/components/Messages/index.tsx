@@ -36,11 +36,16 @@ const Messages: React.FC = () => {
           {
             messages.map((message, index, arr) => {
               const author = onlineList.find(user => user.id === message.author);
+              const isMeAuthor = !(userId === message.author);
+              const date = new Date(message.date);
+              const messageTime = 
+                date.toLocaleDateString() === new Date().toLocaleDateString()
+                  ? date.toLocaleTimeString() : `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 
               return index > 0 && arr[index-1].author === message.author ?
                 (
-                  <StyledMessageGroup key={message._id} self={!(userId === message.author)}>
-                    <StyledMessageGroupWrapper self={!(userId === message.author)} isMobile={isMobile}>
+                  <StyledMessageGroup key={message._id} self={isMeAuthor}>
+                    <StyledMessageGroupWrapper self={isMeAuthor} isMobile={isMobile}>
                       <StyledText>
                         <StyledMessageText component="message">{message.message}</StyledMessageText>
                       </StyledText>
@@ -48,13 +53,13 @@ const Messages: React.FC = () => {
                   </StyledMessageGroup>
                 ) :
                 (
-                  <StyledMessage key={message._id} self={!(userId === message.author)}>
-                    <StyledMessageWrapper self={!(userId === message.author)} isMobile={isMobile}>
+                  <StyledMessage key={message._id} self={isMeAuthor}>
+                    <StyledMessageWrapper self={isMeAuthor} isMobile={isMobile}>
                       <Avatar icon={author!.avatar} title={author!.username} size="small" />
                       <StyledText>
                         <StyledMessageHeader>
                           <Typography component="strong">{author?.username}</Typography>
-                          <Typography component="small">{message.date}</Typography>
+                          <Typography component="small">{messageTime}</Typography>
                         </StyledMessageHeader>
                         <StyledMessageText component="message">{message.message}</StyledMessageText>
                       </StyledText>

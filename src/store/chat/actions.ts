@@ -8,3 +8,7 @@ export const ChatBroadcast = createAction(
 export const SendMessage = createAction<IMessage>(
   ChatTypes.SEND_MESSAGE
 );
+
+export const FetchMessageList = createAction<string>(
+  ChatTypes.FETCH_MESSAGES
+);

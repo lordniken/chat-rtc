@@ -6,6 +6,7 @@ export interface IAppState {
   isError: null | string;
   isSuccessed: boolean;
   isLoaded: boolean;
+  wsState: boolean;
   theme: TAppTheme;
 }
 
@@ -14,6 +15,7 @@ const initialState: IAppState = {
   isError: null,
   isSuccessed: false,
   isLoaded: false,
+  wsState: false,
   theme: getDefaultTheme()
 };
 
@@ -37,9 +39,19 @@ const app = createSlice({
     },
     setAppTheme(state, action: PayloadAction<TAppTheme>)   {
       state.theme = action.payload;
+    },
+    setWsConnectionState(state, action: PayloadAction<boolean>)   {
+      state.wsState = action.payload;
     }
   },
 });
 
-export const { setAppFetching, setAppError, setAppSuccess, setAppLoaded, setAppTheme } = app.actions;
+export const { 
+  setAppFetching, 
+  setAppError, 
+  setAppSuccess, 
+  setAppLoaded, 
+  setAppTheme, 
+  setWsConnectionState 
+} = app.actions;
 export default app.reducer;

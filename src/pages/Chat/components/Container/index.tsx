@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col } from 'components/Grid';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getOnlineList } from 'store/chat/selectors';
+import { FetchMessageList } from 'store/chat/actions';
+import { getIsWsUp } from 'store/app/selectors';
 import Toolbar from '../Toolbar';
 import MessageControls from '../MessageControls';
 import Messages from '../Messages';
@@ -13,8 +15,18 @@ const ChatContainer: React.FC = () => {
   const userId = pathname.split('/')[2];
   const onlineList = useSelector(getOnlineList);
   const personOnline = onlineList.find(user => user.id === userId);
+  const isWsUp = useSelector(getIsWsUp);
+  const dispatch = useDispatch();
 
-  return userId && personOnline ?
+  useEffect(() => {
+    if (userId && isWsUp) {
+      dispatch(FetchMessageList(userId));
+    }
+  }, [dispatch, userId, isWsUp]);  
+  
+  if (!(userId && personOnline)) return null;
+
+  return (
     <>
       <Col gap={0}>
         <Toolbar />
@@ -26,7 +38,7 @@ const ChatContainer: React.FC = () => {
         <MessageControls />
       </Col>
     </>
-    : null;
+  );
 };
 
 export default ChatContainer;

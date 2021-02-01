@@ -101,7 +101,7 @@ export const StyledMessageHeader = styled.div`
   justify-content: space-between;
 
   & small {
-    color: ${({ theme }) => theme.colors.input.border};
+    color: ${({ theme }) => theme.colors.input.headerColor};
   }
 `;
 

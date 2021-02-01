@@ -24,6 +24,9 @@ const chat = createSlice({
     NEW_MESSAGE(state, action: PayloadAction<IStateMessage>) {
       state.messages.push(action.payload);
     },
+    SET_MESSAGES(state, action: PayloadAction<IStateMessage[]>) {
+      state.messages = action.payload;
+    },    
   },
 });
 
