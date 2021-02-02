@@ -17,6 +17,6 @@
   "dragText": "Отправить файл",
   "messages": {
     "yesterday": "вчера",
-    "daysAgo": "дней назад"
+    "daysAgo": "дня(ей) назад"
   }
 }

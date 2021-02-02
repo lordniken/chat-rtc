@@ -58,16 +58,6 @@ export const StyledMessage = styled.div<IProps>`
   }
 `;
 
-export const StyledMessageGroup = styled(StyledMessage)`
-  &:not(:first-child) {
-    margin-top: 2px;
-  }
-
-  &:before {
-    content: none;
-  }
-`;
-
 export const StyledMessageWrapper = styled.div<IProps>`
   background: ${({ theme }) => theme.colors.splitter};
   display: inline-flex;
@@ -77,10 +67,6 @@ export const StyledMessageWrapper = styled.div<IProps>`
   border: 1px solid ${({ theme }) => theme.colors.input.border};
   width: ${({ isMobile }) => isMobile ? '95%' : '45%'};
   max-width: ${({ isMobile }) => isMobile ? '95%' : '45%'};
-`;
-
-export const StyledMessageGroupWrapper = styled(StyledMessageWrapper)`
-  border-radius: ${({ theme }) => theme.borderRadius};
 `;
 
 export const StyledText = styled.div`
