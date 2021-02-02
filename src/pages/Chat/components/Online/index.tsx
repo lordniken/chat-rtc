@@ -10,17 +10,34 @@ import { useLocation } from 'react-router-dom';
 import { saveSplitterCollapseState, saveSplitterPosition } from 'utils/selectors';
 import { getUserInfo } from 'store/user/selectors';
 import { useTranslation } from 'react-i18next';
+import { IUserInfo } from 'store/user/types';
 import { StyledUserWrapper, StyledWrapper, StyledUsername, StyledStatus, StyledLink } from './styles';
 import UnreadedMessages from './components/UnreadedMessages';
+
+interface IUserLinkProps {
+  userOnline: IUserInfo;
+}
+
+const UserLink: React.FC<IUserLinkProps> = ({ children, userOnline }) => {
+  const { pathname } = useLocation();
+  const selectedChat = pathname.split('/')[2];
+  const { username } = useSelector(getUserInfo);
+
+  return userOnline.username  !== username ? (
+    <StyledLink 
+      to={`/chat/${userOnline.id}`} 
+      selected={selectedChat === userOnline.id}
+    >
+      {children}
+    </StyledLink>
+  ) : (<>{children}</>);
+};
 
 const Online: React.FC = () => {
   const { setCollapsed, collapsed, separatorPosition } = useSplitter();
   const { isMobile, isTablet } = useBreakpoints();
   const translation = useTranslation(['pages/chat']);
   const onlineList = useSelector(getOnlineList);
-  const { pathname } = useLocation();
-  const selectedChat = pathname.split('/')[2];
-  const { username } = useSelector(getUserInfo);
 
   useEffect(() => {
     setCollapsed(isMobile || isTablet);
@@ -37,12 +54,8 @@ const Online: React.FC = () => {
   return (
     <StyledWrapper>
       {
-        onlineList.map((user) => user.username !== username && (
-          <StyledLink 
-            key={user.username} 
-            to={`/chat/${user.id}`} 
-            selected={selectedChat === user.id}
-          >
+        onlineList.map((user) => (
+          <UserLink key={user.username} userOnline={user}>
             <StyledUserWrapper>
               <Avatar 
                 title={user.username} 
@@ -63,7 +76,7 @@ const Online: React.FC = () => {
                 // !!user.unreaded && <UnreadedMessages>{collapsed ? user.unreaded : `${user.unreaded } ${translation.t('unreadedMessages')}`}</UnreadedMessages>
               }
             </StyledUserWrapper>
-          </StyledLink>
+          </UserLink>
         ))
       }
     </StyledWrapper>

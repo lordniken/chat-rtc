@@ -14,5 +14,9 @@
   "send": "Send message",
   "attach": "Attach image",
   "sendPlaceholder": "Type message",
-  "dragText": "Send image"
+  "dragText": "Send image",
+  "messages": {
+    "yesterday": "yesterday",
+    "daysAgo": "days ago"
+  }
 }

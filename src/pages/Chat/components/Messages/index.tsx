@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import useBreakpoints from 'hooks/useBreakpoints';
 import { Avatar } from 'components/Avatar';
 import Typography from 'components/Typography';
@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { getMessageList, getOnlineList } from 'store/chat/selectors';
 import { useSelector } from 'react-redux';
+import humanDateTime from 'utils/messageDateTime';
 import DragNDrop from 'components/DropFile';
 import { 
   StyledMessage, 
@@ -18,6 +19,8 @@ import {
   StyledMessageText, 
   StyledMessageGroup, 
   StyledMessageGroupWrapper,
+  StyledMessageTime,
+  ScrollPoint,
 } from './styles';
 
 const Messages: React.FC = () => {
@@ -34,6 +37,23 @@ const Messages: React.FC = () => {
     messagesRef?.current?.scrollIntoView({ behavior: 'auto' });
   }, [messagesRef, messages]);
 
+  const readableMessageDate = (dateTime: Date) => {
+    const { date, time } = humanDateTime(dateTime);
+
+    if (typeof date === 'string') {
+      return `${date} ${time}`;
+    }
+
+    if (date?.days) {
+      return `${date.days} ${translation.t(`messages.${date.translation}`)} ${time}`;
+    }
+
+    if (date?.translation){
+      return `${translation.t(`messages.${date?.translation}`)} ${time}`;
+    }
+    
+    return time;
+  };
 
   return (
     <DragNDrop dragText={translation.t('dragText')}>
@@ -44,11 +64,7 @@ const Messages: React.FC = () => {
               const author = onlineList.find(user => user.id === message.author);
               if (!author) return null;
               const isMeAuthor = !(userId === message.author);
-              const date = new Date(message.date);
-              const messageTime = 
-                date.toLocaleDateString() === new Date().toLocaleDateString()
-                  ? date.toLocaleTimeString() : `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-
+              
               return index > 0 && arr[index-1].author === message.author ?
                 (
                   <StyledMessageGroup key={message._id} self={isMeAuthor}>
@@ -66,7 +82,7 @@ const Messages: React.FC = () => {
                       <StyledText>
                         <StyledMessageHeader>
                           <Typography component="strong">{author.username}</Typography>
-                          <Typography component="small">{messageTime}</Typography>
+                          <StyledMessageTime component="small">{readableMessageDate(message.date)}</StyledMessageTime>
                         </StyledMessageHeader>
                         <StyledMessageText component="message">{message.message}</StyledMessageText>
                       </StyledText>
@@ -75,7 +91,7 @@ const Messages: React.FC = () => {
                 );
             })
           }
-          <div ref={messagesRef} />
+          <ScrollPoint ref={messagesRef} />
         </StyledWrapper>
       </StyledBackground>
     </DragNDrop>

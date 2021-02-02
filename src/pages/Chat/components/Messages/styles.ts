@@ -12,6 +12,11 @@ interface IProps {
   isMobile?: boolean;
 }
 
+export const StyledMessageTime = styled(Typography)`
+  color: ${({ theme }) => theme.colors.input.headerColor};
+  opacity: 0.3;
+`;
+
 export const StyledMessage = styled.div<IProps>`
   display: flex;
   position: relative;
@@ -55,7 +60,7 @@ export const StyledMessage = styled.div<IProps>`
 
 export const StyledMessageGroup = styled(StyledMessage)`
   &:not(:first-child) {
-    margin-top: 1px;
+    margin-top: 2px;
   }
 
   &:before {
@@ -99,12 +104,13 @@ export const StyledMessageHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  & small {
-    color: ${({ theme }) => theme.colors.input.headerColor};
-  }
 `;
 
 export const StyledMessageText = styled(Typography)`
   overflow-wrap: break-word;
+  word-break: break-word;
+`;
+
+export const ScrollPoint = styled.div`
+  padding: 5px;
 `;
