@@ -16,7 +16,8 @@
   "sendPlaceholder": "Текст сообщения",
   "dragText": "Отправить файл",
   "messages": {
+    "today": "сегодня",
     "yesterday": "вчера",
-    "daysAgo": "дня(ей) назад"
+    "daysAgo": "дня назад"
   }
 }

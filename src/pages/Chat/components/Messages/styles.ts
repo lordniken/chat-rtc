@@ -100,3 +100,28 @@ export const StyledMessageText = styled(Typography)`
 export const ScrollPoint = styled.div`
   padding: 5px;
 `;
+
+export const DaySplitter = styled.div`
+  text-align: center;
+  margin: 20px 0 10px 0;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    border-top: 1px solid ${({ theme }) => theme.colors.input.border};
+    left: 0;
+    top: 10px;
+    bottom: 0;
+  }
+`;
+
+export const DaySplitterDate = styled(Typography)`
+  padding: 8px 30px;
+  margin: 10px;
+  border: 1px solid ${({ theme }) => theme.colors.input.border};
+  background:  ${({ theme }) => theme.colors.splitter};;
+  border-radius: 6px;
+  position: relative;
+`;

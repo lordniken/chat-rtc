@@ -16,6 +16,7 @@
   "sendPlaceholder": "Type message",
   "dragText": "Send image",
   "messages": {
+    "today": "сегодня",
     "yesterday": "yesterday",
     "daysAgo": "days ago"
   }

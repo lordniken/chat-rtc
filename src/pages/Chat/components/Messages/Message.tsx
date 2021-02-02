@@ -4,6 +4,7 @@ import Typography from 'components/Typography';
 import useBreakpoints from 'hooks/useBreakpoints';
 import { IStateMessage } from 'store/chat/types';
 import { IUserInfo } from 'store/user/types';
+import humanDateTime from 'utils/messageDateTime';
 import { 
   StyledMessage, 
   StyledMessageHeader, 
@@ -22,6 +23,11 @@ interface IProps {
 const Message: React.FC<IProps> = ({ message, isMeAuthor, author }) => {
   const { isMobile } = useBreakpoints();
 
+  const readableMessageTime = (dateTime: Date) => {
+    const { time } = humanDateTime(dateTime);
+    return time;
+  };
+
   return (
     <StyledMessage self={isMeAuthor}>
       <StyledMessageWrapper self={isMeAuthor} isMobile={isMobile}>
@@ -29,7 +35,7 @@ const Message: React.FC<IProps> = ({ message, isMeAuthor, author }) => {
         <StyledText>
           <StyledMessageHeader>
             <Typography component="strong">{author.username}</Typography>
-            <StyledMessageTime component="small">10:00</StyledMessageTime>
+            <StyledMessageTime component="small">{readableMessageTime(new Date(message.date))}</StyledMessageTime>
           </StyledMessageHeader>
           <StyledMessageText component="message">{message.message}</StyledMessageText>
         </StyledText>
