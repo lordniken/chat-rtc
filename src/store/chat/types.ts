@@ -9,8 +9,18 @@ export interface IMessage {
   to: string;
 }
 
-export interface IStateMessage extends IMessage {
+export interface IStateMessageList extends IMessage {
   _id: string;
   author: string;
   date: Date;
 }
+
+export interface IStateMessage {
+  list: IStateMessageList[];
+  totalMessages: number;
+}
+
+export type FetchMessagesType = {
+  id: string;
+  count?: number;
+};

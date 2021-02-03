@@ -1,16 +1,17 @@
 const date2humanDate = (date: Date) => {
   const today = new Date();
-  const difDays = Math.ceil((today.getTime() - date.getTime()) /1000/60/60/24);
+  today.setHours(0, 0, 0, 0);
+  const difDays = Math.ceil(Math.abs((today.getTime() - date.getTime())) /1000/60/60/24);
 
   switch (true) {
-    case difDays === 1: return {
+    case difDays === 0: return {
       translation: 'today'
     };
-    case difDays === 2: return {
+    case difDays === 1: return {
       translation: 'yesterday'
     };    
     case difDays < 7: return {
-      days: difDays - 1,
+      days: difDays,
       translation: 'daysAgo'
     };
     default: return date.toLocaleDateString();

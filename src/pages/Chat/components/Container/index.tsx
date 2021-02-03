@@ -20,7 +20,9 @@ const ChatContainer: React.FC = () => {
 
   useEffect(() => {
     if (userId && isWsUp) {
-      dispatch(FetchMessageList(userId));
+      dispatch(FetchMessageList({
+        id: userId
+      }));
     }
   }, [dispatch, userId, isWsUp]);  
   

@@ -1,15 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUserInfo } from 'store/user/types';
-import { IStateMessage } from './types';
+import { IStateMessage, IStateMessageList } from './types';
 
 export interface IChatState {
   onlineList: IUserInfo[],
-  messages: IStateMessage[];
+  messages: IStateMessage;
 }
 
 const initialState: IChatState = { 
   onlineList: [],
-  messages: []
+  messages: {
+    list: [],
+    totalMessages: 0
+  }
 };
 
 const name = '@chat';
@@ -21,11 +24,13 @@ const chat = createSlice({
     SET_ONLINE_LIST(state, action: PayloadAction<IUserInfo[]>) {
       state.onlineList = action.payload;
     },
-    NEW_MESSAGE(state, action: PayloadAction<IStateMessage>) {
-      state.messages.push(action.payload);
+    NEW_MESSAGE(state, action: PayloadAction<IStateMessageList>) {
+      state.messages.list.push(action.payload);
     },
-    SET_MESSAGES(state, action: PayloadAction<IStateMessage[]>) {
-      state.messages = action.payload;
+    SET_MESSAGES(state, action: PayloadAction<string>) {
+      const payload: IStateMessage = JSON.parse(action.payload);
+      state.messages.list = payload.list;
+      state.messages.totalMessages = payload.totalMessages;
     },    
   },
 });

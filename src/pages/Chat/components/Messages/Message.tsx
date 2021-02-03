@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Avatar } from 'components/Avatar';
 import Typography from 'components/Typography';
 import useBreakpoints from 'hooks/useBreakpoints';
-import { IStateMessage } from 'store/chat/types';
+import { IStateMessageList } from 'store/chat/types';
 import { IUserInfo } from 'store/user/types';
 import humanDateTime from 'utils/messageDateTime';
 import { 
@@ -15,18 +16,20 @@ import {
 } from './styles';
 
 interface IProps {
-  message: IStateMessage;
-  isMeAuthor: boolean;
+  message: IStateMessageList;
   author: IUserInfo;
 }
 
-const Message: React.FC<IProps> = ({ message, isMeAuthor, author }) => {
+const Message: React.FC<IProps> = ({ message, author }) => {
   const { isMobile } = useBreakpoints();
+  const { pathname } = useLocation();
+  const userId = pathname.split('/')[2];
+  const isMeAuthor = !(userId === message.author);
 
-  const readableMessageTime = (dateTime: Date) => {
+  const readableMessageTime = useCallback((dateTime: Date) => {
     const { time } = humanDateTime(dateTime);
     return time;
-  };
+  }, []);
 
   return (
     <StyledMessage self={isMeAuthor}>
