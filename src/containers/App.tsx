@@ -8,6 +8,7 @@ import AdaptiveProvider from 'providers/AdaptiveProvider';
 import { renderRoutes } from 'utils/router';
 import routes from 'global/routes';
 import NotificationProvider from 'containers/Notifications';
+import ModalProvider from 'containers/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthCheck } from 'pages/Login/store/actions';
 import { getAppTheme } from 'store/app/selectors';
@@ -29,8 +30,10 @@ const App: React.FC = () => {
         <I18nextProvider i18n={i18n}>
           <AdaptiveProvider>
             <NotificationProvider>
-              <GlobalStyles />
-              {renderedRoutes}
+              <ModalProvider>
+                <GlobalStyles />
+                {renderedRoutes}
+              </ModalProvider>
             </NotificationProvider>
           </AdaptiveProvider>
         </I18nextProvider>

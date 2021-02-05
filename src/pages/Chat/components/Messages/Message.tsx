@@ -13,7 +13,7 @@ import {
   StyledMessageTime, 
   StyledMessageWrapper, 
   StyledText,
-  StyledMedia
+  StyledMedia,
 } from './styles';
 
 interface IProps {

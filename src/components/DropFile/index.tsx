@@ -9,13 +9,14 @@ interface IProps {
 }
 
 const DragNDrop: React.FC<IProps> = ({ children, dragText = 'Отправить файл', onDrop }) => {
-  const [isDragging, setDragging] = useState(true);
+  const [isDragging, setDragging] = useState(false);
   const [dragCount, setDragCount] = useState(0);
 
   const onDragEnter = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.dataTransfer.items && e.dataTransfer.items.length > 0){
+
+    if (e.dataTransfer.files){
       setDragging(true);
       setDragCount(prev => prev + 1);
     }
@@ -39,17 +40,14 @@ const DragNDrop: React.FC<IProps> = ({ children, dragText = 'Отправить 
     e.preventDefault();
     e.stopPropagation();
 
-    if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       if (onDrop) onDrop(e);
-      setDragCount(0);
     }
+
+    setDragCount(0);
     setDragging(false);
   };
   
-  React.useEffect(() => {
-    setDragCount(0);
-  }, []);
-
   return (
     <StyledWrapper
       onDragEnter={onDragEnter}

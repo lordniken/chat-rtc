@@ -46,7 +46,7 @@ const MessageControls: React.FC = () => {
         <Form>
           <ControlWrapper>
             <Button disabled={!isWsUp} type="button" onClick={attachTrigger} icon={AttachImgIcon} transparent title={translation.t('attach')} />
-            <StyledFile ref={attachRef} onChange={onLoadFile} />
+            <StyledFile ref={attachRef} onChange={onLoadFile} accept=".png,.jpg" />
             <TextField name="message" placeholder={translation.t('sendPlaceholder')} fullWidth />
             <Button disabled={!isWsUp} type="submit" icon={SendIcon} transparent title={translation.t('send')} />
           </ControlWrapper>
