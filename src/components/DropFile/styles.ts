@@ -29,5 +29,19 @@ export const StyledShadow = styled.div`
 export const StyledText = styled(Typography)`
   display: block;
   z-index: 1000;
-  color: ${({ theme}) => theme.colors.menu};
+  color: ${({ theme }) => theme.colors.menu};
+`;
+
+export const StyledContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+`;
+
+export const StyledContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 `;

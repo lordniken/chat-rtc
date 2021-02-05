@@ -9,6 +9,6 @@ export default {
 
 export const Component = () => (
   <DragAndDrop>
-    <Typography component="h2">Перетащите файл</Typography>
+    <Typography>Перетащите файл</Typography>
   </DragAndDrop>
 );

@@ -1,37 +1,34 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import DropIcon from './icons/dropfile.svg';
-import { StyledWrapper, StyledShadow, StyledText, StyledImage } from './styles';
+import { StyledWrapper, StyledShadow, StyledText, StyledImage, StyledContainer, StyledContent } from './styles';
 
 interface IProps {
   dragText?: string;
+  onDrop?: (e: React.DragEvent) => void;
+  children: JSX.Element;
 }
 
-const DragNDrop: React.FC<IProps> = ({ children, dragText = 'Отправить файл' }) => {
-  const [isDragging, setDragging] = useState(false);
-  const dragCounterRef = useRef(1);
+const DragNDrop: React.FC<IProps> = ({ children, dragText = 'Отправить файл', onDrop }) => {
+  const [isDragging, setDragging] = useState(true);
+  const [dragCount, setDragCount] = useState(0);
 
-  const onDragEnter = (e: React.DragEvent) => {
+  const onDragEnter = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
-
-    if (isDragging) dragCounterRef.current += 1;
     if (e.dataTransfer.items && e.dataTransfer.items.length > 0){
       setDragging(true);
+      setDragCount(prev => prev + 1);
     }
-  };
+  }, [dragCount]);
 
-  const onDragLeave = (e: React.DragEvent) => {
+  const onDragLeave = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    setDragCount(prev => prev - 1);
 
-    if (isDragging) dragCounterRef.current -= 1;
-    
-    if (dragCounterRef.current > 1){
-      return;
-    }
-      
+    if (dragCount > 1) return;
     setDragging(false);
-  };
+  }, [dragCount]);
 
   const onDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -43,11 +40,15 @@ const DragNDrop: React.FC<IProps> = ({ children, dragText = 'Отправить 
     e.stopPropagation();
 
     if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
-      console.log('file dropped!');
-      dragCounterRef.current = 1;
+      if (onDrop) onDrop(e);
+      setDragCount(0);
     }
     setDragging(false);
   };
+  
+  React.useEffect(() => {
+    setDragCount(0);
+  }, []);
 
   return (
     <StyledWrapper
@@ -56,14 +57,17 @@ const DragNDrop: React.FC<IProps> = ({ children, dragText = 'Отправить 
       onDragLeave={onDragLeave}
       onDrop={onDragDrop}
     >
-      {isDragging ? 
-        <>
+      {isDragging &&
+        <StyledContainer>
           <StyledShadow />
-          <StyledImage src={DropIcon} alt="" />
-          <StyledText component="h1">{dragText}</StyledText>
-        </> : children}
+          <StyledContent>
+            <StyledImage src={DropIcon} alt="" />
+            <StyledText component="h1">{dragText}</StyledText>
+          </StyledContent>
+        </StyledContainer>}
+      {children}
     </StyledWrapper>);
 
 };
 
-export default DragNDrop;
+export default React.memo(DragNDrop);

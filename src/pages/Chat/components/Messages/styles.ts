@@ -130,9 +130,7 @@ export const DaySplitterDate = styled(Typography)`
 `;
 
 export const StyledMedia = styled.img`
-  width: fit-content;
-  height: fit-content;
   max-width: 100%;
   max-height: calc(100% - 20px);
-  object-fit: cover;
+  object-fit: contain;
 `;
