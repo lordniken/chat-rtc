@@ -12,7 +12,8 @@ import {
   StyledMessageText, 
   StyledMessageTime, 
   StyledMessageWrapper, 
-  StyledText 
+  StyledText,
+  StyledMedia
 } from './styles';
 
 interface IProps {
@@ -32,7 +33,7 @@ const Message: React.FC<IProps> = ({ message, author }) => {
   }, []);
 
   return (
-    <StyledMessage self={isMeAuthor}>
+    <StyledMessage self={isMeAuthor} isMedia={message.type === 'media'}>
       <StyledMessageWrapper self={isMeAuthor} isMobile={isMobile}>
         <Avatar icon={author.avatar} title={author.username} size="small" />
         <StyledText>
@@ -40,7 +41,12 @@ const Message: React.FC<IProps> = ({ message, author }) => {
             <Typography component="strong">{author.username}</Typography>
             <StyledMessageTime component="small">{readableMessageTime(new Date(message.date))}</StyledMessageTime>
           </StyledMessageHeader>
-          <StyledMessageText component="message">{message.message}</StyledMessageText>
+          {
+            message.type === 'message'? 
+              <StyledMessageText component="message">{message.message}</StyledMessageText>
+              :
+              <StyledMedia src={`${process.env.HOST}/media/?id=${message.message}`} alt="" />
+          }
         </StyledText>
       </StyledMessageWrapper>
     </StyledMessage>

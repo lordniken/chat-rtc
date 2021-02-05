@@ -5,7 +5,7 @@ import TextField from 'components/TextField';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { SendMessage } from 'store/chat/actions';
+import { SendMedia, SendMessage } from 'store/chat/actions';
 import { getIsWsUp } from 'store/app/selectors';
 import SendIcon from './icons/send.svg';
 import AttachImgIcon from './icons/attach_img.svg';
@@ -27,8 +27,9 @@ const MessageControls: React.FC = () => {
     attachRef!.current!.click();
   }, [attachRef]);
 
-  const onLoadFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+  const onLoadFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target && e.target?.files![0])
+      dispatch(SendMedia({ media: e.target.files[0], to: userId }));      
   };
 
   const sendMessageHandler = ({ message }: typeof INITIAL_VALUES, formik: FormikHelpers<typeof INITIAL_VALUES>) => {

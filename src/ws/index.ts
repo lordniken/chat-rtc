@@ -13,5 +13,5 @@ export default {
   init: () => withToken(WsNewUser()),
   status: (status: UserStatus) => withToken(ChangeStatus(status)),
   message: (message: IMessage) => withToken(SendMessage(message)),
-  fetch: (payload: FetchMessagesType) => withToken(FetchMessageList(payload)),
+  fetch: (payload: FetchMessagesType) => withToken(FetchMessageList(payload))
 };

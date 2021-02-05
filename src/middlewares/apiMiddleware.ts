@@ -21,7 +21,6 @@ const ApiMiddleware: Middleware = ({ dispatch }) => next => async action => {
       method,
       body,
       headers: {
-        'Content-Type': 'application/json',
         ...tokenHeader,
         ...headers
       }

@@ -14,6 +14,6 @@ export enum ApiMethods {
 export interface IApiRequest {
   url: string;
   method: ApiMethods;
-  body?: string | undefined;
+  body?: string | FormData | undefined;
   headers?: {};
 }

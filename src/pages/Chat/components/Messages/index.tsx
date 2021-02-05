@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getMessageList, getMessagesCount, getOnlineList } from 'store/chat/selectors';
@@ -38,7 +38,7 @@ const Messages: React.FC = () => {
     return translation.t(`messages.${date?.translation}`);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!isFetchingRef.current)
       lastMessageRef?.current?.scrollIntoView({ behavior: 'auto' });
     isFetchingRef.current = false;

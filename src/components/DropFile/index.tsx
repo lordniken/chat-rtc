@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import DropIcon from './icons/dropfile.svg';
-import { StyledWrapper, StyledShadow, StyledText } from './styles';
+import { StyledWrapper, StyledShadow, StyledText, StyledImage } from './styles';
 
 interface IProps {
   dragText?: string;
@@ -59,7 +59,7 @@ const DragNDrop: React.FC<IProps> = ({ children, dragText = 'Отправить 
       {isDragging ? 
         <>
           <StyledShadow />
-          <img src={DropIcon} alt="" />
+          <StyledImage src={DropIcon} alt="" />
           <StyledText component="h1">{dragText}</StyledText>
         </> : children}
     </StyledWrapper>);

@@ -10,6 +10,7 @@ export const StyledWrapper = styled.div`
 interface IProps {
   self: boolean;
   isMobile?: boolean;
+  isMedia?: boolean;
 }
 
 export const StyledMessageTime = styled(Typography)`
@@ -20,6 +21,8 @@ export const StyledMessageTime = styled(Typography)`
 export const StyledMessage = styled.div<IProps>`
   display: flex;
   position: relative;
+  max-height: 200px;
+  ${({ isMedia }) => isMedia && css`height: 200px;`}
 
   &:before {
     content: '';
@@ -124,4 +127,12 @@ export const DaySplitterDate = styled(Typography)`
   background:  ${({ theme }) => theme.colors.splitter};;
   border-radius: 6px;
   position: relative;
+`;
+
+export const StyledMedia = styled.img`
+  width: fit-content;
+  height: fit-content;
+  max-width: 100%;
+  max-height: calc(100% - 20px);
+  object-fit: cover;
 `;

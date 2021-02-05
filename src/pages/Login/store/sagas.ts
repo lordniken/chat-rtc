@@ -20,7 +20,10 @@ function* registration({ payload }: PayloadAction<IRegValues>){
         ...rest,
         regPwd: hashedPwd
       }
-    )
+    ),
+    headers: {
+      'Content-Type': 'application/json'
+    }
   };
 
   yield put(ApiRequest(requestPayload));
@@ -44,7 +47,10 @@ function* authentication({ payload }: PayloadAction<IAuthValues>){
         ...rest,
         authPwd: hashedPwd
       }
-    )
+    ),
+    headers: {
+      'Content-Type': 'application/json'
+    }
   };
 
   yield put(ApiRequest(requestPayload));
@@ -65,7 +71,11 @@ function* authCheck(){
   if (token){
     const requestPayload = {
       url: 'auth',
-      method: ApiMethods.GET
+      method: ApiMethods.GET,
+      body: undefined,
+      headers: {
+        'Content-Type': 'application/json'
+      }
     };
   
     yield put(ApiRequest(requestPayload));

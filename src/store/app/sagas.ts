@@ -70,7 +70,7 @@ function* listenForSocketMessages() {
         case 'fetch': {
           socket.send(ws.fetch(eventList[event].payload));
           break;
-        }
+        }    
         default: break;
       }
       const isWsConnectionUp = yield select(getIsWsUp);

@@ -8,12 +8,12 @@ export const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
 
-  & img {
-    width: 80px;
-    height: 80px;
-    z-index: 1000;
-  }
+export const StyledImage = styled.img`
+  width: 80px;
+  height: 80px;
+  z-index: 1000;
 `;
 
 export const StyledShadow = styled.div`

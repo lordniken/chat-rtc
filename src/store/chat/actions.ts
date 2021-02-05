@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
-import { ChatTypes, FetchMessagesType, IMessage } from './types';
+import { ChatTypes, FetchMessagesType, IMedia, IMessage } from './types';
 
 export const ChatBroadcast = createAction(
   ChatTypes.CHAT_BROADCAST
@@ -11,4 +11,8 @@ export const SendMessage = createAction<IMessage>(
 
 export const FetchMessageList = createAction<FetchMessagesType>(
   ChatTypes.FETCH_MESSAGES
+);
+
+export const SendMedia = createAction<IMedia>(
+  ChatTypes.SEND_IMAGE
 );
