@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Avatar } from 'components/Avatar';
 import Typography from 'components/Typography';
 import useBreakpoints from 'hooks/useBreakpoints';
+import useModal from 'hooks/useModal';
 import { IStateMessageList } from 'store/chat/types';
 import { IUserInfo } from 'store/user/types';
 import humanDateTime from 'utils/messageDateTime';
@@ -14,6 +15,7 @@ import {
   StyledMessageWrapper, 
   StyledText,
   StyledMedia,
+  ZoomedImage
 } from './styles';
 
 interface IProps {
@@ -26,11 +28,22 @@ const Message: React.FC<IProps> = ({ message, author }) => {
   const { pathname } = useLocation();
   const userId = pathname.split('/')[2];
   const isMeAuthor = !(userId === message.author);
+  const { setContent } = useModal();
 
   const readableMessageTime = useCallback((dateTime: Date) => {
     const { time } = humanDateTime(dateTime);
     return time;
   }, []);
+
+  const onImageClick = (url: string) => {
+    setContent(
+      <ZoomedImage 
+        src={`${process.env.HOST}/media/?id=${url}`} 
+        alt="" 
+        onClick={() => setContent(null)} 
+      />
+    );
+  };
 
   return (
     <StyledMessage self={isMeAuthor} isMedia={message.type === 'media'}>
@@ -45,7 +58,7 @@ const Message: React.FC<IProps> = ({ message, author }) => {
             message.type === 'message'? 
               <StyledMessageText component="message">{message.message}</StyledMessageText>
               :
-              <StyledMedia src={`${process.env.HOST}/media/?id=${message.message}`} alt="" />
+              <StyledMedia src={`${process.env.HOST}/media/?id=${message.message}`} alt="" onClick={() => onImageClick(message.message)} />
           }
         </StyledText>
       </StyledMessageWrapper>
