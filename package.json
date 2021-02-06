@@ -85,6 +85,7 @@
     "@reduxjs/toolkit": "^1.5.0",
     "@storybook/addon-knobs": "^6.1.11",
     "@styled-icons/material": "^10.26.0",
+    "@types/dom-mediacapture-record": "^1.0.7",
     "@types/js-sha512": "^0.7.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",

@@ -2,15 +2,28 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { put, takeLatest } from 'redux-saga/effects';
 import { ApiRequest } from 'store/app/actions';
 import { ApiMethods } from 'store/app/types';
-import { SendMedia } from './actions';
+import { SendVoice, SendImage } from './actions';
 import { IMedia } from './types';
 
-function* sendMedia({ payload }: PayloadAction<IMedia>){
+function* SendMediaSaga({ payload }: PayloadAction<IMedia>){
   const formData  = new FormData();
   Object.keys(payload).forEach(e => formData.append(e, payload[e as keyof IMedia]));
 
   const requestPayload = {
-    url: 'media',
+    url: 'media/image',
+    method: ApiMethods.POST,
+    body: formData
+  };
+
+  yield put(ApiRequest(requestPayload));
+}
+
+function* SendVoiceSaga({ payload }: PayloadAction<IMedia>){
+  const formData  = new FormData();
+  Object.keys(payload).forEach(e => formData.append(e, payload[e as keyof IMedia]));
+
+  const requestPayload = {
+    url: 'media/voice',
     method: ApiMethods.POST,
     body: formData
   };
@@ -19,5 +32,6 @@ function* sendMedia({ payload }: PayloadAction<IMedia>){
 }
 
 export function* chatSagas() {
-  yield takeLatest(SendMedia.type, sendMedia);
+  yield takeLatest(SendImage.type, SendMediaSaga);
+  yield takeLatest(SendVoice.type, SendVoiceSaga);
 }

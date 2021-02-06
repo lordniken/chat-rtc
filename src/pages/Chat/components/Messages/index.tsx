@@ -6,7 +6,7 @@ import { getMessageList, getMessagesCount, getOnlineList } from 'store/chat/sele
 import { useDispatch, useSelector } from 'react-redux';
 import humanDateTime from 'utils/messageDateTime';
 import DragNDrop from 'components/DropFile';
-import { FetchMessageList, SendMedia } from 'store/chat/actions';
+import { FetchMessageList, SendImage } from 'store/chat/actions';
 import Message from './Message';
 import { 
   StyledWrapper, 
@@ -59,7 +59,7 @@ const Messages: React.FC = () => {
   }, [messages, userId]);  
 
   const onDrop = (e: React.DragEvent) => {
-    dispatch(SendMedia({ media: e.dataTransfer?.files[0], to: userId }));   
+    dispatch(SendImage({ media: e.dataTransfer?.files[0], to: userId }));   
   };
 
   return (

@@ -13,6 +13,10 @@ export const FetchMessageList = createAction<FetchMessagesType>(
   ChatTypes.FETCH_MESSAGES
 );
 
-export const SendMedia = createAction<IMedia>(
+export const SendImage = createAction<IMedia>(
   ChatTypes.SEND_IMAGE
+);
+
+export const SendVoice = createAction<IMedia>(
+  ChatTypes.SEND_VOICE
 );

@@ -2,7 +2,8 @@ export enum ChatTypes {
   CHAT_BROADCAST = '@chat/BROADCAST',
   SEND_MESSAGE = '@chat/SEND_MESSAGE',
   FETCH_MESSAGES = '@chat/FETCH_MESSAGES',
-  SEND_IMAGE = '@chat/SEND_IMAGE'
+  SEND_IMAGE = '@chat/SEND_IMAGE',
+  SEND_VOICE = '@chat/SEND_VOICE'
 }
 
 export interface IMessage {
@@ -14,7 +15,7 @@ export interface IStateMessageList extends IMessage {
   _id: string;
   author: string;
   date: Date;
-  type: 'message' | 'media';
+  type: 'message' | 'image' | 'voice';
 }
 
 export interface IStateMessage {
